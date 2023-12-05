@@ -1,5 +1,5 @@
 import { Analytics } from '@vercel/analytics/react';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import type { FC, ReactNode } from 'react';
 import { Footer } from '@/components/Footer/Footer';
 import { Header } from '@/components/Header/Header';
@@ -43,10 +43,11 @@ export const metadata: Metadata = {
   metadataBase: domain,
 
   title: {
-    default: 'mystack',
-    template: '%s | mystack',
+    default: 'reoiam-dev',
+    template: '%s | reoiam-dev',
   },
-  description: 'mystack is an open-source web application template for Next.js, TypeScript, Tailwind CSS, and Vercel.',
+  description:
+    'reoiam-dev is an open-source web application template for Next.js, TypeScript, Tailwind CSS, and Vercel.',
   viewport: {
     width: 'device-width',
     initialScale: 1.0,
@@ -62,4 +63,9 @@ export const metadata: Metadata = {
   //   { media: '(prefers-color-scheme: light)', color: colorTokens.keyplate.light['2'] }, // keyplate-light-2
   //   { media: '(prefers-color-scheme: dark)', color: colorTokens.keyplate.dark['2'] }, // keyplate-dark-2
   // ],
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1.0,
 };
