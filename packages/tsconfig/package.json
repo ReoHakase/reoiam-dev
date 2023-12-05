@@ -1,0 +1,17 @@
+{
+  "name": "tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "base.json",
+    "nextjs.json",
+    "react-library.json"
+  ],
+  "scripts": {
+    "format:check": "prettier --check .",
+    "format:fix": "prettier --write ."
+  },
+    "devDependencies": {
+    "prettier": "3.1.0"
+  }
+}
