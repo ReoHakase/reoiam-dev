@@ -1,9 +1,10 @@
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata, Viewport } from 'next';
 import type { FC, ReactNode } from 'react';
-import { Footer } from '@/components/Footer/Footer';
 import { Header } from '@/components/Header/Header';
 import { AppProvider } from '@/providers';
+import { fontVariables } from '@/styles/fonts';
+import { css } from 'styled-system/css';
 import '@/styles/globals.css';
 
 type RootLayoutProps = {
@@ -14,17 +15,34 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   // `next-themes`プロバイダによるHydration差分を無視するため`suppressHydrationWarning`を付加する
   // 参照: https://github.com/pacocoursey/next-themes/issues/152
   // 参照: https://github.com/khinshankhan/next-themes-app-dir-example
-  <html lang="ja" suppressHydrationWarning>
+  <html lang="ja" suppressHydrationWarning className={fontVariables}>
     <head />
     <body
-      className={`flex min-h-screen flex-col bg-keyplate-2 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-keyplate-6 scrollbar-thumb-rounded-full hover:scrollbar-thumb-keyplate-7`}
+      className={css({
+        display: 'flex',
+        minHeight: 'screen',
+        flexDirection: 'column',
+        background: 'slate.2',
+        color: 'slate.12',
+        overflowX: 'hidden',
+      })}
     >
       {/* Refer: https://vercel.com/docs/concepts/analytics/quickstart */}
       <Analytics />
       <AppProvider>
         <Header />
-        <main className="min-h-full grow">{children}</main>
-        <Footer />
+        <main
+          className={css({
+            display: 'flex',
+            flexGrow: 1,
+            minHeight: 'screen',
+            flexDirection: 'column',
+            justifyContent: 'start',
+            alignItems: 'center',
+          })}
+        >
+          {children}
+        </main>
       </AppProvider>
     </body>
   </html>
