@@ -2,7 +2,7 @@ import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { Preview } from '@storybook/react';
 import React from 'react';
 import { AppProvider } from '../src/providers';
-import './storybook-global.css';
+import '../src/styles/globals.css';
 
 const preview: Preview = {
   decorators: [

@@ -2,11 +2,26 @@ import NextImage from 'next/image';
 import type { ImageProps as NextImageProps } from 'next/image';
 import { forwardRef, ForwardRefExoticComponent } from 'react';
 import { breakpoints } from '@/styles/tokens/breakpoints';
+import { css } from 'styled-system/css';
+import type { SystemStyleObject } from 'styled-system/types';
 
-type ImageProps = Omit<NextImageProps, 'sizes'> & {
+export type ImageProps = Omit<NextImageProps, 'sizes'> & {
   sizes?: (Partial<Record<keyof typeof breakpoints, `${number}vw`>> & { default: `${number}vw` }) | `${number}vw`;
+} & {
+  css?: SystemStyleObject[];
 };
 
+/**
+ * Generates the sizes string for an image based on the provided sizes object.
+ * If sizes is not provided, returns '100vw'.
+ * If sizes is a string, returns the string as is.
+ * If sizes is an object, maps each key-value pair to a media query and value string,
+ * using the breakpoints object to retrieve the media query for each key.
+ * Joins the resulting strings with a comma and space separator.
+ *
+ * @param sizes - The sizes object for the image.
+ * @returns The sizes string for the image.
+ */
 const generateSizes = (sizes: ImageProps['sizes']): string => {
   if (!sizes) {
     return '100vw';
@@ -23,7 +38,7 @@ const generateSizes = (sizes: ImageProps['sizes']): string => {
       }
 
       const breakpoint = key as keyof typeof breakpoints;
-      return `${breakpoints[breakpoint].mediaQuery} ${value}`;
+      return `@media(min-width: ${breakpoints[breakpoint]}) ${value}`;
     })
     .join(', ');
 };
@@ -31,6 +46,8 @@ const generateSizes = (sizes: ImageProps['sizes']): string => {
 export const Image: ForwardRefExoticComponent<ImageProps> = forwardRef<
   HTMLImageElement | null,
   Omit<ImageProps, 'ref'>
->(({ sizes, ...props }, ref) => <NextImage ref={ref} sizes={sizes && generateSizes(sizes)} {...props} />);
+>(({ css: cssProps = [{}], sizes, ...props }, ref) => (
+  <NextImage ref={ref} sizes={sizes && generateSizes(sizes)} className={css(...cssProps)} {...props} />
+));
 
 Image.displayName = 'Image';

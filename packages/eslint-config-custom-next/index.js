@@ -14,9 +14,8 @@ module.exports = {
     'plugin:storybook/recommended',
     'next',
     'plugin:react/recommended',
-    'plugin:tailwindcss/recommended',
   ],
-  plugins: ['@typescript-eslint', 'react', 'jsx-a11y', 'tailwindcss', 'import', 'prettier'],
+  plugins: ['@typescript-eslint', 'react', 'jsx-a11y', 'import', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',

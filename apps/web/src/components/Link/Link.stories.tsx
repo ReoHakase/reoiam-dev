@@ -5,6 +5,7 @@ type Story = StoryObj<typeof Link>;
 
 const meta: Meta<typeof Link> = {
   component: Link,
+  tags: ['autodocs'],
   args: {
     external: undefined,
   },
@@ -21,7 +22,7 @@ const meta: Meta<typeof Link> = {
 export default meta;
 
 export const Default: Story = {
-  render: () => <Link href="/">Link</Link>,
+  render: () => <Link href="/">I am link</Link>,
 };
 
 export const External: Story = {
