@@ -5,6 +5,7 @@ type Story = StoryObj<typeof Link>;
 
 const meta: Meta<typeof Link> = {
   component: Link,
+  tags: ['autodocs'],
   args: {
     external: undefined,
   },

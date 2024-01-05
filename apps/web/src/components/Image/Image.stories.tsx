@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Image } from './Image';
-import LightLogoImage from '@public/light.png';
+import SampleImage from '@public/selfie.webp';
 
 type Story = StoryObj<typeof Image>;
 
 const meta: Meta<typeof Image> = {
   component: Image,
+  tags: ['autodocs'],
   argTypes: {
     src: {
       description: 'An url of the image.',
@@ -26,7 +27,7 @@ export default meta;
 
 export const Default: Story = {
   args: {
-    src: LightLogoImage,
+    src: SampleImage,
     alt: '代替テキスト',
   },
 };
