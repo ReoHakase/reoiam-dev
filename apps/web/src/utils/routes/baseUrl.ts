@@ -1,14 +1,28 @@
+import { env } from '@/env';
 // When VERCEL_URL is detected: https://${process.env.VERCEL_URL}
 // If there's no environment variable VERCEL_URL is set, will always fallback to http://localhost:${process.env.PORT || 3000}.
 // Refer: https://beta.nextjs.org/docs/api-reference/metadata#metadatabase
+
 /**
- * Returns the base URL for the application.
- * If the `VERCEL_URL` environment variable is set, it returns the URL with the `VERCEL_URL` as the hostname.
- * Otherwise, it returns the URL with `localhost` as the hostname and the `PORT` environment variable as the port.
- * If the `PORT` environment variable is not set, it defaults to `3000`.
+ * Returns the base URL based on the current environment.
+ * If it is production, it will return `https://${process.env.BASE_URL}`. default: `https://reoiam.dev`
+ * If it is development, it will return `https://${process.env.VERCEL_URL}`. default: `http://localhost:${process.env.PORT || 3000}`
  *
- * @returns The base URL for the application.
+ * @returns {URL} The base URL.
  */
-export const baseUrl = new URL(
-  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : `http://localhost:${process.env.PORT || 3000}`,
-);
+const getBaseUrl = (): URL => {
+  if (env.NODE_ENV === 'production') {
+    return new URL(`https://${env.BASE_URL}`);
+  }
+  if (env.VERCEL_URL) {
+    return new URL(`https://${env.VERCEL_URL}`);
+  }
+  return new URL(`http://localhost:${env.PORT}`);
+};
+
+/**
+ * The base URL based on the current environment.
+ * If it is production, it will return `https://${process.env.BASE_URL}`. default: `https://reoiam.dev`
+ * If it is development, it will return `https://${process.env.VERCEL_URL}`. default: `http://localhost:${process.env.PORT || 3000}`
+ */
+export const baseUrl = getBaseUrl();
