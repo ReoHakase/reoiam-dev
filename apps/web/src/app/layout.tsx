@@ -1,10 +1,10 @@
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata, Viewport } from 'next';
 import type { FC, ReactNode } from 'react';
-import { Footer } from '@/components/Footer/Footer';
 import { Header } from '@/components/Header/Header';
 import { AppProvider } from '@/providers';
 import { fontVariables } from '@/styles/fonts';
+import { css } from 'styled-system/css';
 import '@/styles/globals.css';
 
 type RootLayoutProps = {
@@ -18,14 +18,31 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang="ja" suppressHydrationWarning className={fontVariables}>
     <head />
     <body
-      className={`flex min-h-screen flex-col bg-keyplate-2 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-keyplate-6 scrollbar-thumb-rounded-full hover:scrollbar-thumb-keyplate-7`}
+      className={css({
+        display: 'flex',
+        minHeight: 'screen',
+        flexDirection: 'column',
+        background: 'slate.2',
+        color: 'slate.12',
+        overflowX: 'hidden',
+      })}
     >
       {/* Refer: https://vercel.com/docs/concepts/analytics/quickstart */}
       <Analytics />
       <AppProvider>
         <Header />
-        <main className="min-h-full grow">{children}</main>
-        <Footer />
+        <main
+          className={css({
+            display: 'flex',
+            flexGrow: 1,
+            minHeight: 'screen',
+            flexDirection: 'column',
+            justifyContent: 'start',
+            alignItems: 'center',
+          })}
+        >
+          {children}
+        </main>
       </AppProvider>
     </body>
   </html>
@@ -44,26 +61,18 @@ export const metadata: Metadata = {
   metadataBase: domain,
 
   title: {
-    default: 'reoiam-dev',
-    template: '%s | reoiam-dev',
+    default: 'Reo Hakuta | reoiam.dev',
+    template: '%s | reoiam.dev',
   },
   description:
-    'reoiam-dev is an open-source web application template for Next.js, TypeScript, Tailwind CSS, and Vercel.',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1.0,
-  },
+    'Reo Hakuta (\'04🇯🇵) is a frontend developer / UI-UX designer / CS student based in Japan. printf("Hello world");',
   openGraph: {
     // Open graph image will be provided via file-based configuration.
     // Refer: https://beta.nextjs.org/docs/api-reference/metadata#static-images
     type: 'website',
-    locale: 'ja_JP',
+    locale: 'en_US',
     url: domain,
   },
-  // themeColor: [
-  //   { media: '(prefers-color-scheme: light)', color: colorTokens.keyplate.light['2'] }, // keyplate-light-2
-  //   { media: '(prefers-color-scheme: dark)', color: colorTokens.keyplate.dark['2'] }, // keyplate-dark-2
-  // ],
 };
 
 export const viewport: Viewport = {
