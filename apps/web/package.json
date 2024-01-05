@@ -11,7 +11,8 @@
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
     "sb": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "optimize:images": "optimizt --webp --output ./public ./public"
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "0.7.1",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.23.5",
+    "@funboxteam/optimizt": "^5.0.2",
     "@pandacss/dev": "^0.20.1",
     "@radix-ui/colors": "^3.0.0",
     "@storybook/addon-a11y": "7.6.3",
