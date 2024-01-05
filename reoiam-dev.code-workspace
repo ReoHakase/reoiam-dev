@@ -10,6 +10,15 @@
     }
   ],
   "settings": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "eslint.options": {
+      "extensions": [".js", ".jsx", ".md", ".mdx", ".ts", ".tsx"]
+    },
+    "editor.quickSuggestions": {
+      "strings": true
+    },
     "panda.hovers.instances.enabled": true,
     "panda.hovers.semantic-colors.enabled": true,
     "panda.hovers.display.mode": "nested",
