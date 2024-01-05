@@ -51,11 +51,15 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
 
 export default RootLayout;
 
+const defaultTitle = 'Reo Hakuta | reoiam.dev' as const;
+const defaultDescription =
+  'Reo Hakuta (\'04🇯🇵) is a frontend developer / UI-UX designer / CS student based in Japan. printf("Hello world");' as const;
+
 export const metadata: Metadata = {
   metadataBase: baseUrl,
 
   title: {
-    default: 'Reo Hakuta | reoiam.dev',
+    default: defaultTitle,
     template: '%s | reoiam.dev',
   },
   description:
@@ -65,7 +69,12 @@ export const metadata: Metadata = {
     // Refer: https://beta.nextjs.org/docs/api-reference/metadata#static-images
     type: 'website',
     locale: 'en_US',
+    title: defaultTitle,
+    description: defaultDescription,
     url: baseUrl,
+  },
+  twitter: {
+    card: 'summary_large_image',
   },
 };
 
