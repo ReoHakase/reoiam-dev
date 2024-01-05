@@ -15,6 +15,18 @@ export default defineConfig({
   // Useful for theme customization
   theme: {
     extend: {
+      tokens: {
+        fonts: {
+          heading: {
+            value: 'var(--font-cal-sans)', // Make sure that the variable's name matches the one in apps/web/src/styles/fonts/index.ts
+            description: 'The font used for headings and outstanding texts',
+          },
+          code: {
+            value: 'var(--font-geist-mono)',
+            description: 'The font used for code blocks and inline code',
+          },
+        },
+      },
       breakpoints: breakpoints,
     },
   },

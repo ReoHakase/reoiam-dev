@@ -4,6 +4,7 @@ import type { FC, ReactNode } from 'react';
 import { Footer } from '@/components/Footer/Footer';
 import { Header } from '@/components/Header/Header';
 import { AppProvider } from '@/providers';
+import { fontVariables } from '@/styles/fonts';
 import '@/styles/globals.css';
 
 type RootLayoutProps = {
@@ -14,7 +15,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   // `next-themes`プロバイダによるHydration差分を無視するため`suppressHydrationWarning`を付加する
   // 参照: https://github.com/pacocoursey/next-themes/issues/152
   // 参照: https://github.com/khinshankhan/next-themes-app-dir-example
-  <html lang="ja" suppressHydrationWarning>
+  <html lang="ja" suppressHydrationWarning className={fontVariables}>
     <head />
     <body
       className={`flex min-h-screen flex-col bg-keyplate-2 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-keyplate-6 scrollbar-thumb-rounded-full hover:scrollbar-thumb-keyplate-7`}
