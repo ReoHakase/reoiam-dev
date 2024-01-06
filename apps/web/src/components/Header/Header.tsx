@@ -86,8 +86,8 @@ export const Header = ({ ...props }: HeaderProps): ReactNode => {
             gap: '3',
             direction: 'row',
             align: 'center',
-            bg: 'slate.12',
-            color: 'slate.1',
+            bg: 'keyplate.12',
+            color: 'keyplate.1',
             rounded: 'full',
           })}
         >

@@ -1,6 +1,6 @@
 import { defineConfig } from '@pandacss/dev';
-import radixColorsPreset from 'pandacss-preset-radix-colors';
 import { breakpoints } from '@/styles/tokens/breakpoints';
+import { radixColorsWithScaleAliasesPreset } from '@/styles/tokens/radixColorsPreset';
 
 export default defineConfig({
   // Whether to use css reset
@@ -35,11 +35,22 @@ export default defineConfig({
   presets: [
     // Radix Scales provider for PandaCSS by milandekruijf
     // Refer: https://github.com/milandekruijf/pandacss-preset-radix-colors
-    radixColorsPreset({
+    radixColorsWithScaleAliasesPreset({
       darkMode: {
         condition: '[data-theme="dark"] &',
       },
-      autoP3: false,
+      autoP3: true,
+      scaleAliases: {
+        keyplate: 'slate',
+        primary: 'pink',
+        secondary: 'blue',
+        info: 'cyan',
+        success: 'green',
+        warning: 'yellow',
+        danger: 'crimson',
+      },
+      aliasMode: 'reference',
+      includedRadixScales: ['white', 'black', 'cyan', 'yellow', 'pink', 'purple'],
     }),
 
     // Re-add the panda preset if you want to keep
