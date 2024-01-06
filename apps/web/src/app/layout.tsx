@@ -23,8 +23,8 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
         display: 'flex',
         minHeight: 'screen',
         flexDirection: 'column',
-        background: 'slate.2',
-        color: 'slate.12',
+        background: 'keyplate.2',
+        color: 'keyplate.12',
         overflowX: 'hidden',
       })}
     >

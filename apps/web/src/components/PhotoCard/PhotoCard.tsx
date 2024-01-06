@@ -11,7 +11,7 @@ export const photoCardSlotRecipe = sva({
       w: '48',
       h: 'fit-content',
       flexShrink: '0',
-      bg: 'slate.2',
+      bg: 'keyplate.2',
       shadow: 'lg',
       p: '4',
       display: 'flex',
@@ -23,12 +23,12 @@ export const photoCardSlotRecipe = sva({
     image: {
       w: 'full',
       objectFit: 'cover',
-      bg: 'slate.3',
+      bg: 'keyplate.3',
     },
     label: {
       fontFamily: 'code',
       lineHeight: '1.25',
-      color: 'slate.11',
+      color: 'keyplate.11',
     },
   },
 });

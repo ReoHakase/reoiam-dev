@@ -52,8 +52,8 @@ export const Globe = ({ css: cssProps = {}, ...props }: GlobeProps): ReactNode =
       diffuse: 1.2,
       mapSamples: 16000,
       mapBrightness: 6,
-      baseColor: convertHexToRgb('#FBFCFD'), // slate.2
-      markerColor: convertHexToRgb('#DFE3E6'), // slate.6
+      baseColor: convertHexToRgb('#FBFCFD'), // keyplate.2
+      markerColor: convertHexToRgb('#DFE3E6'), // keyplate.6
       glowColor: globeGlowColorAttribute,
       markers: [
         // longitude latitude
