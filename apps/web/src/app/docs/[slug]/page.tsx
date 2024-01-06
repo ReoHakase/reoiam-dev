@@ -122,7 +122,7 @@ const Document = ({ params }: { params: { slug: string } }): ReactNode => {
         p: '6',
       })}
     >
-      {/* Some code ... */}
+      {/* @ts-expect-error Refer: https://contentlayer.dev/docs/sources/files/mdx-d747e46d#custom-mdx-components */}
       <MDXContent components={mdxComponents} />
     </article>
   );
