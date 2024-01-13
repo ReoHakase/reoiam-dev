@@ -5,9 +5,20 @@ date: 2021-12-24
 
 # h1 Heading
 
+Hello how are you?
+あいうえお
+
 ## h2 Heading
 
 ### h3 Heading
+
+#### h4 Heading
+
+##### h5 Heading
+
+###### h6 Heading
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias asperiores atque autem
 
 ## Horizontal Rules
 
@@ -20,10 +31,6 @@ date: 2021-12-24
 ## Emphasis
 
 **This is bold text**
-
-**This is bold text**
-
-_This is italic text_
 
 _This is italic text_
 
@@ -39,7 +46,7 @@ _This is italic text_
 
 ## Lists
 
-Unordered
+### Unordered
 
 - Create a list by starting a line with `+`, `-`, or `*`
 - Sub-lists are made by indenting 2 spaces:
@@ -49,30 +56,26 @@ Unordered
     - Nulla volutpat aliquam velit
 - Very easy!
 
-Ordered
+### Ordered
 
 1. Lorem ipsum dolor sit amet
 2. Consectetur adipiscing elit
 3. Integer molestie lorem at massa
+4. Integer molestie lorem at massa
 
-4. You can use sequential numbers...
-5. ...or keep all the numbers as `1.`
+5. You can use sequential numbers...
+6. ...or keep all the numbers as `1.`
 
 Start numbering with offset:
 
 57. foo
 1. bar
 
-## Code
+## Code `<code>{:html}`
 
 Inline `code`
 
-Indented code
-
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
+Here is React component: `export const MyComponent = (props: MyComponentProps): ReactNode => (...){:tsx}`
 
 Block code "fences"
 
@@ -82,15 +85,139 @@ Sample text here...
 
 Syntax highlighting
 
-```js
-var foo = function (bar) {
-  return bar++;
-};
+```c showLineNumbers collapsible "title"
+#include <std.io>
 
-console.log(foo(5));
+int main(void){
+  printf("Hello world");
+}
 ```
 
+```ts showLineNumbers
+import { defineConfig } from '@pandacss/dev';
+import { breakpoints } from '@/styles/tokens/breakpoints';
+import { radixColorsWithScaleAliasesPreset } from '@/styles/tokens/radixColorsPreset';
+
+export default defineConfig({
+  // Whether to use css reset
+  preflight: true,
+
+  // Where to look for your css declarations
+  include: ['./src/**/*.{js,jsx,ts,tsx}'],
+
+  // Files to exclude
+  exclude: [],
+
+  // Useful for theme customization
+  theme: {
+    extend: {
+      tokens: {
+        fonts: {
+          heading: {
+            value: 'var(--font-cal-sans)', // Make sure that the variable's name matches the one in apps/web/src/styles/fonts/index.ts
+            description: 'The font used for headings and outstanding texts',
+          },
+          code: {
+            value: 'var(--font-geist-mono)',
+            description: 'The font used for code blocks and inline code',
+          },
+        },
+      },
+      breakpoints: breakpoints,
+    },
+  },
+
+  // Presets
+  presets: [
+    // Radix Scales provider for PandaCSS by milandekruijf
+    // Refer: https://github.com/milandekruijf/pandacss-preset-radix-colors
+    radixColorsWithScaleAliasesPreset({
+      darkMode: {
+        condition: '[data-theme="dark"] &',
+      },
+      autoP3: true,
+      scaleAliases: {
+        keyplate: 'slate',
+        primary: 'pink',
+        secondary: 'blue',
+        info: 'cyan',
+        success: 'green',
+        warning: 'yellow',
+        danger: 'crimson',
+      },
+      aliasMode: 'reference',
+      includedRadixScales: ['white', 'black', 'cyan', 'yellow', 'pink', 'purple'],
+    }),
+
+    // Re-add the panda preset if you want to keep
+    // the default keyframes, breakpoints, tokens
+    // and textStyles provided by PandaCSS
+    '@pandacss/preset-panda',
+  ],
+
+  // The output directory for your css system
+  outdir: 'styled-system',
+});
+```
+
+---
+
+```bash
+ ReoHakase in  reoiam-dev/apps/web on   14/add-contentla…  📦3  📝5  🤷3
+❯ exa -a -l --no-time --no-user --git -I=.git --git-ignore --icons --tree -L=2
+drwxr-xr-x@    - -N  .
+.rw-r--r--@  200 -- ├──  .eslintrc.js
+.rw-r--r--@  117 -- ├──  .gitignore
+.rw-r--r--@  271 -- ├──  .lintstagedrc.js
+drwxr-xr-x@    - -- ├──  .storybook
+.rw-r--r--@  844 -- │  ├──  main.ts
+.rw-r--r--@  458 -- │  └──  preview.tsx
+.rw-r--r--@  327 -- ├──  components.json
+.rw-r--r--@ 1.0k -M ├──  contentlayer.config.ts
+drwxr-xr-x@    - -M ├──  docs
+.rw-r--r--@ 3.2k -M │  └──  example.mdx
+.rw-r--r--@  201 -- ├──  next-env.d.ts
+.rw-r--r--@  244 -- ├──  next.config.js
+.rw-r--r--@ 2.0k -M ├──  package.json
+.rw-r--r--@ 1.8k -- ├──  panda.config.ts
+.rw-r--r--@   71 -- ├──  postcss.config.cjs
+drwxr-xr-x@    - -- ├──  public
+.rw-r--r--@  26k -- │  ├──  favicon.ico
+.rw-r--r--@ 1.2M -- │  ├──  hanbok.webp
+.rw-r--r--@ 8.1k -- │  ├──  icon.webp
+.rw-r--r--@ 195k -- │  ├──  oz.webp
+.rw-r--r--@ 301k -- │  ├──  selfie.webp
+.rw-r--r--@ 173k -- │  ├──  shelfree.webp
+.rw-r--r--@ 172k -- │  └──  tjgph.webp
+.rw-r--r--@ 1.4k -- ├──  README.md
+drwxr-xr-x@    - -N ├──  src
+drwxr-xr-x@    - -M │  ├──  app
+drwxr-xr-x@    - -N │  ├──  components
+.rw-r--r--@  850 -- │  ├──  env.ts
+drwxr-xr-x@    - -- │  ├──  providers
+drwxr-xr-x@    - -- │  ├──  styles
+drwxr-xr-x@    - -- │  └──  utils
+.rw-r--r--@  601 -- └──  tsconfig.json
+```
+
+```bash
+$ pnpm --filter web i -D @pandacss/studio
+```
+
+## TeX $ \TeX $
+
+$ \TeX $ is also supported by using `remark-math` and `rehype-katex`.
+
+$$
+  \frac{\pi}{2} =
+  \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2 =
+  \sum_{k=0}^{\infty} \frac{(2k)!}{2^{2k}(k!)^2} \frac{1}{2k+1} =
+  \prod_{k=1}^{\infty} \frac{4k^2}{4k^2 - 1}
+$$
+
 ## Tables
+
+### Left aligned columns
 
 | Option | Description                                                               |
 | ------ | ------------------------------------------------------------------------- |
@@ -98,13 +225,30 @@ console.log(foo(5));
 | engine | engine to be used for processing templates. Handlebars is the default.    |
 | ext    | extension to be used for dest files.                                      |
 
-Right aligned columns
+### Right aligned columns
 
 | Option |                                                               Description |
 | -----: | ------------------------------------------------------------------------: |
 |   data | path to data files to supply the data that will be passed into templates. |
 | engine |    engine to be used for processing templates. Handlebars is the default. |
 |    ext |                                      extension to be used for dest files. |
+
+### Center aligned columns
+
+| Option |                                Description                                |
+| :----: | :-----------------------------------------------------------------------: |
+|  data  | path to data files to supply the data that will be passed into templates. |
+| engine |  engine to be used for processing templates. Handlebars is the default.   |
+|  ext   |                   extension to be used for dest files.                    |
+
+### Inline codes and math equations in tables
+
+| Syntax                                          | Output                                    |
+| ----------------------------------------------- | ----------------------------------------- |
+| `` `console.log('Hi'){:js}` ``                  | `console.log('Hi'){:js}`                  |
+| `` `from matplotlib import plot as plt{:py}` `` | `from matplotlib import plot as plt{:py}` |
+| `$` `\sum_{n=1}^{10} n^2{:tex}` `$`             | $\sum_{n=1}^{10} n^2$                     |
+| `$` `\int_{0}^{\infty} e^{-x} dx{:tex}` `$`     | $\int_{0}^{\infty} e^{-x} dx$             |
 
 ## Links
 
@@ -116,13 +260,54 @@ Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
 
 ## Images
 
-![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg 'The Stormtroopocat')
+{/* ![My selfie](/selfie.webp 'My selfie') */}
 
-Like links, Images also have a footnote style syntax
+# GFM
 
-![Alt text][id]
+## Callouts
 
-With a reference later in the document defining the URL location:
+https://github.com/orgs/community/discussions/16925
 
-[id]: https://octodex.github.com/images/dojocat.jpg 'The Dojocat'
+> [!NOTE]  
+> Highlights information that users should take into account, even when skimming.
+> `console.log('Hi'){:js}` $\int_{0}^{\infty} e^{-x} dx$ **This is bold text** _This is italic text_ ~~Strikethrough~~
+
+> [!TIP]  
+> Optional information to help a user be more successful.
+> `console.log('Hi'){:js}` $\int_{0}^{\infty} e^{-x} dx$ **This is bold text** _This is italic text_ ~~Strikethrough~~
+
+> [!IMPORTANT]  
+> Crucial information necessary for users to succeed.
+> `console.log('Hi'){:js}` $\int_{0}^{\infty} e^{-x} dx$ **This is bold text** _This is italic text_ ~~Strikethrough~~
+
+> [!WARNING]  
+> Critical content demanding immediate user attention due to potential risks.
+> `console.log('Hi'){:js}` $\int_{0}^{\infty} e^{-x} dx$ **This is bold text** _This is italic text_ ~~Strikethrough~~
+
+> [!CAUTION]  
+> Negative potential consequences of an action.
+> `console.log('Hi'){:js}` $\int_{0}^{\infty} e^{-x} dx$ **This is bold text** _This is italic text_ ~~Strikethrough~~
+
+## Autolink literals
+
+www.example.com, https://example.com, and contact@example.com.
+
+## Footnote
+
+A note[^1]
+
+[^1]: Big note.
+
+## Strikethrough
+
+~one~ or ~~two~~ tildes.
+
+## Table
+
+| a   | b   |   c |  d  |
+| --- | :-- | --: | :-: |
+
+## Tasklist
+
+- [ ] to do
+- [x] done

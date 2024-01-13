@@ -1,9 +1,12 @@
+import dynamic from 'next/dynamic';
 import { type ReactNode } from 'react';
 import { Link } from '../Link/Link';
-import { Globe } from '@/components/Globe/Globe';
+// import { Globe } from '@/components/Globe/Globe';
 import { css } from 'styled-system/css';
 import { flex } from 'styled-system/patterns';
 import type { SystemStyleObject } from 'styled-system/types';
+
+const Globe = dynamic(() => import('../Globe/Globe'));
 
 export type HeroProps = {
   css?: SystemStyleObject;
