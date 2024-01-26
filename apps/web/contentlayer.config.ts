@@ -12,6 +12,7 @@ export const ContentDocument = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },
+    description: { type: 'string', required: true },
   },
   computedFields: {
     url: { type: 'string', resolve: (post) => `/docs/${post._raw.flattenedPath}` },
