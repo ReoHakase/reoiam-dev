@@ -1,9 +1,11 @@
+import dynamic from 'next/dynamic';
 import { type ReactNode } from 'react';
 import { Link } from '../Link/Link';
-import { Globe } from '@/components/Globe/Globe';
 import { css } from 'styled-system/css';
 import { flex } from 'styled-system/patterns';
 import type { SystemStyleObject } from 'styled-system/types';
+
+const Globe = dynamic(() => import('../Globe/Globe'));
 
 export type HeroProps = {
   css?: SystemStyleObject;
@@ -117,6 +119,10 @@ export const Hero = ({ css: cssProps = {}, ...props }: HeroProps): ReactNode => 
             </Link>{' '}
             <Link href="mailto:st20152ro@gm.ibaraki-ct.ac.jp" external className={css({ textDecoration: 'underline' })}>
               \udb83\udebb st20152ro@gm.ibaraki-ct.ac.jp
+            </Link>
+            <br />
+            <Link href="/docs/example" className={css({ textDecoration: 'underline' })}>
+              See MDX showcase
             </Link>
           </p>
         </hgroup>
