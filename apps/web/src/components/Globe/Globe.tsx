@@ -147,3 +147,7 @@ export const Globe = ({ css: cssProps = {}, ...props }: GlobeProps): ReactNode =
     </div>
   );
 };
+
+// NOTE: Disabled since `next/dynamic` somehow fails to manage named export components
+// eslint-disable-next-line import/no-default-export
+export default Globe;

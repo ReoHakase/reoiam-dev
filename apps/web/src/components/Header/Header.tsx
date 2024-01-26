@@ -35,24 +35,31 @@ export const Header = ({ ...props }: HeaderProps): ReactNode => {
           gap: '6',
         })}
       >
-        <Image
-          src={HeaderIconImage}
-          css={[
-            {
-              rounded: 'full',
-              w: '12',
-              h: '12',
-              flexShrink: '0',
-            },
-          ]}
-          alt="An Icon of ReoHakase"
-          sizes={{
-            default: '10vw',
-            md: '7.5vw',
-            lg: '5vw',
-          }}
-          placeholder="blur"
-        />
+        <Link
+          href="/"
+          className={css({
+            rounded: 'full',
+          })}
+        >
+          <Image
+            src={HeaderIconImage}
+            css={[
+              {
+                rounded: 'full',
+                w: '12',
+                h: '12',
+                flexShrink: '0',
+              },
+            ]}
+            alt="An Icon of ReoHakase"
+            sizes={{
+              default: '10vw',
+              md: '5vw',
+              lg: '3vw',
+            }}
+            placeholder="blur"
+          />
+        </Link>
         <p
           className={css({
             rounded: 'sm',
@@ -62,9 +69,9 @@ export const Header = ({ ...props }: HeaderProps): ReactNode => {
             // backdropFilter: 'blur(8px) saturate(130%) contrast(30%) brightness(150%)',
           })}
         >
-          reoiam.dev/
+          reoiam.dev
           <br />
-          home
+          Reo HAKUTA
         </p>
       </div>
       <div

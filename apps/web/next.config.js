@@ -1,7 +1,11 @@
+const { withContentlayer } = require('next-contentlayer');
+
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   experimental: {
     typedRoutes: true,
   },
   reactStrictMode: true,
 };
+
+module.exports = withContentlayer(nextConfig);

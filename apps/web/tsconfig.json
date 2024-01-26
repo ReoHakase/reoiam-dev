@@ -11,11 +11,13 @@
     "ignoreDeprecations": "5.0",
     "paths": {
       "@/*": ["./src/*"],
-      "#cms/*": ["../../packages/cms/src/*"],
-      "#model/*": ["../../packages/model/src/*"],
-      "@public/*": ["./public/*"]
+      "@public/*": ["./public/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "rootDir": "./"
+  },
+  "mdx": {
+    "plugins": ["remark-gfm", "remark-math"]
   },
   "include": [
     "next-env.d.ts",

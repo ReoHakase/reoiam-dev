@@ -23,7 +23,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
         display: 'flex',
         minHeight: 'screen',
         flexDirection: 'column',
-        background: 'keyplate.2',
+        background: 'keyplate.1',
         color: 'keyplate.12',
         overflowX: 'hidden',
       })}
@@ -51,19 +51,18 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
 
 export default RootLayout;
 
-const defaultTitle = 'Reo Hakuta | reoiam.dev' as const;
+const defaultTitle = 'Reo HAKUTA' as const;
 const defaultDescription =
-  'Reo Hakuta (\'04🇯🇵) is a frontend developer / UI-UX designer / CS student based in Japan. printf("Hello world");' as const;
+  "Reo HAKUTA ('04🇯🇵) is a frontend developer / UI-UX designer / CS student based in Japan." as const;
 
 export const metadata: Metadata = {
   metadataBase: baseUrl,
 
   title: {
     default: defaultTitle,
-    template: '%s | reoiam.dev',
+    template: '%s | Reo HAKUTA',
   },
-  description:
-    'Reo Hakuta (\'04🇯🇵) is a frontend developer / UI-UX designer / CS student based in Japan. printf("Hello world");',
+  description: defaultDescription,
   openGraph: {
     // Open graph image will be provided via file-based configuration.
     // Refer: https://beta.nextjs.org/docs/api-reference/metadata#static-images
