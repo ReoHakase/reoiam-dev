@@ -51,7 +51,7 @@ jobs:
         id: pnpm-cache
         run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup PNPM cache
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
@@ -71,13 +71,13 @@ jobs:
         run: pnpm --package=nextjs-bundle-analysis dlx report
 
       - name: Upload bundle
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: bundle
           path: apps/web/.next/analyze/__bundle_analysis.json
 
       - name: Download base branch bundle stats
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@v3
         if: success() && github.event.number
         with:
           workflow: nextjs_bundle_analysis.yml
