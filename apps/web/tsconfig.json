@@ -16,6 +16,9 @@
     },
     "rootDir": "./"
   },
+  "mdx": {
+    "plugins": ["remark-gfm", "remark-math"]
+  },
   "include": [
     "next-env.d.ts",
     "next.config.js",
