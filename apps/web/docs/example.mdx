@@ -1,7 +1,18 @@
 ---
-title: My First Post
-date: 2021-12-24
+title: 📝 MDX Showcase
+date: 2024-01-26
+description: This page demonstrates the usage of MDX.
 ---
+
+✨ Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias asperiores atque autem.
+
+## Headings
+
+Headings can be added using `#` characters at the beginning of a line. The number of `#` you use will determine the size of the heading.
+
+It will be rendered as `<h1>{:html}` for `#` and `<h2>{:html}` for `##` and so on.
+
+<Showcase>
 
 # h1 Heading
 
@@ -9,27 +20,90 @@ date: 2021-12-24
 
 ### h3 Heading
 
+#### h4 Heading
+
+##### h5 Heading
+
+###### h6 Heading
+
+</Showcase>
+
+```mdx
+# h1 Heading
+
+## h2 Heading
+
+### h3 Heading
+
+#### h4 Heading
+
+##### h5 Heading
+
+###### h6 Heading
+```
+
+---
+
 ## Horizontal Rules
 
----
+Horizontal rules can be added using `---` or `***` or `___` on a line by themselves.
+
+It will be rendered as `<hr>{:html}`.
+
+<Showcase>
+
+The first section
 
 ---
+
+The second section
+
+</Showcase>
+
+```mdx
+The first section
+
+---
+
+The second section
+```
 
 ---
 
 ## Emphasis
 
-**This is bold text**
+Simple inline emphasis styles are available using the following syntax:
 
+<Showcase>
 **This is bold text**
-
-_This is italic text_
 
 _This is italic text_
 
 ~~Strikethrough~~
 
+</Showcase>
+
+```mdx
+**This is bold text**
+
+_This is italic text_
+
+~~Strikethrough~~
+```
+
+> [!NOTE]  
+> Strikethrough functionality is provided by GitHub Flavored Markdown plugin for remark `remark-gfm`.
+
+---
+
 ## Blockquotes
+
+Blockquotes can be added using `>` characters at the beginning of a line.
+Also, it can be nested by using additional `>` characters right next to each other or with spaces between arrows.
+
+It will be rendered as `<blockquote>{:html}`.
+
+<Showcase>
 
 > Blockquotes can also be nested...
 >
@@ -37,9 +111,27 @@ _This is italic text_
 > >
 > > > ...or with spaces between arrows.
 
+</Showcase>
+
+```mdx
+> Blockquotes can also be nested...
+>
+> > ...by using additional greater-than signs right next to each other...
+> >
+> > > ...or with spaces between arrows.
+```
+
+---
+
 ## Lists
 
-Unordered
+### Unordered
+
+Unordered lists can be added using `+`, `-`, or `*` characters at the beginning of a line.
+
+It will be rendered as `<ul>{:html}` and `<li>{:html}`.
+
+<Showcase>
 
 - Create a list by starting a line with `+`, `-`, or `*`
 - Sub-lists are made by indenting 2 spaces:
@@ -49,48 +141,168 @@ Unordered
     - Nulla volutpat aliquam velit
 - Very easy!
 
-Ordered
+</Showcase>
+
+```mdx
+- Create a list by starting a line with `+`, `-`, or `*`
+- Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    - Ac tristique libero volutpat at
+    * Facilisis in pretium nisl aliquet
+    - Nulla volutpat aliquam velit
+- Very easy!
+```
+
+### Ordered
+
+Ordered lists can be added using `1.`, `2.`, `3.` and so on at the beginning of a line.
+You can also start counting with any number you want by using `1.` at the beginning of a line.
+
+It will be rendered as `<ol>{:html}` and `<li>{:html}`.
+
+<Showcase>
 
 1. Lorem ipsum dolor sit amet
 2. Consectetur adipiscing elit
 3. Integer molestie lorem at massa
+4. Integer molestie lorem at massa
 
-4. You can use sequential numbers...
-5. ...or keep all the numbers as `1.`
+5. You can use sequential numbers...
+6. ...or keep all the numbers as `1.`
 
 Start numbering with offset:
 
 57. foo
 1. bar
 
+</Showcase>
+
+```mdx
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+4. Integer molestie lorem at massa
+
+5. You can use sequential numbers...
+6. ...or keep all the numbers as `1.`
+
+Start numbering with offset:
+
+57. foo
+1. bar
+```
+
+---
+
 ## Code
 
-Inline `code`
+Thanks to `rehype-pretty-code`, syntax highlighting is available for both code blocks and inline code.
 
-Indented code
+```ts
+import rehypePrettyCode from 'rehype-pretty-code';
+```
 
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
+### Inline code
 
-Block code "fences"
+A language can be specified by appending `{:language_id}` to the end of inline code.
+
+e.g. `console.log('Hi'){:js}{:plaintext}`.
+
+<Showcase>
+
+Here is React component: `export const MyComponent = (props: MyComponentProps): ReactNode => (...){:tsx}`.
+
+You can reduce re-rendering by using `useMemo(){:ts}` hook: `const memoizedValue = useMemo(() => runExpensiveEvaluation(a, b), [a, b]){:tsx}`.
+By doing this, `runExpensiveEvaluation(a, b){:ts}` is only called when `a{:ts}` or `b{:ts}` changes instead of every render.
+
+</Showcase>
+
+```mdx
+Here is React component: `export const MyComponent = (props: MyComponentProps): ReactNode => (...){:tsx}`.
+
+You can reduce re-rendering by using `useMemo(){:ts}` hook: `const memoizedValue = useMemo(() => runExpensiveEvaluation(a, b), [a, b]){:tsx}`.
+By doing this, `runExpensiveEvaluation(a, b){:ts}` is only called when `a{:ts}` or `b{:ts}` changes instead of every render.
+```
+
+### Code blocks
+
+You can specify a language for code blocks by appending `language_id` to the end of the opening fence ` ``` `.
+Also, you can add `showLineNumbers` to the end of the opening fence to show line numbers.
+
+| Syntax                   |                                                   Description |
+| :----------------------- | ------------------------------------------------------------: |
+| ` ```ts `                |             Renders codes with Typescript syntax highlighting |
+| ` ```c showLineNumbers ` | Renders codes with Clang syntax highlighting and line numbers |
+
+It will be rendered as `<pre><code>{:html}`.
+
+<Showcase>
 
 ```
 Sample text here...
 ```
 
-Syntax highlighting
+```c showLineNumbers
+#include <std.io>
 
-```js
-var foo = function (bar) {
-  return bar++;
+int main(void){
+  printf("Hello world");
+}
+```
+
+```ts showLineNumbers
+export const generateStaticParams = async () => {
+  const params = allContentDocuments.map((post) => ({
+    slug: post._raw.flattenedPath.split('/'),
+  }));
+  console.log(params);
+  return params;
 };
+```
 
-console.log(foo(5));
+</Showcase>
+
+> [!NOTE]  
+> Code blocks are rendered using `rehype-pretty-code` and it internally uses `shikiji`.
+> You can configure syntax highlighting themes in `rehype-pretty-code` config written in `contentlayer.config.ts`.
+
+---
+
+## TeX $ \TeX $
+
+$ \TeX $ is also supported by using `remark-math` and `rehype-katex`.
+
+<Showcase>
+
+If a function $f$ is continuous on $[a, b]$, then there exists at least one number $c$ in $[a, b]$ such that $f(c) = \frac{1}{b-a} \int_a^b f(x) dx$
+
+$$
+  \frac{\pi}{2} =
+  \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2 =
+  \sum_{k=0}^{\infty} \frac{(2k)!}{2^{2k}(k!)^2} \frac{1}{2k+1} =
+  \prod_{k=1}^{\infty} \frac{4k^2}{4k^2 - 1}
+$$
+
+$\TeX$
+
+</Showcase>
+
+```mdx
+If a function $f$ is continuous on $[a, b]$, then there exists at least one number $c$ in $[a, b]$ such that $f(c) = \frac{1}{b-a} \int_a^b f(x) dx$
+
+$$
+  \frac{\pi}{2} =
+  \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2 =
+  \sum_{k=0}^{\infty} \frac{(2k)!}{2^{2k}(k!)^2} \frac{1}{2k+1} =
+  \prod_{k=1}^{\infty} \frac{4k^2}{4k^2 - 1}
+$$
+
+$\TeX$
 ```
 
 ## Tables
+
+### Left aligned columns
 
 | Option | Description                                                               |
 | ------ | ------------------------------------------------------------------------- |
@@ -98,7 +310,7 @@ console.log(foo(5));
 | engine | engine to be used for processing templates. Handlebars is the default.    |
 | ext    | extension to be used for dest files.                                      |
 
-Right aligned columns
+### Right aligned columns
 
 | Option |                                                               Description |
 | -----: | ------------------------------------------------------------------------: |
@@ -106,23 +318,89 @@ Right aligned columns
 | engine |    engine to be used for processing templates. Handlebars is the default. |
 |    ext |                                      extension to be used for dest files. |
 
-## Links
+### Center aligned columns
 
-[link text](http://dev.nodeca.com)
+| Option |                                Description                                |
+| :----: | :-----------------------------------------------------------------------: |
+|  data  | path to data files to supply the data that will be passed into templates. |
+| engine |  engine to be used for processing templates. Handlebars is the default.   |
+|  ext   |                   extension to be used for dest files.                    |
 
-[link with title](http://nodeca.github.io/pica/demo/ 'title text!')
+### Inline codes and math equations in tables
 
-Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
+| Syntax                                          | Output                                    |
+| ----------------------------------------------- | ----------------------------------------- |
+| `` `console.log('Hi'){:js}` ``                  | `console.log('Hi'){:js}`                  |
+| `` `from matplotlib import plot as plt{:py}` `` | `from matplotlib import plot as plt{:py}` |
+| `$` `\sum_{n=1}^{10} n^2{:tex}` `$`             | $\sum_{n=1}^{10} n^2$                     |
+| `$` `\int_{0}^{\infty} e^{-x} dx{:tex}` `$`     | $\int_{0}^{\infty} e^{-x} dx$             |
 
-## Images
+---
 
-![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg 'The Stormtroopocat')
+## GFM Callouts
 
-Like links, Images also have a footnote style syntax
+You can create colored callouts by using `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`, or `> [!CAUTION]` at the beginning of a line.
+Make sure to add double spaces after the closing `]` character.
 
-![Alt text][id]
+> Alerts are an extension of Markdown used to emphasize critical information. On GitHub, they are displayed with distinctive colors and icons to indicate the importance of the content.
+> Refer: https://github.com/orgs/community/discussions/16925
 
-With a reference later in the document defining the URL location:
+<Showcase>
 
-[id]: https://octodex.github.com/images/dojocat.jpg 'The Dojocat'
+> [!NOTE]  
+> Highlights information that users should take into account, even when skimming.
+> `console.log('Hi'){:js}` $\int_{0}^{\infty} e^{-x} dx$ **This is bold text** _This is italic text_ ~~Strikethrough~~
+
+> [!TIP]  
+> Optional information to help a user be more successful.
+> `console.log('Hi'){:js}` $\int_{0}^{\infty} e^{-x} dx$ **This is bold text** _This is italic text_ ~~Strikethrough~~
+
+> [!IMPORTANT]  
+> Crucial information necessary for users to succeed.
+> `console.log('Hi'){:js}` $\int_{0}^{\infty} e^{-x} dx$ **This is bold text** _This is italic text_ ~~Strikethrough~~
+
+> [!WARNING]  
+> Critical content demanding immediate user attention due to potential risks.
+> `console.log('Hi'){:js}` $\int_{0}^{\infty} e^{-x} dx$ **This is bold text** _This is italic text_ ~~Strikethrough~~
+
+> [!CAUTION]  
+> Negative potential consequences of an action.
+> `console.log('Hi'){:js}` $\int_{0}^{\infty} e^{-x} dx$ **This is bold text** _This is italic text_ ~~Strikethrough~~
+
+</Showcase>
+
+```mdx
+> [!NOTE]  
+> Highlights information that users should take into account, even when skimming.
+> `console.log('Hi'){:js}` $\int_{0}^{\infty} e^{-x} dx$ **This is bold text** _This is italic text_ ~~Strikethrough~~
+
+> [!TIP]  
+> Optional information to help a user be more successful.
+> `console.log('Hi'){:js}` $\int_{0}^{\infty} e^{-x} dx$ **This is bold text** _This is italic text_ ~~Strikethrough~~
+
+> [!IMPORTANT]  
+> Crucial information necessary for users to succeed.
+> `console.log('Hi'){:js}` $\int_{0}^{\infty} e^{-x} dx$ **This is bold text** _This is italic text_ ~~Strikethrough~~
+
+> [!WARNING]  
+> Critical content demanding immediate user attention due to potential risks.
+> `console.log('Hi'){:js}` $\int_{0}^{\infty} e^{-x} dx$ **This is bold text** _This is italic text_ ~~Strikethrough~~
+
+> [!CAUTION]  
+> Negative potential consequences of an action.
+> `console.log('Hi'){:js}` $\int_{0}^{\infty} e^{-x} dx$ **This is bold text** _This is italic text_ ~~Strikethrough~~
+```
+
+## GFM Autolink literals
+
+URLs are automatically converted into clickable links.
+
+<Showcase>
+
+www.example.com, https://example.com, and contact@example.com.
+
+</Showcase>
+
+```mdx
+www.example.com, https://example.com, and contact@example.com.
+```
