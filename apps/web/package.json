@@ -44,9 +44,9 @@
     "zod": "3.22.4"
   },
   "devDependencies": {
-    "@babel/core": "7.23.7",
+    "@babel/core": "7.23.9",
     "@funboxteam/optimizt": "5.0.2",
-    "@pandacss/dev": "0.27.3",
+    "@pandacss/dev": "0.28.0",
     "@radix-ui/colors": "3.0.0",
     "@storybook/addon-a11y": "7.6.10",
     "@storybook/addon-essentials": "7.6.10",
@@ -57,15 +57,15 @@
     "@storybook/nextjs": "7.6.10",
     "@storybook/react": "7.6.10",
     "@storybook/testing-library": "0.2.2",
-    "@types/mdx": "^2.0.10",
+    "@types/mdx": "2.0.10",
     "jest-mock": "29.7.0",
-    "mdx": "^0.3.1",
+    "mdx": "0.3.1",
     "autoprefixer": "10.4.17",
     "eslint-config-custom-next": "workspace:*",
     "pandacss-preset-radix-colors": "0.2.0",
     "postcss": "8.4.33",
     "storybook": "7.6.10",
     "tsconfig": "workspace:*",
-    "webpack": "5.89.0"
+    "webpack": "5.90.0"
   }
 }
