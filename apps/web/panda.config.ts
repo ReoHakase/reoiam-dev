@@ -31,13 +31,22 @@ export default defineConfig({
     },
   },
 
+  conditions: {
+    extend: {
+      // NOTE: Make sure these selectors match the configurations passed to `next-themes` ThemeProvider
+      light: "&[data-theme='light'], [data-theme='light'] &",
+      dark: "&[data-theme='dark'], [data-theme='dark'] &",
+    },
+  },
+
   // Presets
   presets: [
     // Radix Scales provider for PandaCSS by milandekruijf
     // Refer: https://github.com/milandekruijf/pandacss-preset-radix-colors
     radixColorsWithScaleAliasesPreset({
       darkMode: {
-        condition: '[data-theme="dark"] &',
+        // NOTE: Make sure these selectors match the configurations passed to `next-themes` ThemeProvider
+        condition: "&[data-theme='dark'], [data-theme='dark'] &",
       },
       autoP3: true,
       scaleAliases: {
