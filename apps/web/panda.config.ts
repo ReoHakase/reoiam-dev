@@ -59,7 +59,7 @@ export default defineConfig({
         danger: 'crimson',
       },
       aliasMode: 'reference',
-      includedRadixScales: ['white', 'black', 'cyan', 'yellow', 'pink', 'purple'],
+      colorScales: ['white', 'black', 'cyan', 'yellow', 'pink', 'purple', 'slate'],
     }),
 
     // Re-add the panda preset if you want to keep
