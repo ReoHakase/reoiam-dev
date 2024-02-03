@@ -4,6 +4,8 @@ const { withContentlayer } = require('next-contentlayer');
 const nextConfig = {
   experimental: {
     typedRoutes: true,
+    optimizeCss: true,
+    swcMinify: true,
   },
   reactStrictMode: true,
 };
