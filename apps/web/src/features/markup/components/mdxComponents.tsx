@@ -179,6 +179,18 @@ export const mdxComponents: MDXComponents = {
             overflowX: 'scroll',
             py: '1',
           },
+          // For light & dark mode syntax highlighting
+          // Refer: https://rehype-pretty-code.netlify.app/
+          "code[data-language][data-theme*=' '] &": {
+            _light: {
+              color: 'var(--shiki-light)',
+              bg: 'var(--shiki-light-bg)',
+            },
+            _dark: {
+              color: 'var(--shiki-dark)',
+              bg: 'var(--shiki-dark-bg)',
+            },
+          },
         }),
         className,
       )}
@@ -316,24 +328,6 @@ export const mdxComponents: MDXComponents = {
             mr: '3',
             textAlign: 'right',
             color: 'keyplate.10',
-          },
-          _light: {
-            // For light mode syntax highlighting
-            // Refer: https://rehype-pretty-code.netlify.app/
-            // Code tag itself is not styled with shiki theme unlike the example.
-            "&[data-theme*=' '] span": {
-              color: 'var(--shiki-light)',
-              bg: 'var(--shiki-light-bg)',
-            },
-          },
-          _dark: {
-            // For dark mode syntax highlighting
-            // Refer: https://rehype-pretty-code.netlify.app/
-            // Code tag itself is not styled with shiki theme unlike the example.
-            "&[data-theme*=' '] span": {
-              color: 'var(--shiki-dark)',
-              bg: 'var(--shiki-dark-bg)',
-            },
           },
         }),
         className,
