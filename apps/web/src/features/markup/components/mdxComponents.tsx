@@ -367,8 +367,6 @@ export const mdxComponents: MDXComponents = {
           w: 'full',
           my: '4',
           rounded: 'lg',
-          border: '1px solid',
-          borderColor: 'keyplate.6',
           overflow: 'hidden',
         }),
         className,
@@ -380,8 +378,6 @@ export const mdxComponents: MDXComponents = {
     <thead
       className={cx(
         css({
-          borderBottom: '1px solid',
-          borderColor: 'keyplate.6',
           bg: 'keyplate.3',
           fontWeight: 'bold',
         }),
@@ -391,24 +387,17 @@ export const mdxComponents: MDXComponents = {
     />
   ),
   tbody: ({ className, ...props }: ComponentPropsWithoutRef<'tbody'>): ReactNode => (
-    <tbody
-      className={cx(
-        css({
-          borderTop: '1px solid',
-          borderBottom: '1px solid',
-          borderColor: 'keyplate.6',
-        }),
-        className,
-      )}
-      {...props}
-    />
+    <tbody className={cx(css({}), className)} {...props} />
   ),
   tr: ({ className, ...props }: ComponentPropsWithoutRef<'tr'>): ReactNode => (
     <tr
       className={cx(
         css({
           borderBottom: '1px solid',
-          borderColor: 'keyplate.6',
+          borderColor: 'keyplate.5',
+          '&:last-child': {
+            border: 'none',
+          },
         }),
         className,
       )}
