@@ -6,46 +6,46 @@ import radixColorsPreset from 'pandacss-preset-radix-colors';
  * Array of radix scale names.
  * @see https://www.radix-ui.com/colors/docs/palette-composition/composing-a-palette
  */
-const radixScaleNames = [
-  'white',
+declare const radixColorScales: readonly [
+  'amber',
   'black',
+  'blue',
   'bronze',
-  'gold',
   'brown',
-  'orange',
-  'tomato',
-  'red',
-  'ruby',
   'crimson',
+  'cyan',
+  'gold',
+  'grass',
+  'gray',
+  'green',
+  'indigo',
+  'iris',
+  'jade',
+  'lime',
+  'mauve',
+  'mint',
+  'olive',
+  'orange',
   'pink',
   'plum',
   'purple',
-  'violet',
-  'iris',
-  'indigo',
-  'blue',
-  'cyan',
-  'teal',
-  'jade',
-  'green',
-  'grass',
-  'sky',
-  'mint',
-  'lime',
-  'yellow',
-  'amber',
-  'gray',
-  'mauve',
-  'slate',
+  'red',
+  'ruby',
   'sage',
-  'olive',
   'sand',
-] as const;
+  'sky',
+  'slate',
+  'teal',
+  'tomato',
+  'violet',
+  'white',
+  'yellow',
+];
+type RadixColorScale = (typeof radixColorScales)[number];
 
 type RadixColorsWithScaleAliasesPresetOptions = {
-  scaleAliases?: Record<string, (typeof radixScaleNames)[number]>;
+  scaleAliases?: Record<string, RadixColorScale>;
   aliasMode?: 'clone' | 'reference';
-  includedRadixScales?: (typeof radixScaleNames)[number][];
 } & Parameters<typeof radixColorsPreset>[0];
 
 /**
@@ -75,24 +75,17 @@ type RadixColorsWithScaleAliasesPresetOptions = {
  */
 export function radixColorsWithScaleAliasesPreset({
   scaleAliases = {},
-  aliasMode = 'clone',
-  includedRadixScales = [],
+  aliasMode = 'reference',
   ...baseOptions
 }: RadixColorsWithScaleAliasesPresetOptions) {
-  const basePreset = radixColorsPreset(baseOptions);
+  const explicitlyIncludedScales: RadixColorScale[] = baseOptions.colorScales || [];
+  const referencedScales: RadixColorScale[] = aliasMode === 'reference' ? Object.values(scaleAliases) : [];
+  const dependentScales: RadixColorScale[] = [...new Set([...explicitlyIncludedScales, ...referencedScales])];
 
-  const referencedScaleNames = aliasMode === 'reference' ? Object.values(scaleAliases) : [];
-  const filteredScalesColors = Object.fromEntries(
-    Object.entries(basePreset.theme?.extend?.semanticTokens?.colors ?? {}).filter(([scaleName]) => {
-      if (includedRadixScales) {
-        return (
-          includedRadixScales.includes(scaleName as (typeof radixScaleNames)[number]) ||
-          referencedScaleNames.includes(scaleName as (typeof radixScaleNames)[number])
-        );
-      }
-      return true;
-    }),
-  );
+  const basePreset = radixColorsPreset({
+    ...baseOptions,
+    colorScales: dependentScales,
+  });
 
   const scaleAliasesColors = (() => {
     switch (aliasMode) {
@@ -139,7 +132,7 @@ export function radixColorsWithScaleAliasesPreset({
   const preset: Preset = { ...basePreset };
   if (preset.theme?.extend?.semanticTokens?.colors) {
     preset.theme.extend.semanticTokens.colors = {
-      ...filteredScalesColors,
+      ...preset.theme.extend.semanticTokens.colors,
       ...scaleAliasesColors,
     };
   }

@@ -1,4 +1,16 @@
 import { defineConfig } from '@pandacss/dev';
+import {
+  markupHeadingRecipe,
+  markupHrRecipe,
+  markupSpanRecipe,
+  markupDivRecipe,
+  markupListRecipe,
+  markupARecipe,
+  markupBlockquoteRecipe,
+  markupCodeSlotRecipe,
+  markupTableSlotRecipe,
+  markupShowcaseRecipe,
+} from '@/features/markup/styles/markup';
 import { breakpoints } from '@/styles/tokens/breakpoints';
 import { radixColorsWithScaleAliasesPreset } from '@/styles/tokens/radixColorsPreset';
 
@@ -28,14 +40,26 @@ export default defineConfig({
         },
       },
       breakpoints: breakpoints,
+      recipes: {
+        markupHeading: markupHeadingRecipe,
+        markupHr: markupHrRecipe,
+        markupSpan: markupSpanRecipe,
+        markupA: markupARecipe,
+        markupDiv: markupDivRecipe,
+        markupList: markupListRecipe,
+        markupBlockquote: markupBlockquoteRecipe,
+        markupCode: markupCodeSlotRecipe,
+        markupTable: markupTableSlotRecipe,
+        markupShowcase: markupShowcaseRecipe,
+      },
     },
   },
 
   conditions: {
     extend: {
       // NOTE: Make sure these selectors match the configurations passed to `next-themes` ThemeProvider
-      light: "&[data-theme='light'], [data-theme='light'] &",
-      dark: "&[data-theme='dark'], [data-theme='dark'] &",
+      light: "[data-theme='light'] &",
+      dark: "[data-theme='dark'] &",
     },
   },
 
@@ -46,7 +70,7 @@ export default defineConfig({
     radixColorsWithScaleAliasesPreset({
       darkMode: {
         // NOTE: Make sure these selectors match the configurations passed to `next-themes` ThemeProvider
-        condition: "&[data-theme='dark'], [data-theme='dark'] &",
+        condition: "[data-theme='dark'] &",
       },
       autoP3: true,
       scaleAliases: {
@@ -59,7 +83,7 @@ export default defineConfig({
         danger: 'crimson',
       },
       aliasMode: 'reference',
-      includedRadixScales: ['white', 'black', 'cyan', 'yellow', 'pink', 'purple'],
+      colorScales: ['white', 'black', 'cyan', 'yellow', 'pink', 'purple', 'slate'],
     }),
 
     // Re-add the panda preset if you want to keep
