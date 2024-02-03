@@ -76,14 +76,13 @@ export default defineConfig({
       scaleAliases: {
         keyplate: 'slate',
         primary: 'pink',
-        secondary: 'blue',
         info: 'cyan',
         success: 'green',
         warning: 'yellow',
         danger: 'crimson',
       },
       aliasMode: 'reference',
-      colorScales: ['white', 'black', 'cyan', 'yellow', 'pink', 'purple', 'slate'],
+      colorScales: ['white', 'black'],
     }),
 
     // Re-add the panda preset if you want to keep
