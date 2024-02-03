@@ -1,4 +1,16 @@
 import { defineConfig } from '@pandacss/dev';
+import {
+  markupHeadingRecipe,
+  markupHrRecipe,
+  markupSpanRecipe,
+  markupDivRecipe,
+  markupListRecipe,
+  markupARecipe,
+  markupBlockquoteRecipe,
+  markupCodeSlotRecipe,
+  markupTableSlotRecipe,
+  markupShowcaseRecipe,
+} from '@/features/markup/styles/markup';
 import { breakpoints } from '@/styles/tokens/breakpoints';
 import { radixColorsWithScaleAliasesPreset } from '@/styles/tokens/radixColorsPreset';
 
@@ -28,6 +40,18 @@ export default defineConfig({
         },
       },
       breakpoints: breakpoints,
+      recipes: {
+        markupHeading: markupHeadingRecipe,
+        markupHr: markupHrRecipe,
+        markupSpan: markupSpanRecipe,
+        markupA: markupARecipe,
+        markupDiv: markupDivRecipe,
+        markupList: markupListRecipe,
+        markupBlockquote: markupBlockquoteRecipe,
+        markupCode: markupCodeSlotRecipe,
+        markupTable: markupTableSlotRecipe,
+        markupShowcase: markupShowcaseRecipe,
+      },
     },
   },
 
