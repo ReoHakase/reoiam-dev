@@ -94,7 +94,12 @@ export const Globe = ({ css: cssProps = {}, ...props }: GlobeProps): ReactNode =
           w: '242px',
           aspectRatio: '1',
           borderRadius: '50%',
-          bg: 'cyan.9',
+          bg: {
+            // NOTE: Radix color `cyan.9` was specified literally in order to reduce output css size, since purple scale is barely used.
+            // Refer: https://www.radix-ui.com/colors
+            base: '#00A2C7',
+            _p3: 'color(display-p3 0.282 0.627 0.765)',
+          },
           top: '83px',
           left: '-82px',
           filter: 'blur(150px)',
@@ -106,7 +111,12 @@ export const Globe = ({ css: cssProps = {}, ...props }: GlobeProps): ReactNode =
           w: '204px',
           aspectRatio: '1',
           borderRadius: '50%',
-          bg: 'yellow.9',
+          bg: {
+            // NOTE: Radix color `yellow.9` was specified literally in order to reduce output css size, since purple scale is barely used.
+            // Refer: https://www.radix-ui.com/colors
+            base: '#FFE629',
+            _p3: 'color(display-p3 1 0.92 0.22)',
+          },
           top: '407px',
           left: '200px',
           filter: 'blur(150px)',
@@ -118,7 +128,12 @@ export const Globe = ({ css: cssProps = {}, ...props }: GlobeProps): ReactNode =
           w: '203px',
           aspectRatio: '1',
           borderRadius: '50%',
-          bg: 'pink.9',
+          bg: {
+            // NOTE: Radix color `pink.9` was specified literally in order to reduce output css size, since purple scale is barely used.
+            // Refer: https://www.radix-ui.com/colors
+            base: '#D6409F',
+            _p3: 'color(display-p3 0.775 0.297 0.61)',
+          },
           top: '360px',
           left: '445px',
           filter: 'blur(150px)',
@@ -130,7 +145,12 @@ export const Globe = ({ css: cssProps = {}, ...props }: GlobeProps): ReactNode =
           w: '172px',
           aspectRatio: '1',
           rounded: '50%',
-          bg: 'purple.9',
+          bg: {
+            // NOTE: Radix color `purple.9` was specified literally in order to reduce output css size, since purple scale is barely used.
+            // Refer: https://www.radix-ui.com/colors
+            base: '#8E4EC6',
+            _p3: 'color(display-p3 0.523 0.318 0.751)',
+          },
           top: '9px',
           left: '273px',
           filter: 'blur(150px)',
