@@ -1,0 +1,49 @@
+---
+title: reoiam.dev
+date: 2023-12-22
+description: A portfolio site of Reo Hakuta ('04🇯🇵)
+emoji: 💻
+---
+
+✨ Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias asperiores atque autem.
+
+> [!CAUTION]  
+> 🚧 This page is still under construction.
+
+# Hello
+
+- Create a list by starting a line with `+`, `-`, or `*`
+- Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    - Ac tristique libero volutpat at
+    * Facilisis in pretium nisl aliquet
+    - Nulla volutpat aliquam velit
+- Very easy!
+
+| Syntax                                          | Output                                    |
+| ----------------------------------------------- | ----------------------------------------- |
+| `` `console.log('Hi'){:js}` ``                  | `console.log('Hi'){:js}`                  |
+| `` `from matplotlib import plot as plt{:py}` `` | `from matplotlib import plot as plt{:py}` |
+| `$` `\sum_{n=1}^{10} n^2{:tex}` `$`             | $\sum_{n=1}^{10} n^2$                     |
+| `$` `\int_{0}^{\infty} e^{-x} dx{:tex}` `$`     | $\int_{0}^{\infty} e^{-x} dx$             |
+
+$$
+  \frac{\pi}{2} =
+  \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2 =
+  \sum_{k=0}^{\infty} \frac{(2k)!}{2^{2k}(k!)^2} \frac{1}{2k+1} =
+  \prod_{k=1}^{\infty} \frac{4k^2}{4k^2 - 1}
+$$
+
+> [!NOTE]  
+> Highlights information that users should take into account, even when skimming.
+> `console.log('Hi'){:js}` $\int_{0}^{\infty} e^{-x} dx$ **This is bold text** _This is italic text_ ~~Strikethrough~~
+
+```ts showLineNumbers
+export const generateStaticParams = async () => {
+  const params = allContentDocuments.map((post) => ({
+    slug: post._raw.flattenedPath.split('/'),
+  }));
+  console.log(params);
+  return params;
+};
+```
