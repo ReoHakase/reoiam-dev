@@ -7,6 +7,7 @@ import { mdxComponents } from '@/features/markup/components/mdxComponents';
 import { allContentDocuments } from 'contentlayer/generated';
 import { css } from 'styled-system/css';
 import { flex } from 'styled-system/patterns';
+import { markupBlockquote, markupHeading, markupHr } from 'styled-system/recipes';
 
 type PageProps = { params: { slug: string[] } };
 
@@ -69,20 +70,8 @@ const Document = ({ params }: PageProps): ReactNode => {
         p: '6',
       })}
     >
-      <h1
-        className={css({
-          fontFamily: 'heading',
-          lineHeight: '1',
-          fontSize: {
-            base: '5xl',
-            md: '6xl',
-          },
-          fontWeight: 'bold',
-          my: '2',
-        })}
-      >
-        {titleWithEmoji}
-      </h1>
+      <h1 className={markupHeading({ level: 'title' })}>{titleWithEmoji}</h1>
+      <blockquote className={markupBlockquote()}>{post.description}</blockquote>
       <p
         className={css({
           fontFamily: 'heading',
@@ -102,14 +91,7 @@ const Document = ({ params }: PageProps): ReactNode => {
           timeZone: 'UTC',
         }).format(new Date(post.date))}
       </p>
-      <hr
-        className={css({
-          color: 'keyplate.6',
-          w: 'full',
-          h: '1px',
-          my: '4',
-        })}
-      />
+      <hr className={markupHr()} />
       <MDXContent components={mdxComponents} />
     </article>
   );
