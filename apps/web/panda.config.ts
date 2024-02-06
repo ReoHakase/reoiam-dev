@@ -78,7 +78,7 @@ export default defineConfig({
         primary: 'pink',
         info: 'cyan',
         success: 'green',
-        warning: 'yellow',
+        warning: 'amber',
         danger: 'crimson',
       },
       aliasMode: 'reference',
