@@ -30,8 +30,10 @@ export const generateMetadata = async ({ params }: PageProps, parent: ResolvingM
   // Optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || [];
 
+  const titleWithEmoji = [post.emoji, post.title].filter(Boolean).join(' ');
+
   return {
-    title: post.title,
+    title: titleWithEmoji,
     description: post.description,
     openGraph: {
       images: [...previousImages],
@@ -47,6 +49,9 @@ const Document = ({ params }: PageProps): ReactNode => {
 
   // 404 if the post does not exist.
   if (!post) notFound();
+
+  // Read the MDX file metadata.
+  const titleWithEmoji = [post.emoji, post.title].filter(Boolean).join(' ');
 
   // Parse the MDX file via the useMDXComponent hook.
   const MDXContent = useMDXComponent(post.body.code);
@@ -76,7 +81,7 @@ const Document = ({ params }: PageProps): ReactNode => {
           my: '2',
         })}
       >
-        {post.title}
+        {titleWithEmoji}
       </h1>
       <p
         className={css({
