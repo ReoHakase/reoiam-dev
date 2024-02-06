@@ -58,7 +58,7 @@ const Document = ({ params }: PageProps): ReactNode => {
   const MDXContent = useMDXComponent(post.body.code);
 
   return (
-    <article
+    <main
       className={flex({
         maxWidth: '800px',
         w: 'full',
@@ -93,7 +93,7 @@ const Document = ({ params }: PageProps): ReactNode => {
       </p>
       <hr className={markupHr()} />
       <MDXContent components={mdxComponents} />
-    </article>
+    </main>
   );
 };
 
