@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { Navbar } from '@/features/navigation/components/Navbar/Navbar';
 import { Sidebar } from '@/features/navigation/components/Sidebar/Sidebar';
 import { css } from 'styled-system/css';
 import '@/styles/katex.css';
@@ -14,31 +15,42 @@ const DocsLayout = ({ children }: DocsLayoutProps): ReactNode => (
       w: 'full',
       display: 'grid',
       gridTemplateColumns: '1fr auto 1fr',
-      alignItems: 'stretch',
-      gap: '4',
+      alignItems: 'start',
+      lgDown: {
+        gridTemplateColumns: '0 100% 0',
+        gap: '0',
+      },
       lgToXl: {
         gridTemplateColumns: '1fr auto 0',
+        gap: '4',
+      },
+      xl: {
+        gridTemplateColumns: '1fr auto 1fr',
+        gap: '4',
       },
     })}
   >
+    <Navbar
+      className={css({
+        zIndex: '1',
+      })}
+    />
     <Sidebar
       className={css({
-        position: 'sticky',
-        top: '0',
-        left: '0',
-        maxW: '80',
-        minW: '60',
         w: 'full',
+        maxW: '80',
         lgDown: {
           display: 'none',
-          srOnly: true,
         },
       })}
     />
     <div
       className={css({
         gridColumn: '2 / 3',
-        w: 'full',
+        w: {
+          base: 'full',
+          lg: '800px',
+        },
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'start',

@@ -64,7 +64,6 @@ const Document = ({ params }: PageProps): ReactNode => {
         w: 'full',
         direction: 'column',
         justify: 'start',
-        align: 'stretch',
         textAlign: 'start',
         lineHeight: '1.5',
         p: '6',
