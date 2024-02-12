@@ -38,6 +38,11 @@ export default defineConfig({
             description: 'The font used for code blocks and inline code',
           },
         },
+        shadows: {
+          floating: {
+            value: '0 0 16px 4px token(colors.keyplate.a.2)',
+          },
+        },
       },
       breakpoints: breakpoints,
       recipes: {
