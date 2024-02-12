@@ -4,9 +4,11 @@ import { notFound } from 'next/navigation';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import type { ReactNode } from 'react';
 import { mdxComponents } from '@/features/markup/components/mdxComponents';
+import { CurrentContentNameSetter } from '@/features/navigation/components/CurrentContentNameSetter/CurrentContentNameSetter';
 import { allContentDocuments } from 'contentlayer/generated';
 import { css } from 'styled-system/css';
 import { flex } from 'styled-system/patterns';
+import { markupBlockquote, markupHeading, markupHr } from 'styled-system/recipes';
 
 type PageProps = { params: { slug: string[] } };
 
@@ -30,8 +32,10 @@ export const generateMetadata = async ({ params }: PageProps, parent: ResolvingM
   // Optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || [];
 
+  const titleWithEmoji = [post.emoji, post.title].filter(Boolean).join(' ');
+
   return {
-    title: post.title,
+    title: titleWithEmoji,
     description: post.description,
     openGraph: {
       images: [...previousImages],
@@ -48,36 +52,27 @@ const Document = ({ params }: PageProps): ReactNode => {
   // 404 if the post does not exist.
   if (!post) notFound();
 
+  // Read the MDX file metadata.
+  const titleWithEmoji = [post.emoji, post.title].filter(Boolean).join(' ');
+
   // Parse the MDX file via the useMDXComponent hook.
   const MDXContent = useMDXComponent(post.body.code);
 
   return (
-    <article
+    <main
       className={flex({
         maxWidth: '800px',
         w: 'full',
         direction: 'column',
         justify: 'start',
-        align: 'stretch',
         textAlign: 'start',
         lineHeight: '1.5',
         p: '6',
       })}
     >
-      <h1
-        className={css({
-          fontFamily: 'heading',
-          lineHeight: '1',
-          fontSize: {
-            base: '5xl',
-            md: '6xl',
-          },
-          fontWeight: 'bold',
-          my: '2',
-        })}
-      >
-        {post.title}
-      </h1>
+      <CurrentContentNameSetter name={titleWithEmoji} />
+      <h1 className={markupHeading({ level: 'title' })}>{titleWithEmoji}</h1>
+      <blockquote className={markupBlockquote()}>{post.description}</blockquote>
       <p
         className={css({
           fontFamily: 'heading',
@@ -97,16 +92,9 @@ const Document = ({ params }: PageProps): ReactNode => {
           timeZone: 'UTC',
         }).format(new Date(post.date))}
       </p>
-      <hr
-        className={css({
-          color: 'keyplate.6',
-          w: 'full',
-          h: '1px',
-          my: '4',
-        })}
-      />
+      <hr className={markupHr()} />
       <MDXContent components={mdxComponents} />
-    </article>
+    </main>
   );
 };
 

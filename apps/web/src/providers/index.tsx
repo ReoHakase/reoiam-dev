@@ -1,5 +1,6 @@
 'use client';
 
+import { Provider as JotaiProvider } from 'jotai';
 import { ThemeProvider } from 'next-themes';
 import type { FC, ReactNode } from 'react';
 
@@ -8,5 +9,7 @@ type AppProviderProps = {
 };
 
 export const AppProvider: FC<AppProviderProps> = ({ children }) => (
-  <ThemeProvider attribute="data-theme">{children}</ThemeProvider>
+  <JotaiProvider>
+    <ThemeProvider attribute="data-theme">{children}</ThemeProvider>
+  </JotaiProvider>
 );

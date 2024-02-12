@@ -20,6 +20,7 @@ const config: StorybookConfig = {
           '@': path.resolve(__dirname, '../src'),
           '@public': path.resolve(__dirname, '../public'),
           'styled-system': path.resolve(__dirname, '../styled-system'),
+          'contentlayer/generated': path.resolve(__dirname, '../.contentlayer/generated'),
         },
       },
     };

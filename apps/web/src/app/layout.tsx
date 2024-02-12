@@ -32,18 +32,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
       <Analytics />
       <AppProvider>
         <Header />
-        <main
-          className={css({
-            display: 'flex',
-            flexGrow: 1,
-            minHeight: 'screen',
-            flexDirection: 'column',
-            justifyContent: 'start',
-            alignItems: 'center',
-          })}
-        >
-          {children}
-        </main>
+        {children}
       </AppProvider>
     </body>
   </html>

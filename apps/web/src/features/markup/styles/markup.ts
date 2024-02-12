@@ -8,27 +8,39 @@ const markupHeadingRecipe = defineRecipe({
   base: {
     fontFamily: 'heading',
     fontWeight: 'bold',
-    lineHeight: '1.5',
     my: '2',
   },
   variants: {
     level: {
+      title: {
+        lineHeight: '1',
+        fontSize: {
+          base: '5xl',
+          md: '6xl',
+        },
+      },
       h1: {
+        lineHeight: '1.5',
         fontSize: '5xl',
       },
       h2: {
+        lineHeight: '1.5',
         fontSize: '4xl',
       },
       h3: {
+        lineHeight: '1.5',
         fontSize: '2xl',
       },
       h4: {
+        lineHeight: '1.5',
         fontSize: 'xl',
       },
       h5: {
+        lineHeight: '1.5',
         fontSize: 'lg',
       },
       h6: {
+        lineHeight: '1.5',
         fontSize: 'md',
       },
     },

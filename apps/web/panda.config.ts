@@ -12,7 +12,7 @@ import {
   markupShowcaseRecipe,
 } from '@/features/markup/styles/markup';
 import { breakpoints } from '@/styles/tokens/breakpoints';
-import { radixColorsWithScaleAliasesPreset } from '@/styles/tokens/radixColorsPreset';
+import { customRadixColorsPreset } from '@/styles/tokens/radixColorsPreset';
 
 export default defineConfig({
   // Whether to use css reset
@@ -36,6 +36,11 @@ export default defineConfig({
           code: {
             value: 'var(--font-geist-mono)',
             description: 'The font used for code blocks and inline code',
+          },
+        },
+        shadows: {
+          floating: {
+            value: '0 0 16px 4px token(colors.keyplate.a.2)',
           },
         },
       },
@@ -67,7 +72,7 @@ export default defineConfig({
   presets: [
     // Radix Scales provider for PandaCSS by milandekruijf
     // Refer: https://github.com/milandekruijf/pandacss-preset-radix-colors
-    radixColorsWithScaleAliasesPreset({
+    customRadixColorsPreset({
       darkMode: {
         // NOTE: Make sure these selectors match the configurations passed to `next-themes` ThemeProvider
         condition: "[data-theme='dark'] &",
@@ -78,11 +83,11 @@ export default defineConfig({
         primary: 'pink',
         info: 'cyan',
         success: 'green',
-        warning: 'yellow',
+        warning: 'amber',
         danger: 'crimson',
       },
-      aliasMode: 'reference',
       colorScales: ['white', 'black'],
+      withoutAlpha: false,
     }),
 
     // Re-add the panda preset if you want to keep
