@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import type { ReactNode } from 'react';
 import { mdxComponents } from '@/features/markup/components/mdxComponents';
+import { CurrentContentNameSetter } from '@/features/navigation/components/CurrentContentNameSetter/CurrentContentNameSetter';
 import { allContentDocuments } from 'contentlayer/generated';
 import { css } from 'styled-system/css';
 import { flex } from 'styled-system/patterns';
@@ -69,6 +70,7 @@ const Document = ({ params }: PageProps): ReactNode => {
         p: '6',
       })}
     >
+      <CurrentContentNameSetter name={titleWithEmoji} />
       <h1 className={markupHeading({ level: 'title' })}>{titleWithEmoji}</h1>
       <blockquote className={markupBlockquote()}>{post.description}</blockquote>
       <p

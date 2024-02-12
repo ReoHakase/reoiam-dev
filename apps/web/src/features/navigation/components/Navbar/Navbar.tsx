@@ -2,6 +2,7 @@
 
 import { FolderTree, ListOrdered } from 'lucide-react';
 import type { ReactNode, ComponentPropsWithoutRef } from 'react';
+import { useCurrentContentNameValue } from '../../states/currentContentName';
 import { Sidebar } from '../Sidebar/Sidebar';
 import {
   Drawer,
@@ -17,6 +18,7 @@ import {
 } from '@/features/modal/components/Drawer/Drawer';
 import { createSlotRecipeContext } from '@/states/createSlotRecipeContext';
 import { sva } from 'styled-system/css';
+import { css } from 'styled-system/css';
 
 const navbarSlotRecipe = sva({
   slots: ['root', 'sidebarButton', 'current', 'detailButton', 'buttonLabel'],
@@ -97,7 +99,6 @@ const navbarSlotRecipe = sva({
         md: 'lg',
       },
       textAlign: 'center',
-      alignSelf: 'stretch',
       flexGrow: '1',
     },
   },
@@ -117,6 +118,7 @@ const NavbarDetailButton = withVariantConsumer('button', 'detailButton');
 export type NavbarProps = ComponentPropsWithoutRef<typeof NavbarRoot>;
 
 export const Navbar = (props: NavbarProps): ReactNode => {
+  const currentContextName = useCurrentContentNameValue();
   return (
     <NavbarRoot {...props}>
       <Drawer scrollable occupancy="twothird">
@@ -138,7 +140,23 @@ export const Navbar = (props: NavbarProps): ReactNode => {
           </DrawerContent>
         </DrawerPortal>
       </Drawer>
-      <NavbarCurrentRoute>🍎 Title of Current Route</NavbarCurrentRoute>
+      <NavbarCurrentRoute>
+        {currentContextName === null ? (
+          <span
+            className={css({
+              animation: 'pulse',
+              bg: 'keyplate.3',
+              rounded: 'md',
+              outline: 'none',
+              userSelect: 'none',
+              w: '50vw',
+              height: '1em',
+            })}
+          />
+        ) : (
+          currentContextName
+        )}
+      </NavbarCurrentRoute>
       <Drawer occupancy="third" overlay="transparent">
         <DrawerTrigger asChild>
           <NavbarDetailButton aria-label="Open table of contents">
