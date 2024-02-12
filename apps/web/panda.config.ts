@@ -12,7 +12,7 @@ import {
   markupShowcaseRecipe,
 } from '@/features/markup/styles/markup';
 import { breakpoints } from '@/styles/tokens/breakpoints';
-import { radixColorsWithScaleAliasesPreset } from '@/styles/tokens/radixColorsPreset';
+import { customRadixColorsPreset } from '@/styles/tokens/radixColorsPreset';
 
 export default defineConfig({
   // Whether to use css reset
@@ -67,7 +67,7 @@ export default defineConfig({
   presets: [
     // Radix Scales provider for PandaCSS by milandekruijf
     // Refer: https://github.com/milandekruijf/pandacss-preset-radix-colors
-    radixColorsWithScaleAliasesPreset({
+    customRadixColorsPreset({
       darkMode: {
         // NOTE: Make sure these selectors match the configurations passed to `next-themes` ThemeProvider
         condition: "[data-theme='dark'] &",
@@ -81,8 +81,8 @@ export default defineConfig({
         warning: 'amber',
         danger: 'crimson',
       },
-      aliasMode: 'reference',
       colorScales: ['white', 'black'],
+      withoutAlpha: false,
     }),
 
     // Re-add the panda preset if you want to keep

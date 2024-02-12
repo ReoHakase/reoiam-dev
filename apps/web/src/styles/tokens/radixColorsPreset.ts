@@ -1,5 +1,4 @@
-import { definePreset } from '@pandacss/dev';
-import type { Preset } from '@pandacss/dev';
+import { Preset } from '@pandacss/dev';
 import radixColorsPreset from 'pandacss-preset-radix-colors';
 
 /**
@@ -42,100 +41,355 @@ declare const radixColorScales: readonly [
   'yellow',
 ];
 type RadixColorScale = (typeof radixColorScales)[number];
+type RadixColorScales = RadixColorScale[];
 
-type RadixColorsWithScaleAliasesPresetOptions = {
+type Recursive = {
+  [key: string]: string | Recursive;
+};
+
+type ColorScaleEntries = [string, Recursive | string][];
+
+type DeleteAlphaColorOption = {
+  colorScales: ColorScaleEntries;
+};
+
+const deleteAlphaColor = ({ colorScales }: DeleteAlphaColorOption) =>
+  Object.fromEntries(
+    colorScales.reduce<ColorScaleEntries>((acc, [key, value]) => {
+      if (key === 'black' || key === 'white') {
+        acc.push([key, value]);
+        return acc;
+      }
+      if (key === 'a') {
+        return acc;
+      }
+
+      if (typeof value === 'object' && Number.isNaN(Number(key))) {
+        acc.push([key, deleteAlphaColor({ colorScales: Object.entries(value) })]);
+        return acc;
+      }
+
+      acc.push([key, value]);
+      return acc;
+    }, []),
+  );
+
+type ReplaceScaleNameOptions = {
+  colorScales: ColorScaleEntries;
+  targetScale: string;
+  replaceName: string;
+};
+
+const replaceScaleName = ({ colorScales, targetScale, replaceName }: ReplaceScaleNameOptions) =>
+  Object.fromEntries(
+    colorScales.reduce<ColorScaleEntries>((acc, [key, value]) => {
+      if (key === 'value') {
+        if (typeof value === 'string') {
+          const replacedValue = value.replace(targetScale, replaceName);
+          acc.push([key, replacedValue]);
+          return acc;
+        }
+        if (typeof value === 'object') {
+          const reg = new RegExp(targetScale, 'g');
+          acc.push([
+            key,
+            Object.fromEntries(
+              Object.entries(value).map(([k, v]) => {
+                return [k, (v as string).replace(reg, replaceName)];
+              }),
+            ),
+          ]);
+          return acc;
+        }
+      }
+
+      acc.push([
+        key,
+        replaceScaleName({
+          colorScales: Object.entries(value),
+          targetScale: targetScale,
+          replaceName: replaceName,
+        }),
+      ]);
+      return acc;
+    }, []),
+  );
+
+type RenameScaleOptions = {
+  colorScales: ColorScaleEntries;
+  renameScale: [RadixColorScale, string][];
+};
+
+const renameScaleColor = ({ colorScales, renameScale }: RenameScaleOptions) =>
+  Object.fromEntries(
+    colorScales.reduce<ColorScaleEntries>((acc, [key, value]) => {
+      const renamedScale = renameScale.find(([scale]) => scale === key);
+
+      if (renamedScale) {
+        // value値を再帰的にrenameScaleする
+        const renamedValue = replaceScaleName({
+          colorScales: Object.entries(value),
+          targetScale: key,
+          replaceName: renamedScale[1],
+        });
+
+        acc.push([renamedScale[1], renamedValue]);
+
+        return acc;
+      }
+      acc.push([key, value]);
+      return acc;
+    }, []),
+  );
+
+type ReplaceAliasColorOptions = {
+  colorScales: ColorScaleEntries;
+  referenceColorName: string;
+  isAlpha?: boolean;
+  isP3?: boolean;
+  isDark?: boolean;
+  tone?: `${number}`;
+};
+
+const replaceAliasColor = ({
+  colorScales,
+  referenceColorName,
+  isAlpha = false,
+  isP3 = false,
+  isDark = false,
+  tone = '0',
+}: ReplaceAliasColorOptions) => {
+  return Object.fromEntries(
+    colorScales.reduce<ColorScaleEntries>((acc, [key, value]) => {
+      if (!Number.isNaN(Number(key))) {
+        acc.push([
+          key,
+          replaceAliasColor({
+            colorScales: Object.entries(value),
+            referenceColorName,
+            tone: key as `${number}`,
+            isAlpha,
+            isP3,
+            isDark,
+          }),
+        ]);
+        return acc;
+      }
+
+      if (key === 'a') {
+        acc.push([
+          key,
+          replaceAliasColor({
+            colorScales: Object.entries(value),
+            referenceColorName,
+            tone,
+            isAlpha: true,
+            isP3,
+            isDark,
+          }),
+        ]);
+
+        return acc;
+      }
+      if (key === 'p3') {
+        acc.push([
+          key,
+          replaceAliasColor({
+            colorScales: Object.entries(value),
+            referenceColorName,
+            tone,
+            isAlpha,
+            isP3: true,
+            isDark,
+          }),
+        ]);
+
+        return acc;
+      }
+      if (key === 'dark') {
+        acc.push([
+          key,
+          replaceAliasColor({
+            colorScales: Object.entries(value),
+            referenceColorName,
+            tone,
+            isAlpha,
+            isP3,
+            isDark: true,
+          }),
+        ]);
+
+        return acc;
+      }
+
+      if (key === 'value') {
+        if (typeof value === 'string') {
+          acc.push([
+            key,
+            `{colors.${referenceColorName}.${isDark ? 'dark' : 'light'}.${
+              isP3 ? 'p3.' : ''
+            }${isAlpha ? 'a.' : ''}${tone}}`,
+          ]);
+
+          return acc;
+        }
+        if (typeof value === 'object') {
+          acc.push([
+            key,
+            Object.fromEntries(
+              Object.entries(value).map(([k, v]) => {
+                const colorValue = (() => {
+                  switch (k) {
+                    case 'base':
+                      return `{colors.${referenceColorName}.light.${isP3 ? 'p3.' : ''}${isAlpha ? 'a.' : ''}${tone}}`;
+                    case '_dark':
+                      return `{colors.${referenceColorName}.dark.${isP3 ? 'p3.' : ''}${isAlpha ? 'a.' : ''}${tone}}`;
+
+                    case '_p3':
+                      return `{colors.${referenceColorName}.${
+                        isDark ? 'dark' : 'light'
+                      }.p3.${isAlpha ? 'a.' : ''}${tone}}`;
+
+                    default:
+                      return v;
+                  }
+                })();
+                return [k, colorValue];
+              }),
+            ),
+          ]);
+          return acc;
+        }
+      }
+
+      acc.push([
+        key,
+        replaceAliasColor({
+          colorScales: Object.entries(value),
+          referenceColorName,
+          tone,
+          isAlpha,
+          isP3,
+          isDark,
+        }),
+      ]);
+      return acc;
+    }, []),
+  );
+};
+
+type CreateAliasColorOptions = {
+  referenceColorScales: ColorScaleEntries;
+  scaleAliases: [string, string][];
+};
+
+const createAliasColors = ({ referenceColorScales, scaleAliases }: CreateAliasColorOptions) => {
+  return Object.fromEntries(
+    referenceColorScales.reduce<ColorScaleEntries>((acc, [key, value]) => {
+      const alias = scaleAliases.find(([, alias_]) => alias_ === key);
+
+      if (alias) {
+        const replacedValue = replaceAliasColor({
+          colorScales: Object.entries(value),
+          referenceColorName: key,
+        });
+        acc.push([alias[0], replacedValue]);
+        return acc;
+      }
+      return acc;
+    }, []),
+  );
+};
+
+type CustomRadixColorsPresetOptions = {
   scaleAliases?: Record<string, RadixColorScale>;
-  aliasMode?: 'clone' | 'reference';
+  renameScale?: Partial<Record<RadixColorScale, string>>;
+  withoutAlpha?: boolean;
 } & Parameters<typeof radixColorsPreset>[0];
 
 /**
- * Generates a Radix colors preset with scale aliases.
+ * Generates a Custom Radix colors preset
  * @param options - The options for generating the preset.
  * @param options.scaleAliases - The scale alias map.
- * @param options.includedRadixScales - The included radix scales. 
+ * @param options.renameScale - The scale rename map. If the scale is renamed, the alias will be renamed as well.
+ * @param options.withoutAlpha - Whether to remove the alpha channel from the color scales.
+ * @param options.includedRadixScales - The included radix scales.
  *  @example
  * ```ts
- * radixColorsWithScaleAliasesPreset({
-      darkMode: {
-        condition: '[data-theme="dark"] &',
-      },
-      autoP3: true,
-      scaleAliases: {
-        keyplate: 'slate',
-        primary: 'pink',
-        secondary: 'blue',
-        info: 'cyan',
-        success: 'green',
-        warning: 'yellow',
-        danger: 'crimson',
-      },
-    })
+ * const preset = customRadixColorsPreset({
+ *    // The cement alias is mapped to foo renamed gray scale.
+ *    scaleAliases: { keyplate: "slate", primary: "pink", info: "cyan", success: "green", warning: "orange", danger: "red"},
+ *    renameScale: { gray: "foo" },
+ *    colorScales: ["red", "cyan", "green"],
+ *    withoutAlpha: true,
+ * });
+ *
  * ```
  * @returns The generated preset.
  */
-export function radixColorsWithScaleAliasesPreset({
+const customRadixColorsPreset = ({
   scaleAliases = {},
-  aliasMode = 'reference',
+  renameScale = {},
+  withoutAlpha = false,
   ...baseOptions
-}: RadixColorsWithScaleAliasesPresetOptions) {
+}: CustomRadixColorsPresetOptions) => {
   const explicitlyIncludedScales: RadixColorScale[] = baseOptions.colorScales || [];
-  const referencedScales: RadixColorScale[] = aliasMode === 'reference' ? Object.values(scaleAliases) : [];
-  const dependentScales: RadixColorScale[] = [...new Set([...explicitlyIncludedScales, ...referencedScales])];
+
+  const referencedAliasScales: RadixColorScale[] = Object.values(scaleAliases);
+
+  const renameScaleEntries = Object.entries(renameScale) as [RadixColorScale, string][];
+
+  const referencedRenameScales: RadixColorScale[] = renameScaleEntries.map(([scale]) => scale);
+
+  const dependentScales: RadixColorScale[] = [
+    ...new Set([...explicitlyIncludedScales, ...referencedAliasScales, ...referencedRenameScales]),
+  ];
+
+  const renamedScaleAliases = Object.entries(scaleAliases).reduce<[string, string][]>((acc, [alias, scale]) => {
+    const renamedScaleName = renameScale[scale];
+
+    if (renamedScaleName) {
+      acc.push([alias, renamedScaleName]);
+      return acc;
+    }
+    acc.push([alias, scale]);
+    return acc;
+  }, []);
 
   const basePreset = radixColorsPreset({
     ...baseOptions,
     colorScales: dependentScales,
   });
 
-  const scaleAliasesColors = (() => {
-    switch (aliasMode) {
-      case 'clone':
-        return Object.fromEntries(
-          Object.entries(scaleAliases).map(([alias, scaleName]) => {
-            const scale = basePreset.theme?.extend?.semanticTokens?.colors?.[scaleName];
-            if (!scale) {
-              throw new Error(`🐼 [radixColorsWithScaleAliasesPreset] Scale ${scaleName} does not exist.`);
-            }
-            // Replace scaleName with alias in each references in the scale
-            // Search for `{colors.${scaleName}.${string}}` and replace it with `{colors.${alias}.${string}}` recursively
-            const regex = new RegExp(`"{colors.${scaleName}.([a-zA-Z\\.0-9]*)}"`, 'g');
-            const scaleWithAlias: typeof scale = JSON.parse(
-              JSON.stringify(scale).replaceAll(regex, `"{colors.${alias}.$1}"`),
-            );
+  const baseColor = withoutAlpha
+    ? deleteAlphaColor({
+        colorScales: Object.entries({
+          ...basePreset.theme?.extend?.semanticTokens?.colors,
+        }) as ColorScaleEntries,
+      })
+    : { ...basePreset.theme?.extend?.semanticTokens?.colors };
 
-            return [alias, scaleWithAlias];
-          }),
-        );
-      case 'reference':
-        return Object.fromEntries(
-          Object.entries(scaleAliases).map(([alias, scaleName]) => {
-            const scale = basePreset.theme?.extend?.semanticTokens?.colors?.[scaleName];
-            if (!scale) {
-              throw new Error(`🐼 [radixColorsWithScaleAliasesPreset] Scale ${scaleName} does not exist.`);
-            }
-            const tones = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'] as const;
-            const scaleWithAlias: typeof scale = Object.fromEntries(
-              tones.map((key) => [
-                key,
-                {
-                  value: `{colors.${scaleName}.${key}}`,
-                },
-              ]),
-            );
-            return [alias, scaleWithAlias];
-          }),
-        );
-    }
-  })();
+  const renamedScaleColor = renameScaleColor({
+    colorScales: Object.entries(baseColor) as ColorScaleEntries,
+    renameScale: renameScaleEntries,
+  });
 
-  // Deep merge the two presets
+  const aliasColors = createAliasColors({
+    referenceColorScales: Object.entries(renamedScaleColor) as ColorScaleEntries,
+    scaleAliases: renamedScaleAliases,
+  });
+
   const preset: Preset = { ...basePreset };
   if (preset.theme?.extend?.semanticTokens?.colors) {
     preset.theme.extend.semanticTokens.colors = {
-      ...preset.theme.extend.semanticTokens.colors,
-      ...scaleAliasesColors,
-    };
+      ...renamedScaleColor,
+      ...aliasColors,
+    } as typeof preset.theme.extend.semanticTokens.colors;
   }
+  return preset;
+};
 
-  return definePreset(preset);
-}
+export type { Recursive, ColorScaleEntries, DeleteAlphaColorOption };
+export { deleteAlphaColor, renameScaleColor, createAliasColors };
+export type { RadixColorScales, RadixColorScale };
+export { customRadixColorsPreset };
