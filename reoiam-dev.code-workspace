@@ -2,28 +2,28 @@
   "folders": [
     {
       "name": "reoiam-dev",
-      "path": "."
+      "path": ".",
     },
     {
       "name": "web",
-      "path": "apps/web"
-    }
+      "path": "apps/web",
+    },
   ],
   "settings": {
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
+      "source.fixAll.eslint": "explicit",
     },
     "eslint.options": {
-      "extensions": [".js", ".jsx", ".md", ".mdx", ".ts", ".tsx"]
+      "extensions": [".js", ".jsx", ".md", ".mdx", ".ts", ".tsx"],
     },
     "editor.quickSuggestions": {
-      "strings": true
+      "strings": true,
     },
-    "panda.hovers.instances.enabled": true,
+    "panda.hovers.instances.enabled": false,
     "panda.hovers.semantic-colors.enabled": true,
     "panda.hovers.display.mode": "nested",
     "panda.hovers.tokens.conditions.enabled": true,
-    "panda.hovers.tokens.css-preview.enabled": true,
+    "panda.hovers.tokens.css-preview.enabled": false,
     "commit-message-editor.staticTemplate": ["{type}{scope} {description}", "", "{body}", "", "{footer}"],
     "commit-message-editor.dynamicTemplate": ["{type}{scope} {description}", "", "{body}", "", "{footer}"],
     "commit-message-editor.tokens": [
@@ -37,94 +37,94 @@
           {
             "label": "feat: ✨",
             "value": "feat: ✨",
-            "description": "機能の実装。"
+            "description": "機能の実装。",
           },
           {
             "label": "feat: ⚰️",
             "value": "feat: ⚰️",
-            "description": "機能の削除。"
+            "description": "機能の削除。",
           },
           {
             "label": "fix: 🐛",
             "value": "fix: 🐛",
-            "description": "バグの修正。"
+            "description": "バグの修正。",
           },
           {
             "label": "fix: 🐞",
             "value": "fix: 🐞",
-            "description": "バグほどではない小さな問題の修正。"
+            "description": "バグほどではない小さな問題の修正。",
           },
           {
             "label": "fix: 🚑️",
             "value": "fix: 🚑️",
-            "description": "重大なバグの修正。"
+            "description": "重大なバグの修正。",
           },
           {
             "label": "doc: 📝",
             "value": "doc: 📝",
-            "description": "ドキュメントの追加・更新。"
+            "description": "ドキュメントの追加・更新。",
           },
           {
             "label": "typo: 🖋️",
             "value": "typo: 🖋️",
-            "description": "タイポグラフィーの追加・更新。"
+            "description": "タイポグラフィーの追加・更新。",
           },
           {
             "label": "style: 💄",
             "value": "style: 💄",
-            "description": "UIやスタイルファイルの変更。"
+            "description": "UIやスタイルファイルの変更。",
           },
           {
             "label": "refactor: ♻️",
             "value": "refactor: ♻️",
-            "description": "コードのフォーマットやリファクタリング。"
+            "description": "コードのフォーマットやリファクタリング。",
           },
           {
             "label": "test: 🧪",
             "value": "test: 🧪",
-            "description": "テストの追加・更新。"
+            "description": "テストの追加・更新。",
           },
           {
             "label": "ci: 🦺",
             "value": "ci: 🦺",
-            "description": "CIの変更。"
+            "description": "CIの変更。",
           },
           {
             "label": "build: 📦️",
             "value": "build: 📦️",
-            "description": "ビルドシステムや依存関係の変更。"
+            "description": "ビルドシステムや依存関係の変更。",
           },
           {
             "label": "chore: 🔧",
             "value": "chore: 🔧",
-            "description": "設定ファイルの変更。"
+            "description": "設定ファイルの変更。",
           },
           {
             "label": "chore: 🔨",
             "value": "chore: 🔨",
-            "description": "開発スクリプトの変更。"
+            "description": "開発スクリプトの変更。",
           },
           {
             "label": "chore: 🍱",
             "value": "chore: 🍱",
-            "description": "アセットの変更。"
+            "description": "アセットの変更。",
           },
           {
             "label": "revert: ⏪️",
             "value": "revert: ⏪️",
-            "description": "変更の取り消し。"
+            "description": "変更の取り消し。",
           },
           {
             "label": "wip: 🚧",
             "value": "wip: 🚧",
-            "description": "squashされる変更のコミット。"
+            "description": "squashされる変更のコミット。",
           },
           {
             "label": "initial: 🎉",
             "value": "initial: 🎉",
-            "description": "最初のコミット。"
-          }
-        ]
+            "description": "最初のコミット。",
+          },
+        ],
       },
       {
         "label": "Scope",
@@ -132,13 +132,13 @@
         "type": "text",
         "description": "変更の範囲。\n例:\n・.gitignore\n・NavBar",
         "prefix": " (",
-        "suffix": ")"
+        "suffix": ")",
       },
       {
         "label": "Short Description",
         "name": "description",
         "type": "text",
-        "description": "コミットの要約。\n\n例:\n・認証を実装\n・認証画面のスタイルが崩れるバグを修正"
+        "description": "コミットの要約。\n\n例:\n・認証を実装\n・認証画面のスタイルが崩れるバグを修正",
       },
       {
         "label": "Body",
@@ -147,16 +147,16 @@
         "description": "コミットの詳細な説明。\ndescriptionと内容が一致する場合は省略しても良い。\n\n例:\n・CSSにタイポがあったため、それらを修正した。",
         "maxLines": 10,
         "multiline": true,
-        "lines": 5
+        "lines": 5,
       },
       {
         "label": "Footer",
         "name": "footer",
         "description": "破壊的変更についての説明。または署名。",
         "type": "text",
-        "multiline": true
-      }
+        "multiline": true,
+      },
     ],
-    "panda.rem-to-px.enabled": true
-  }
+    "panda.rem-to-px.enabled": true,
+  },
 }
