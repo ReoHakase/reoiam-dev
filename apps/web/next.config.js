@@ -6,6 +6,16 @@ const nextConfig = {
     optimizeCss: true,
     swcMinify: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 's3-ap-northeast-1.amazonaws.com',
+        port: '',
+        pathname: '**',
+      },
+    ],
+  },
   reactStrictMode: true,
 };
 
