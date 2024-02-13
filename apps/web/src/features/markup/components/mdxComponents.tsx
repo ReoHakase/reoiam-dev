@@ -1,5 +1,7 @@
 import type { MDXComponents } from 'mdx/types';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { Image } from '@/components/Image/Image';
+import type { ImageProps } from '@/components/Image/Image';
 import { Showcase } from '@/features/markup/components/Showcase/Showcase';
 import { css, cx } from 'styled-system/css';
 import {
@@ -7,6 +9,7 @@ import {
   markupHr,
   markupSpan,
   markupA,
+  markupImage,
   markupList,
   markupCode,
   markupDiv,
@@ -21,6 +24,37 @@ export const mdxComponents: MDXComponents = {
   // a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
   // Add a custom component.
   // MyComponent: () => <div>Hello World!</div>,
+  // @ts-expect-error Ignore difference between <img> and <Image> from next/image
+  img: ({ src, alt, width, height, blurDataURL, className, ...props }: ImageProps): ReactNode => {
+    const { img, figure, figcaption } = markupImage({ caption: !!alt });
+    if (alt) {
+      return (
+        <figure className={figure}>
+          <Image
+            src={src}
+            alt={alt}
+            width={width}
+            height={height}
+            placeholder="blur"
+            blurDataURL={blurDataURL}
+            className={cx(img, className)}
+            {...props}
+          />
+          <figcaption className={figcaption}>{alt}</figcaption>
+        </figure>
+      );
+    }
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      placeholder="blur"
+      blurDataURL={blurDataURL}
+      className={cx(img, className)}
+      {...props}
+    />;
+  },
   h1: ({ className, ...props }: ComponentPropsWithoutRef<'h1'>): ReactNode => (
     <h1 className={cx(markupHeading({ level: 'h1' }), className)} {...props} />
   ),

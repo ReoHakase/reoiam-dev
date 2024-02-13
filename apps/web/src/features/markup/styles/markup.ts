@@ -8,39 +8,45 @@ const markupHeadingRecipe = defineRecipe({
   base: {
     fontFamily: 'heading',
     fontWeight: 'bold',
-    my: '2',
   },
   variants: {
     level: {
       title: {
         lineHeight: '1',
+        my: '2',
         fontSize: {
           base: '5xl',
           md: '6xl',
         },
       },
       h1: {
-        lineHeight: '1.5',
+        lineHeight: '1.25',
+        my: '3',
         fontSize: '5xl',
       },
       h2: {
-        lineHeight: '1.5',
+        lineHeight: '1.25',
+        my: '3',
         fontSize: '4xl',
       },
       h3: {
-        lineHeight: '1.5',
+        lineHeight: '1.25',
+        my: '3',
         fontSize: '2xl',
       },
       h4: {
-        lineHeight: '1.5',
+        lineHeight: '1.25',
+        my: '3',
         fontSize: 'xl',
       },
       h5: {
-        lineHeight: '1.5',
+        lineHeight: '1.25',
+        my: '3',
         fontSize: 'lg',
       },
       h6: {
-        lineHeight: '1.5',
+        lineHeight: '1.25',
+        my: '3',
         fontSize: 'md',
       },
     },
@@ -141,6 +147,39 @@ const markupDivRecipe = defineRecipe({
         bg: 'danger.3',
         borderColor: 'danger.9',
         color: 'danger.12',
+      },
+    },
+  },
+});
+
+const markupImageRecipe = defineSlotRecipe({
+  className: `${SCOPE}_image`,
+  description: 'Image styles for general markup purposes for MDX.',
+  slots: ['img', 'figure', 'figcaption'],
+  base: {
+    img: {
+      objectFit: 'cover',
+      borderRadius: 'md',
+      bg: 'keyplate.3',
+    },
+    figcaption: {
+      textAlign: 'center',
+      fontSize: 'sm',
+      color: 'keyplate.11',
+    },
+    figure: {},
+  },
+  variants: {
+    caption: {
+      true: {
+        figure: {
+          my: '2',
+        },
+      },
+      false: {
+        img: {
+          my: '2',
+        },
       },
     },
   },
@@ -297,6 +336,7 @@ export {
   markupSpanRecipe,
   markupARecipe,
   markupDivRecipe,
+  markupImageRecipe,
   markupListRecipe,
   markupBlockquoteRecipe,
   markupCodeSlotRecipe,
