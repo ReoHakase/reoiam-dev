@@ -1,6 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
+import { useEffect } from 'react';
 import { useSetCurrentContentName } from '../../states/currentContentName';
 
 export type CurrentContentNameSetterProps = {
@@ -9,6 +10,8 @@ export type CurrentContentNameSetterProps = {
 
 export const CurrentContentNameSetter = ({ name }: CurrentContentNameSetterProps): ReactNode => {
   const setName = useSetCurrentContentName();
-  setName(name);
+  useEffect(() => {
+    setName(name);
+  }, [setName, name]);
   return null;
 };
