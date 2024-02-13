@@ -1,4 +1,5 @@
 import type { ReactNode, ComponentPropsWithoutRef } from 'react';
+import { Fragment } from 'react';
 import { cva, cx } from 'styled-system/css';
 import type { RecipeVariantProps } from 'styled-system/css';
 
@@ -68,10 +69,10 @@ export const Skeleton = ({ className, inline, level, lines = 1, ...props }: Skel
   return inline ? (
     <>
       {Array.from({ length: lines }).map((_, i) => (
-        <>
-          <span key={i} className={cx(skeletonRecipe({ inline, level }), className)} {...props} />
+        <Fragment key={i}>
+          <span className={cx(skeletonRecipe({ inline, level }), className)} {...props} />
           <br />
-        </>
+        </Fragment>
       ))}
     </>
   ) : (
