@@ -4,6 +4,7 @@ import {
   markupHrRecipe,
   markupSpanRecipe,
   markupDivRecipe,
+  markupImageRecipe,
   markupListRecipe,
   markupARecipe,
   markupBlockquoteRecipe,
@@ -31,11 +32,9 @@ export default defineConfig({
         fonts: {
           heading: {
             value: 'var(--font-cal-sans)', // Make sure that the variable's name matches the one in apps/web/src/styles/fonts/index.ts
-            description: 'The font used for headings and outstanding texts',
           },
           code: {
             value: 'var(--font-geist-mono)',
-            description: 'The font used for code blocks and inline code',
           },
         },
         shadows: {
@@ -51,6 +50,7 @@ export default defineConfig({
         markupSpan: markupSpanRecipe,
         markupA: markupARecipe,
         markupDiv: markupDivRecipe,
+        markupImage: markupImageRecipe,
         markupList: markupListRecipe,
         markupBlockquote: markupBlockquoteRecipe,
         markupCode: markupCodeSlotRecipe,

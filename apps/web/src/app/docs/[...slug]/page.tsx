@@ -16,7 +16,6 @@ export const generateStaticParams = async () => {
   const params = allContentDocuments.map((post) => ({
     slug: post._raw.flattenedPath.split('/'),
   }));
-  console.log(params);
   return params;
 };
 

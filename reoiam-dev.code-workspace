@@ -24,8 +24,8 @@
     "panda.hovers.display.mode": "nested",
     "panda.hovers.tokens.conditions.enabled": true,
     "panda.hovers.tokens.css-preview.enabled": false,
-    "commit-message-editor.staticTemplate": ["{type}{scope} {description}", "", "{body}", "", "{footer}"],
-    "commit-message-editor.dynamicTemplate": ["{type}{scope} {description}", "", "{body}", "", "{footer}"],
+    "commit-message-editor.staticTemplate": ["{type}{scope} {description} {issue}", "", "{body}", "", "{footer}"],
+    "commit-message-editor.dynamicTemplate": ["{type}{scope} {description} {issue}", "", "{body}", "", "{footer}"],
     "commit-message-editor.tokens": [
       {
         "label": "Type",
@@ -139,6 +139,14 @@
         "name": "description",
         "type": "text",
         "description": "コミットの要約。\n\n例:\n・認証を実装\n・認証画面のスタイルが崩れるバグを修正",
+      },
+      {
+        "label": "Issue",
+        "name": "issue",
+        "type": "text",
+        "description": "関連するIssue番号。 e.g. #47, #53, ...",
+        "prefix": " (",
+        "suffix": ")",
       },
       {
         "label": "Body",
