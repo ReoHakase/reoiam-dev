@@ -4,6 +4,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypePrettyCode from 'rehype-pretty-code';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
+import { rehypeImageOptimizer } from './src/features/markup/plugins/rehypeImageOptimizer';
 
 export const ContentDocument = defineDocumentType(() => ({
   name: 'ContentDocument',
@@ -40,6 +41,8 @@ const source: ReturnType<typeof makeSource> = makeSource({
       rehypeGithubAlerts,
       // @ts-expect-error TODO: Fix the type error, which seems to be caused by incorrect type definition provided by contentlayer
       rehypeKatex,
+      // @ts-expect-error Ignore confusing `Pluggable` generics type error
+      rehypeImageOptimizer,
     ],
   },
 });
