@@ -15,11 +15,11 @@
     "eslint": "8.56.0",
     "eslint-config-custom": "workspace:*",
     "eslint-config-prettier": "9.1.0",
-    "husky": "9.0.10",
+    "husky": "9.0.11",
     "lint-staged": "15.2.2",
     "prettier": "3.2.5",
     "scaffdog": "3.0.0",
-    "turbo": "1.12.3"
+    "turbo": "1.12.4"
   },
   "engines": {
     "node": ">=18.0.0 <19",
