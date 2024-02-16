@@ -66,7 +66,7 @@ importers:
         specifier: 14.1.0
         version: 14.1.0(eslint@8.56.0)(typescript@5.3.3)
       jotai:
-        specifier: ^2.6.4
+        specifier: 2.6.4
         version: 2.6.4(@types/react@18.2.52)(react@18.2.0)
       lucide-react:
         specifier: 0.321.0
