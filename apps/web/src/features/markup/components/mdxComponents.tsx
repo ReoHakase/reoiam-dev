@@ -37,6 +37,10 @@ export const mdxComponents: MDXComponents = {
             height={height}
             placeholder="blur"
             blurDataURL={blurDataURL}
+            sizes={{
+              default: '100vw',
+              lg: '800px',
+            }}
             className={cx(img, className)}
             {...props}
           />
@@ -51,6 +55,10 @@ export const mdxComponents: MDXComponents = {
       height={height}
       placeholder="blur"
       blurDataURL={blurDataURL}
+      sizes={{
+        default: '100vw',
+        lg: '800px',
+      }}
       className={cx(img, className)}
       {...props}
     />;

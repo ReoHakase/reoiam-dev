@@ -5,8 +5,12 @@ import { breakpoints } from '@/styles/tokens/breakpoints';
 import { css } from 'styled-system/css';
 import type { SystemStyleObject } from 'styled-system/types';
 
+export type ImageSizeDimension = `${number}vw` | `${number}px`;
+
 export type ImageProps = Omit<NextImageProps, 'sizes'> & {
-  sizes?: (Partial<Record<keyof typeof breakpoints, `${number}vw`>> & { default: `${number}vw` }) | `${number}vw`;
+  sizes?:
+    | (Partial<Record<keyof typeof breakpoints, ImageSizeDimension>> & { default: ImageSizeDimension })
+    | ImageSizeDimension;
 } & {
   css?: SystemStyleObject[];
 };

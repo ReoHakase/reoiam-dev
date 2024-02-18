@@ -34,7 +34,8 @@ export default defineConfig({
             value: 'var(--font-cal-sans)', // Make sure that the variable's name matches the one in apps/web/src/styles/fonts/index.ts
           },
           code: {
-            value: 'var(--font-geist-mono)',
+            value:
+              'ui-monospace,"Liga SFMono Nerd Font",SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace',
           },
         },
         shadows: {

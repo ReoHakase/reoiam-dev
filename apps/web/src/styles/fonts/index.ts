@@ -6,11 +6,4 @@ export const calSans = localFont({
   variable: '--font-cal-sans',
 });
 
-export const geistMono = localFont({
-  src: './GeistMonoNerdFontMono-Regular.woff2',
-  display: 'swap',
-  variable: '--font-geist-mono',
-  preload: false,
-});
-
-export const fontVariables = `${calSans.variable} ${geistMono.variable}`;
+export const fontVariables = `${calSans.variable}`;

@@ -52,11 +52,7 @@ export const Header = ({ ...props }: HeaderProps): ReactNode => {
               },
             ]}
             alt="An Icon of ReoHakase"
-            sizes={{
-              default: '10vw',
-              md: '5vw',
-              lg: '3vw',
-            }}
+            sizes="48px"
             placeholder="blur"
           />
         </Link>
