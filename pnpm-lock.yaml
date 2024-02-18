@@ -31,10 +31,13 @@ importers:
         version: 3.0.0
       tsup:
         specifier: 8.0.2
-        version: 8.0.2
+        version: 8.0.2(typescript@5.3.3)
       turbo:
         specifier: 1.12.4
         version: 1.12.4
+      typescript:
+        specifier: 5.3.3
+        version: 5.3.3
 
   apps/web:
     dependencies:
@@ -122,9 +125,6 @@ importers:
       shikiji:
         specifier: 0.10.2
         version: 0.10.2
-      typescript:
-        specifier: 5.3.3
-        version: 5.3.3
       unified:
         specifier: 11.0.4
         version: 11.0.4
@@ -217,6 +217,8 @@ importers:
         specifier: 5.90.2
         version: 5.90.2(@swc/core@1.3.100)(esbuild@0.20.0)
 
+  packages/empty-package: {}
+
   packages/eslint-config-custom:
     dependencies:
       '@typescript-eslint/eslint-plugin':
@@ -243,9 +245,6 @@ importers:
       eslint-plugin-import:
         specifier: 2.29.1
         version: 2.29.1(@typescript-eslint/parser@7.0.1)(eslint@8.56.0)
-      typescript:
-        specifier: 5.3.3
-        version: 5.3.3
     devDependencies:
       prettier:
         specifier: 3.2.5
@@ -298,9 +297,6 @@ importers:
       eslint-plugin-storybook:
         specifier: 0.6.15
         version: 0.6.15(eslint@8.56.0)(typescript@5.3.3)
-      typescript:
-        specifier: 5.3.3
-        version: 5.3.3
     devDependencies:
       prettier:
         specifier: 3.2.5
@@ -326,9 +322,6 @@ importers:
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
-      typescript:
-        specifier: 5.3.3
-        version: 5.3.3
 
 packages:
 
@@ -15889,7 +15882,7 @@ packages:
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
-  /tsup@8.0.2:
+  /tsup@8.0.2(typescript@5.3.3):
     resolution: {integrity: sha512-NY8xtQXdH7hDUAZwcQdY/Vzlw9johQsaqf7iwZ6g1DOUlFYQ5/AtVAjTvihhEyeRlGo4dLRVHtrRaL35M1daqQ==}
     engines: {node: '>=18'}
     hasBin: true
@@ -15922,6 +15915,7 @@ packages:
       source-map: 0.8.0-beta.0
       sucrase: 3.35.0
       tree-kill: 1.2.2
+      typescript: 5.3.3
     transitivePeerDependencies:
       - supports-color
       - ts-node

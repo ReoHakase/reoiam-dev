@@ -15,8 +15,7 @@
     "eslint-config-airbnb-typescript": "17.1.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-config-turbo": "latest",
-    "eslint-plugin-import": "2.29.1",
-    "typescript": "5.3.3"
+    "eslint-plugin-import": "2.29.1"
   },
   "devDependencies": {
     "prettier": "3.2.5"
