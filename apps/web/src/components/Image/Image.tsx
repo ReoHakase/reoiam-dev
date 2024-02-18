@@ -42,7 +42,7 @@ const generateSizes = (sizes: ImageProps['sizes']): string => {
       }
 
       const breakpoint = key as keyof typeof breakpoints;
-      return `@media(min-width: ${breakpoints[breakpoint]}) ${value}`;
+      return `(min-width: ${breakpoints[breakpoint]}) ${value}`;
     })
     .join(', ');
 };
