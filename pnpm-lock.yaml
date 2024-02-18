@@ -304,15 +304,6 @@ importers:
 
   packages/tsconfig: {}
 
-  packages/utils:
-    devDependencies:
-      eslint-config-custom:
-        specifier: workspace:*
-        version: link:../eslint-config-custom
-      tsconfig:
-        specifier: workspace:*
-        version: link:../tsconfig
-
 packages:
 
   /@aashutoshrathi/word-wrap@1.2.6:
