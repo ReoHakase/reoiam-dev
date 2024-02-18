@@ -10,10 +10,7 @@
     "format:fix": "prettier --write ."
   },
   "devDependencies": {
-    "eslint": "8.56.0",
     "eslint-config-custom": "workspace:*",
-    "tsconfig": "workspace:*",
-    "prettier": "3.2.5"
-
+    "tsconfig": "workspace:*"
   }
 }

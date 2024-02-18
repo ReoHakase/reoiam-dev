@@ -65,9 +65,6 @@ importers:
       date-fns:
         specifier: 3.3.1
         version: 3.3.1
-      eslint:
-        specifier: 8.56.0
-        version: 8.56.0
       eslint-config-next:
         specifier: 14.1.0
         version: 14.1.0(eslint@8.56.0)(typescript@5.3.3)
@@ -227,28 +224,18 @@ importers:
       '@typescript-eslint/parser':
         specifier: 7.0.1
         version: 7.0.1(eslint@8.56.0)(typescript@5.3.3)
-      eslint:
-        specifier: 8.56.0
-        version: 8.56.0
       eslint-config-airbnb-base:
         specifier: 15.0.0
         version: 15.0.0(eslint-plugin-import@2.29.1)(eslint@8.56.0)
       eslint-config-airbnb-typescript:
         specifier: 17.1.0
         version: 17.1.0(@typescript-eslint/eslint-plugin@7.0.1)(@typescript-eslint/parser@7.0.1)(eslint-plugin-import@2.29.1)(eslint@8.56.0)
-      eslint-config-prettier:
-        specifier: 9.1.0
-        version: 9.1.0(eslint@8.56.0)
       eslint-config-turbo:
         specifier: latest
         version: 1.10.14(eslint@8.56.0)
       eslint-plugin-import:
         specifier: 2.29.1
         version: 2.29.1(@typescript-eslint/parser@7.0.1)(eslint@8.56.0)
-    devDependencies:
-      prettier:
-        specifier: 3.2.5
-        version: 3.2.5
 
   packages/eslint-config-custom-next:
     dependencies:
@@ -261,9 +248,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: 7.0.1
         version: 7.0.1(eslint@8.56.0)(typescript@5.3.3)
-      eslint:
-        specifier: 8.56.0
-        version: 8.56.0
       eslint-config-airbnb:
         specifier: 19.0.4
         version: 19.0.4(eslint-plugin-import@2.29.1)(eslint-plugin-jsx-a11y@6.8.0)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.33.2)(eslint@8.56.0)
@@ -273,9 +257,6 @@ importers:
       eslint-config-next:
         specifier: 14.1.0
         version: 14.1.0(eslint@8.56.0)(typescript@5.3.3)
-      eslint-config-prettier:
-        specifier: 9.1.0
-        version: 9.1.0(eslint@8.56.0)
       eslint-config-turbo:
         specifier: latest
         version: 1.10.14(eslint@8.56.0)
@@ -297,28 +278,14 @@ importers:
       eslint-plugin-storybook:
         specifier: 0.6.15
         version: 0.6.15(eslint@8.56.0)(typescript@5.3.3)
-    devDependencies:
-      prettier:
-        specifier: 3.2.5
-        version: 3.2.5
 
-  packages/tsconfig:
-    devDependencies:
-      prettier:
-        specifier: 3.2.5
-        version: 3.2.5
+  packages/tsconfig: {}
 
   packages/utils:
     devDependencies:
-      eslint:
-        specifier: 8.56.0
-        version: 8.56.0
       eslint-config-custom:
         specifier: workspace:*
         version: link:../eslint-config-custom
-      prettier:
-        specifier: 3.2.5
-        version: 3.2.5
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
