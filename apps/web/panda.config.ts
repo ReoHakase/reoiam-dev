@@ -1,4 +1,5 @@
 import { defineConfig } from '@pandacss/dev';
+import { radixColorsPreset } from 'panda-preset-radix-colors';
 import {
   markupHeadingRecipe,
   markupHrRecipe,
@@ -13,7 +14,6 @@ import {
   markupShowcaseRecipe,
 } from '@/features/markup/styles/markup';
 import { breakpoints } from '@/styles/tokens/breakpoints';
-import { customRadixColorsPreset } from '@/styles/tokens/radixColorsPreset';
 
 export default defineConfig({
   // Whether to use css reset
@@ -72,7 +72,7 @@ export default defineConfig({
   presets: [
     // Radix Scales provider for PandaCSS by milandekruijf
     // Refer: https://github.com/milandekruijf/pandacss-preset-radix-colors
-    customRadixColorsPreset({
+    radixColorsPreset({
       darkMode: {
         // NOTE: Make sure these selectors match the configurations passed to `next-themes` ThemeProvider
         condition: "[data-theme='dark'] &",
