@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky install && pnpm turbo build-fast",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write ."
   },
@@ -19,7 +19,9 @@
     "lint-staged": "15.2.2",
     "prettier": "3.2.5",
     "scaffdog": "3.0.0",
-    "turbo": "1.12.4"
+    "tsup": "8.0.2",
+    "turbo": "1.12.4",
+    "typescript": "5.3.3"
   },
   "engines": {
     "node": ">=18.0.0 <19",

@@ -10,8 +10,5 @@
   "scripts": {
     "format:check": "prettier --check .",
     "format:fix": "prettier --write ."
-  },
-    "devDependencies": {
-    "prettier": "3.2.5"
   }
 }
