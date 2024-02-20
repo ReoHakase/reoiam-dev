@@ -78,10 +78,10 @@ export const Globe = ({ css: cssProps = {}, ...props }: GlobeProps): ReactNode =
     <div
       className={css(
         {
-          position: 'relative',
+          pos: 'relative',
           flexShrink: '0',
-          width: '584px',
-          height: '584px',
+          w: '584px',
+          h: '584px',
           aspectRatio: '1',
         },
         cssProps,
@@ -90,10 +90,10 @@ export const Globe = ({ css: cssProps = {}, ...props }: GlobeProps): ReactNode =
     >
       <div
         className={css({
-          position: 'absolute',
+          pos: 'absolute',
           w: '242px',
           aspectRatio: '1',
-          borderRadius: '50%',
+          rounded: 'full',
           bg: {
             // NOTE: Radix color `cyan.9` was specified literally in order to reduce output css size, since purple scale is barely used.
             // Refer: https://www.radix-ui.com/colors
@@ -107,10 +107,10 @@ export const Globe = ({ css: cssProps = {}, ...props }: GlobeProps): ReactNode =
       />
       <div
         className={css({
-          position: 'absolute',
+          pos: 'absolute',
           w: '204px',
           aspectRatio: '1',
-          borderRadius: '50%',
+          rounded: 'full',
           bg: {
             // NOTE: Radix color `yellow.9` was specified literally in order to reduce output css size, since purple scale is barely used.
             // Refer: https://www.radix-ui.com/colors
@@ -124,10 +124,10 @@ export const Globe = ({ css: cssProps = {}, ...props }: GlobeProps): ReactNode =
       />
       <div
         className={css({
-          position: 'absolute',
+          pos: 'absolute',
           w: '203px',
           aspectRatio: '1',
-          borderRadius: '50%',
+          rounded: 'full',
           bg: {
             // NOTE: Radix color `pink.9` was specified literally in order to reduce output css size, since purple scale is barely used.
             // Refer: https://www.radix-ui.com/colors
@@ -141,10 +141,10 @@ export const Globe = ({ css: cssProps = {}, ...props }: GlobeProps): ReactNode =
       />
       <div
         className={css({
-          position: 'absolute',
+          pos: 'absolute',
           w: '172px',
           aspectRatio: '1',
-          rounded: '50%',
+          rounded: 'full',
           bg: {
             // NOTE: Radix color `purple.9` was specified literally in order to reduce output css size, since purple scale is barely used.
             // Refer: https://www.radix-ui.com/colors
@@ -159,8 +159,8 @@ export const Globe = ({ css: cssProps = {}, ...props }: GlobeProps): ReactNode =
       <canvas
         ref={canvasRef}
         className={css({
-          width: '100%',
-          height: '100%',
+          w: '100%',
+          h: '100%',
           aspectRatio: '1',
         })}
       />

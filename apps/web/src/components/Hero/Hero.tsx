@@ -20,7 +20,7 @@ export const Hero = ({ css: cssProps = {}, ...props }: HeroProps): ReactNode => 
     <div
       className={css(
         {
-          width: '100%',
+          w: '100%',
           display: 'grid',
           justifyItems: 'stretch',
           alignItems: 'stretch',
@@ -49,7 +49,7 @@ export const Hero = ({ css: cssProps = {}, ...props }: HeroProps): ReactNode => 
       </div>
       <div
         className={flex({
-          width: '100%',
+          w: '100%',
           direction: 'column',
           justify: 'center',
           align: 'stretch',

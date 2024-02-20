@@ -8,19 +8,19 @@ const drawerSlotRecipe = sva({
   slots: ['overlay', 'content', 'scrollarea', 'title', 'description', 'close', 'knob'],
   base: {
     overlay: {
-      position: 'fixed',
+      pos: 'fixed',
       inset: '0',
     },
     content: {
-      boxShadow: 'floating',
+      shadow: 'floating',
       bg: 'keyplate.1',
-      position: 'fixed',
+      pos: 'fixed',
       bottom: '0',
       left: '0',
       right: '0',
-      w: 'calc(token(sizes.full) - token(spaces.2) * 2)',
+      w: 'calc(token(sizes.full) - token(sizes.2) * 2)',
       display: 'flex',
-      flexDirection: 'column',
+      flexDir: 'column',
       roundedTop: 'xl',
       zIndex: '100',
       mx: '2',
@@ -28,7 +28,7 @@ const drawerSlotRecipe = sva({
     scrollarea: {
       p: '4',
       display: 'flex',
-      flexDirection: 'column',
+      flexDir: 'column',
       gap: '2',
       w: 'full',
     },
@@ -50,7 +50,7 @@ const drawerSlotRecipe = sva({
       fontSize: 'sm',
     },
     close: {
-      position: 'absolute',
+      pos: 'absolute',
       top: '2',
       color: 'keyplate.11',
       right: '2',

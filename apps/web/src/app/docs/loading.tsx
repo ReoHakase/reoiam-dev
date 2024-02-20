@@ -8,7 +8,7 @@ const Document = (): ReactNode => {
   return (
     <main
       className={flex({
-        maxWidth: '800px',
+        maxW: '800px',
         w: 'full',
         flexGrow: '1',
         alignSelf: 'stretch',

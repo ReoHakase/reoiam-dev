@@ -11,7 +11,7 @@ const Home = (): ReactNode => {
         w: 'full',
         display: 'flex',
         flexGrow: 1,
-        flexDirection: 'column',
+        flexDir: 'column',
         justifyContent: 'start',
         alignItems: 'center',
       })}
