@@ -30,7 +30,7 @@ export const MyPhotoCardStack = ({
         css(
           {
             display: 'flex',
-            flexDirection: 'column',
+            flexDir: 'column',
             justifyContent: 'center',
             alignItems: 'center',
             w: 'full',
@@ -49,7 +49,7 @@ export const MyPhotoCardStack = ({
         className={css({
           w: '347px',
           h: '443px',
-          position: 'relative',
+          pos: 'relative',
           my: '20',
         })}
       >

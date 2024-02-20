@@ -8,7 +8,7 @@ export const sidebarSlotRecipe = sva({
   base: {
     container: {
       display: 'flex',
-      flexDirection: 'column',
+      flexDir: 'column',
       gap: '2',
       alignItems: 'stretch',
       justifyContent: 'start',
@@ -16,7 +16,7 @@ export const sidebarSlotRecipe = sva({
     },
     treelist: {
       display: 'flex',
-      flexDirection: 'column',
+      flexDir: 'column',
       gap: '2',
       w: 'full',
     },

@@ -14,8 +14,8 @@ export const Header = ({ ...props }: HeaderProps): ReactNode => {
   return (
     <header
       className={flex({
-        position: 'sticky',
-        width: '100%',
+        pos: 'sticky',
+        w: '100%',
         top: '0',
         left: '0',
         zIndex: '100',
@@ -60,7 +60,7 @@ export const Header = ({ ...props }: HeaderProps): ReactNode => {
           className={css({
             rounded: 'sm',
             fontFamily: 'heading',
-            maxWidth: '12rem',
+            maxW: '12rem',
             lineHeight: '1.25',
             // backdropFilter: 'blur(8px) saturate(130%) contrast(30%) brightness(150%)',
           })}

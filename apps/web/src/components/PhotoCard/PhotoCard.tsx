@@ -15,7 +15,7 @@ export const photoCardSlotRecipe = sva({
       shadow: 'lg',
       p: '4',
       display: 'flex',
-      flexDirection: 'column',
+      flexDir: 'column',
       justifyContent: 'center',
       alignItems: 'center',
       gap: '2',

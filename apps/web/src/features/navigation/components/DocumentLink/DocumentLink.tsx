@@ -14,7 +14,7 @@ export const documentLinkSlotRecipe = sva({
     link: {
       w: 'full',
       display: 'flex',
-      flexDirection: 'row',
+      flexDir: 'row',
       justifyContent: 'start',
       alignItems: 'center',
       gap: '2',
@@ -24,7 +24,7 @@ export const documentLinkSlotRecipe = sva({
     },
     titlegroup: {
       display: 'flex',
-      flexDirection: 'column',
+      flexDir: 'column',
     },
     title: {
       fontWeight: 'bold',

@@ -11,7 +11,7 @@ type DocsLayoutProps = {
 const DocsLayout = ({ children }: DocsLayoutProps): ReactNode => (
   <div
     className={css({
-      position: 'relative',
+      pos: 'relative',
       w: 'full',
       display: 'grid',
       gridTemplateColumns: '1fr auto 1fr',
@@ -52,7 +52,7 @@ const DocsLayout = ({ children }: DocsLayoutProps): ReactNode => (
           lg: '800px',
         },
         display: 'flex',
-        flexDirection: 'column',
+        flexDir: 'column',
         justifyContent: 'start',
         alignItems: 'center',
       })}
@@ -62,7 +62,7 @@ const DocsLayout = ({ children }: DocsLayoutProps): ReactNode => (
     <div
       className={css({
         display: 'flex',
-        flexDirection: 'column',
+        flexDir: 'column',
         justifyContent: 'start',
         alignItems: 'start',
         xlDown: {

@@ -60,7 +60,7 @@ const Document = ({ params }: PageProps): ReactNode => {
   return (
     <main
       className={flex({
-        maxWidth: '800px',
+        maxW: '800px',
         w: 'full',
         direction: 'column',
         justify: 'start',
@@ -80,7 +80,7 @@ const Document = ({ params }: PageProps): ReactNode => {
           alignItems: 'center',
           justifyContent: 'end',
           gap: '1',
-          flexDirection: 'row',
+          flexDir: 'row',
           my: '2',
         })}
       >

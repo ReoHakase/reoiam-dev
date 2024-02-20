@@ -8,7 +8,7 @@ const skeletonRecipe = cva({
     animation: 'pulse',
     bg: 'keyplate.3',
     rounded: 'md',
-    outline: 'none',
+    ring: 'none',
     userSelect: 'none',
   },
   variants: {

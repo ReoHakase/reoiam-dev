@@ -24,7 +24,7 @@ const navbarSlotRecipe = sva({
   slots: ['root', 'sidebarButton', 'current', 'detailButton', 'buttonLabel'],
   base: {
     root: {
-      position: 'fixed',
+      pos: 'fixed',
       bottom: '2',
       left: {
         base: '0',
@@ -50,7 +50,7 @@ const navbarSlotRecipe = sva({
       p: '1',
       bg: 'keyplate.1',
       rounded: 'md',
-      boxShadow: 'floating',
+      shadow: 'floating',
     },
     sidebarButton: {
       justifySelf: 'start',
@@ -58,7 +58,7 @@ const navbarSlotRecipe = sva({
         base: 'flex',
         lg: 'none',
       },
-      flexDirection: 'row',
+      flexDir: 'row',
       alignItems: 'center',
       gap: '2',
       p: '1',
@@ -68,7 +68,7 @@ const navbarSlotRecipe = sva({
     detailButton: {
       justifySelf: 'end',
       display: 'flex',
-      flexDirection: 'row',
+      flexDir: 'row',
       alignItems: 'center',
       gap: '2',
       p: '1',
@@ -89,7 +89,7 @@ const navbarSlotRecipe = sva({
         base: 'flex',
         lg: 'none',
       },
-      flexDirection: 'column',
+      flexDir: 'column',
       justifyContent: 'center',
       alignItems: 'center',
       fontWeight: 'bold',
@@ -147,10 +147,10 @@ export const Navbar = (props: NavbarProps): ReactNode => {
               animation: 'pulse',
               bg: 'keyplate.3',
               rounded: 'md',
-              outline: 'none',
+              ring: 'none',
               userSelect: 'none',
               w: '50vw',
-              height: '1em',
+              h: '1em',
             })}
           />
         ) : (
