@@ -101,6 +101,9 @@ importers:
       rehype-github-alerts:
         specifier: 2.0.0
         version: 2.0.0
+      rehype-image-optimizer:
+        specifier: workspace:*
+        version: link:../../packages/rehype-image-optimizer
       rehype-katex:
         specifier: 7.0.0
         version: 7.0.0
@@ -295,6 +298,31 @@ importers:
         specifier: 0.2.0
         version: 0.2.0(@pandacss/dev@0.31.0)(@radix-ui/colors@3.0.0)
     devDependencies:
+      eslint-config-custom:
+        specifier: workspace:*
+        version: link:../eslint-config-custom
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
+
+  packages/rehype-image-optimizer:
+    dependencies:
+      plaiceholder:
+        specifier: 3.0.0
+        version: 3.0.0(sharp@0.32.6)
+      unified:
+        specifier: 11.0.4
+        version: 11.0.4
+      unist-util-visit:
+        specifier: 5.0.0
+        version: 5.0.0
+    devDependencies:
+      '@types/hast':
+        specifier: ^3.0.4
+        version: 3.0.4
+      '@types/node':
+        specifier: 18.19.14
+        version: 18.19.14
       eslint-config-custom:
         specifier: workspace:*
         version: link:../eslint-config-custom
@@ -5466,6 +5494,12 @@ packages:
     dependencies:
       '@types/unist': 3.0.2
     dev: false
+
+  /@types/hast@3.0.4:
+    resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
+    dependencies:
+      '@types/unist': 3.0.2
+    dev: true
 
   /@types/html-minifier-terser@6.1.0:
     resolution: {integrity: sha512-oh/6byDPnL1zeNXFrDXFLyZjkr1MsBG667IM792caf1L2UPOOMf65NFzjUH/ltyfwjAGfs1rsX1eftK0jC/KIg==}
@@ -11047,7 +11081,7 @@ packages:
       '@types/node': 18.19.14
       chalk: 4.1.2
       ci-info: 3.8.0
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       picomatch: 2.3.1
     dev: true
 

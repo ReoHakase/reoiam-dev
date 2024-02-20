@@ -1,12 +1,20 @@
 {
   "folders": [
     {
-      "name": "reoiam-dev",
+      "name": "📁 reoiam-dev",
       "path": ".",
     },
     {
-      "name": "web",
+      "name": "🌏 web",
       "path": "apps/web",
+    },
+    {
+      "name": "📦 panda-preset-radix-colors",
+      "path": "packages/panda-preset-radix-colors",
+    },
+    {
+      "name": "📦 rehype-image-optimizer",
+      "path": "packages/rehype-image-optimizer",
     },
   ],
   "settings": {
