@@ -1,50 +1,54 @@
-# 💽 ReoHakase/reoiam-dev
-A monorepo starter that includes Next 13 app
-![Frame 2](https://github.com/ReoHakase/reoiam-dev/assets/16751535/ec4d1314-0059-4a35-89b8-786cfaaeab53)
+# reoiam.dev
+
+The source code for my personal website, [reoiam.dev](https://reoiam.dev).
+
+Made with 💙 using:
+- **Next.js<sup>14</sup>** ▲ *with `app` router.*
+- **Contentlayer** 📚 for MDX processing with fast HMR, remark and rehype supports.
+- ~~**Hono** 🔥 *for fast and type-safe REST server.*~~
+- **Jotai** 👻 *to manage client-side states.*
+- **Panda CSS** 🐼 *for styling with amazing semantic token and recipe system.*
+- **Radix UI** 💻 *to provide accesible UI without hassle.*
+- ~~**Tanstack Query<sup>v5</sup>** 🚦 *to query and mutate endpoints efficiently.*~~
+- ~~**React Hook Form** 📋 *to handle form with validation uncontrolledly.*~~
+- **Storybook** 📕 *to check styles and a11y, and to run visual regression tests.*
+- ~~**Vitest** ⚡ *to unit test components and server endpoints.*~~
+- **Turborepo**  *to manage monorepo with cache pipelines.*
 
 
-# Turborepo starter
+> [!WARNING]  
+> Still under construction 🚧
 
-This is an official pnpm starter turborepo.
-
-## What's inside?
-
-This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
 
 ### Build
 
+#### Full Build
+
 To build all apps and packages, run the following command:
 
+```sh
+pnpm turbo build
 ```
-cd my-turborepo
-pnpm run build
+
+#### Packages Only
+
+If you would like to build only the packages which are nessessary for the apps, run the following command:
+
+```sh
+pnpm turbo build-fast
 ```
+
+> [!NOTE]    
+> For most of packages in `packages/*`, [`tsup`](https://github.com/egoist/tsup) bundler is used to bundle their typescript codes.
+> More precisely, npm script `build-fast` bundles the typescript codes without type checking, while `build` does with.
+
 
 ### Develop
 
-To develop all apps and packages, run the following command:
+To develop the main web app build with **Next.js**▲ `apps/web`, run the following command:
 
-```
-cd my-turborepo
-pnpm run dev
+```sh
+pnpm -F web dev
 ```
 
 ### Remote Caching
@@ -65,14 +69,3 @@ Next, you can link your Turborepo to your Remote Cache by running the following 
 ```
 pnpm dlx turbo link
 ```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Pipelines](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
