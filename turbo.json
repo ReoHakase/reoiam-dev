@@ -6,7 +6,7 @@
       "outputs": ["dist/**", ".next/**"]
     },
     "build-fast": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build-fast"],
       "outputs": ["dist/**", ".next/**"]
     },
     "lint": {
