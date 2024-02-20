@@ -14,8 +14,9 @@ module.exports = {
     'plugin:storybook/recommended',
     'next',
     'plugin:react/recommended',
+    'plugin:@pandacss/recommended',
   ],
-  plugins: ['@typescript-eslint', 'react', 'jsx-a11y', 'import', 'prettier'],
+  plugins: ['@typescript-eslint', 'react', 'jsx-a11y', 'import', 'prettier', '@pandacss'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
@@ -58,6 +59,8 @@ module.exports = {
     'react/no-danger': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
+    '@pandacss/prefer-shorthand-properties': 'error',
+    '@pandacss/no-important': 'error',
   },
   overrides: [
     {
