@@ -61,6 +61,7 @@ module.exports = {
     'react/require-default-props': 'off',
     '@pandacss/prefer-shorthand-properties': 'error',
     '@pandacss/no-important': 'error',
+    '@pandacss/no-config-function-in-source': 'off',
   },
   overrides: [
     {
