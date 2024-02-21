@@ -9,7 +9,7 @@ module.exports = {
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
-  ignorePatterns: ['.turbo', 'node_modules', '**/*.js', '**/*.mjs', '**/*.jsx'],
+  ignorePatterns: ['.turbo', 'node_modules', 'dist', '**/*.js', '**/*.mjs', '**/*.jsx', 'tsup.config.ts'],
   rules: {
     'import/order': [
       'error',
