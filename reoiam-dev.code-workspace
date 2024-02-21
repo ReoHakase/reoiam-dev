@@ -13,6 +13,10 @@
       "path": "packages/panda-preset-radix-colors",
     },
     {
+      "name": "📦 panda-preset-radix-ui",
+      "path": "packages/panda-preset-radix-ui",
+    },
+    {
       "name": "📦 rehype-image-optimizer",
       "path": "packages/rehype-image-optimizer",
     },
