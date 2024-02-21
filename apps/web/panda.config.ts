@@ -1,5 +1,6 @@
 import { defineConfig } from '@pandacss/dev';
 import { radixColorsPreset } from 'panda-preset-radix-colors';
+import { radixUIPreset } from 'panda-preset-radix-ui';
 import {
   markupHeadingRecipe,
   markupHrRecipe,
@@ -89,6 +90,11 @@ export default defineConfig({
       },
       colorScales: ['white', 'black'],
       withoutAlpha: false,
+    }),
+
+    radixUIPreset({
+      prefix: 'radix',
+      selectorNameCase: 'camelCase',
     }),
 
     // Re-add the panda preset if you want to keep

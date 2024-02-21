@@ -204,6 +204,9 @@ importers:
       panda-preset-radix-colors:
         specifier: workspace:*
         version: link:../../packages/panda-preset-radix-colors
+      panda-preset-radix-ui:
+        specifier: workspace:*
+        version: link:../../packages/panda-preset-radix-ui
       postcss:
         specifier: 8.4.35
         version: 8.4.35
