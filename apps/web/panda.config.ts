@@ -26,9 +26,98 @@ export default defineConfig({
   // Files to exclude
   exclude: [],
 
+  utilities: {
+    extend: {
+      keyframeEnterOpacity: {
+        className: 'keyframe-exit-opacity',
+        values: 'opacity',
+        transform: (value: string) => ({
+          [`--keyframe-enter-opacity`]: value,
+        }),
+      },
+      keyframeEnterX: {
+        className: 'keyframe-enter-x',
+        values: 'spacing',
+        transform: (value: string) => ({
+          [`--keyframe-enter-x`]: value,
+        }),
+      },
+      keyframeEnterY: {
+        className: 'keyframe-enter-y',
+        values: 'spacing',
+        transform: (value: string) => ({
+          [`--keyframe-enter-y`]: value,
+        }),
+      },
+      keyframeEnterScale: {
+        className: 'keyframe-enter-scale',
+        transform: (value: string) => ({
+          [`--keyframe-enter-scale`]: value,
+        }),
+      },
+      keyframeEnterRotate: {
+        className: 'keyframe-enter-rotate',
+        transform: (value: `${number}deg` | `${number}rad` | `${number}grad` | `${number}turn`) => ({
+          [`--keyframe-enter-rotate`]: value,
+        }),
+      },
+      keyframeExitOpacity: {
+        className: 'keyframe-exit-opacity',
+        values: 'opacity',
+        transform: (value: string) => ({
+          [`--keyframe-exit-opacity`]: value,
+        }),
+      },
+      keyframeExitX: {
+        className: 'keyframe-exit-x',
+        values: 'spacing',
+        transform: (value: string) => ({
+          [`--keyframe-exit-x`]: value,
+        }),
+      },
+      keyframeExitY: {
+        className: 'keyframe-exit-y',
+        values: 'spacing',
+        transform: (value: string) => ({
+          [`--keyframe-exit-y`]: value,
+        }),
+      },
+      keyframeExitScale: {
+        className: 'keyframe-exit-scale',
+        values: 'spacing',
+        transform: (value: string) => ({
+          [`--keyframe-exit-scale`]: value,
+        }),
+      },
+      keyframeExitRotate: {
+        className: 'keyframe-exit-rotate',
+        values: 'spacing',
+        transform: (value: `${number}deg` | `${number}rad` | `${number}grad` | `${number}turn`) => ({
+          [`--keyframe-exit-rotate`]: value,
+        }),
+      },
+    },
+  },
+
   // Useful for theme customization
   theme: {
     extend: {
+      keyframes: {
+        enter: {
+          from: {
+            opacity: 'var(--keyframe-enter-opacity, 1)',
+            transform:
+              'translate3d(var(--keyframe-enter-x, 0), var(--keyframe-enter-y, 0), 0) scale3d(var(--keyframe-enter-scale, 1), var(--keyframe-enter-scale, 1), var(--keyframe-enter-scale, 1)) rotate(var(--keyframe-enter-rotate, 0))',
+          },
+        },
+        exit: {
+          to: {
+            opacity: 'var(--keyframe-exit-opacity, 1)',
+            transform:
+              'translate3d(var(--keyframe-exit-x, 0), var(--keyframe-exit-y, 0), 0) scale3d(var(--keyframe-exit-scale, 1), var(--keyframe-exit-scale, 1), var(--keyframe-exit-scale, 1)) rotate(var(--keyframe-exit-rotate, 0))',
+          },
+        },
+      },
       tokens: {
         fonts: {
           heading: {
