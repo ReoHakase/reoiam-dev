@@ -159,11 +159,9 @@ export const createSlotRecipeContext = <S extends string, T extends SlotRecipeVa
       };
 
       return (
-        <SlotRecipeResultContext.Provider value={slotStyles}>
-          {/* Type '{ ref: ForwardedRef<ElementRef<C>>; } & TNewProps' is not assignable to type 'LibraryManagedAttributes<C, any>'.ts(2322) */}
-          {/* @ts-expect-error: Could not find any useful solution on  `LibraryManagedAttributes` type error. It could be caused by the type definition getting too deep. */}
-          <Component ref={ref} {...newProps} />
-        </SlotRecipeResultContext.Provider>
+        // Type '{ ref: ForwardedRef<ElementRef<C>>; } & TNewProps' is not assignable to type 'LibraryManagedAttributes<C, any>'.ts(2322)
+        // @ts-expect-error: Could not find any useful solution on  `LibraryManagedAttributes` type error. It could be caused by the type definition getting too deep.
+        <Component ref={ref} {...newProps} />
       );
     });
 
