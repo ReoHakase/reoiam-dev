@@ -1,7 +1,7 @@
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata, Viewport } from 'next';
 import type { FC, ReactNode } from 'react';
-import { Header } from '@/components/Header/Header';
+import { Header } from '@/features/navigation/components/Header/Header';
 import { AppProvider } from '@/providers';
 import { fontVariables } from '@/styles/fonts';
 import { baseUrl } from '@/utils/routes/baseUrl';

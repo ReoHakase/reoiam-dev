@@ -39,6 +39,7 @@ export const Header = ({ ...props }: HeaderProps): ReactNode => {
           href="/"
           className={css({
             rounded: 'full',
+            flexShrink: '0',
           })}
         >
           <Image
@@ -94,7 +95,10 @@ export const Header = ({ ...props }: HeaderProps): ReactNode => {
             rounded: 'full',
           })}
         >
-          <GithubIcon /> Open GitHub
+          <GithubIcon />
+          <span>
+            <span className={css({ smDown: { display: 'none' } })}>Open </span>GitHub
+          </span>
         </Link>
       </div>
     </header>
