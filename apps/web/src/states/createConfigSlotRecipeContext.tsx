@@ -4,7 +4,6 @@ import { createContext, forwardRef, useContext, useMemo } from 'react';
 import type { ElementRef, ElementType, ComponentPropsWithoutRef } from 'react';
 
 import { cx } from 'styled-system/css';
-import type { SlotRecipeRuntimeFn, SlotRecipeVariantRecord, RecipeSelection } from 'styled-system/types';
 
 /**
  * Retrieves the display name of a React component.
@@ -16,6 +15,13 @@ import type { SlotRecipeRuntimeFn, SlotRecipeVariantRecord, RecipeSelection } fr
 const getDisplayName = (Component: ElementType) => {
   if (typeof Component === 'string') return Component;
   return Component?.displayName || Component?.name || 'Component';
+};
+
+type ConfigSlotRecipeVariant = Record<string, unknown>;
+
+type ConfigSlotRecipe<S extends string, V extends ConfigSlotRecipeVariant> = {
+  (props?: V): Record<S, string>;
+  splitVariantProps<Props extends V>(props: Props): [V, Record<string, unknown>];
 };
 
 // Type generics S, T are the slot names and the variant record respectively.
@@ -46,12 +52,12 @@ const getDisplayName = (Component: ElementType) => {
  * @param {string} [recipeDisplayName] - (Optional) The display name of the recipe only for debugging.
  * @returns {Object} - `withVariantProvider()` creates a wrapped component to which slot variant props are given. `withVariantConsumer` creates a component that consumes slot styles provided by `withVariantProvider()`. And `useVariantProps()` hook can retrive variant props on your wish.
  */
-export const createSlotRecipeContext = <S extends string, T extends SlotRecipeVariantRecord<S>>(
-  recipe: SlotRecipeRuntimeFn<S, T>,
+export const createConfigSlotRecipeContext = <S extends string, V extends ConfigSlotRecipeVariant>(
+  recipe: ConfigSlotRecipe<S, V>,
   recipeDisplayName?: string,
 ) => {
   const SlotRecipeResultContext = createContext<ReturnType<typeof recipe> | null>(null);
-  const VariantPropsContext = createContext<RecipeSelection<T> | null>(null);
+  const VariantPropsContext = createContext<V | null>(null);
 
   /**
    * Retrieves the variant props from the VariantPropsContext.
@@ -60,7 +66,7 @@ export const createSlotRecipeContext = <S extends string, T extends SlotRecipeVa
    * @returns The variant props of the nearest parent with corresponding `withVariantProvider()`.
    * @throws {Error} if the variant props are not found.
    */
-  const useVariantProps = (keys: Array<keyof RecipeSelection<T>> | null = null) => {
+  const useVariantProps = (keys: Array<keyof V> | null = null) => {
     const variantProps = useContext(VariantPropsContext);
     if (!variantProps) {
       throw new Error(
@@ -69,7 +75,7 @@ export const createSlotRecipeContext = <S extends string, T extends SlotRecipeVa
     }
     const memoizedVariantProps = useMemo(() => {
       if (keys === null) return variantProps;
-      return keys.reduce((acc, key) => ({ ...acc, [key]: variantProps[key] }), {} as RecipeSelection<T>);
+      return keys.reduce((acc, key) => ({ ...acc, [key]: variantProps[key] }), {} as V);
     }, [variantProps, keys]);
     return memoizedVariantProps;
   };
@@ -97,10 +103,7 @@ export const createSlotRecipeContext = <S extends string, T extends SlotRecipeVa
    * @param {S | null} slot - The slot name of which style gets applied to the `Component`. When `null` is given, the `Component` gets no additional classnames.
    * @returns The wrapped component.
    */
-  const withVariantProvider = <
-    C extends ElementType,
-    TNewProps extends RecipeSelection<T> & ComponentPropsWithoutRef<C>,
-  >(
+  const withVariantProvider = <C extends ElementType, TNewProps extends V & ComponentPropsWithoutRef<C>>(
     Component: C,
     slot: S | null,
   ) => {

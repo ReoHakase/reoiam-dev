@@ -1,5 +1,6 @@
 import { GithubIcon } from 'lucide-react';
 import type { ReactNode, ComponentPropsWithoutRef } from 'react';
+import { ThemeSelect } from '../ThemeSelect/ThemeSelect';
 import { Image } from '@/components/Image/Image';
 import { Link } from '@/components/Link/Link';
 import HeaderIconImage from '@public/icon.webp';
@@ -39,6 +40,7 @@ export const Header = ({ ...props }: HeaderProps): ReactNode => {
           href="/"
           className={css({
             rounded: 'full',
+            flexShrink: '0',
           })}
         >
           <Image
@@ -76,8 +78,10 @@ export const Header = ({ ...props }: HeaderProps): ReactNode => {
           justify: 'end',
           align: 'center',
           grow: '1',
+          gap: '2',
         })}
       >
+        <ThemeSelect />
         <Link
           href="https://github.com/ReoHakase"
           external
@@ -94,7 +98,10 @@ export const Header = ({ ...props }: HeaderProps): ReactNode => {
             rounded: 'full',
           })}
         >
-          <GithubIcon /> Open GitHub
+          <GithubIcon />
+          <span>
+            <span className={css({ smDown: { display: 'none' } })}>Open </span>GitHub
+          </span>
         </Link>
       </div>
     </header>

@@ -3,7 +3,7 @@ import path from 'path';
 import type { Configuration } from 'webpack';
 
 const config: StorybookConfig = {
-  addons: ['@storybook/addon-a11y', '@storybook/addon-essentials'],
+  addons: ['@storybook/addon-a11y', '@storybook/addon-essentials', '@storybook/addon-interactions'],
   framework: {
     name: '@storybook/nextjs',
     options: {},
