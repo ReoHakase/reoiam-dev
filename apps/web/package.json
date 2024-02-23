@@ -51,16 +51,16 @@
   "devDependencies": {
     "@babel/core": "7.23.9",
     "@funboxteam/optimizt": "5.0.2",
-    "@pandacss/dev": "0.31.0",
+    "@pandacss/dev": "0.32.0",
     "@radix-ui/colors": "3.0.0",
-    "@storybook/addon-a11y": "7.6.16",
-    "@storybook/addon-essentials": "7.6.16",
-    "@storybook/addon-interactions": "7.6.16",
-    "@storybook/addon-links": "7.6.16",
-    "@storybook/addon-viewport": "7.6.16",
-    "@storybook/blocks": "7.6.16",
-    "@storybook/nextjs": "7.6.16",
-    "@storybook/react": "7.6.16",
+    "@storybook/addon-a11y": "7.6.17",
+    "@storybook/addon-essentials": "7.6.17",
+    "@storybook/addon-interactions": "7.6.17",
+    "@storybook/addon-links": "7.6.17",
+    "@storybook/addon-viewport": "7.6.17",
+    "@storybook/blocks": "7.6.17",
+    "@storybook/nextjs": "7.6.17",
+    "@storybook/react": "7.6.17",
     "@storybook/testing-library": "0.2.2",
     "@types/mdast": "4.0.3",
     "@types/mdx": "2.0.11",
@@ -73,8 +73,8 @@
     "jest-mock": "29.7.0",
     "mdx": "0.3.1",
     "postcss": "8.4.35",
-    "storybook": "7.6.16",
+    "storybook": "7.6.17",
     "tsconfig": "workspace:*",
-    "webpack": "5.90.2"
+    "webpack": "5.90.3"
   }
 }
