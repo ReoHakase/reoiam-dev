@@ -56,17 +56,39 @@ export const createSlotRecipeContext = <S extends string, T extends SlotRecipeVa
   /**
    * Retrieves the variant props from the VariantPropsContext.
    * Throws an error if the variant props are not found.
-   * @returns The variant props of the nearest parent with `withVariantProvider()`.
-   * @throws Error if the variant props are not found.
+   * @params keys - The keys of the variant props to be retrieved. When `null` is given, all variant props are retrieved.
+   * @returns The variant props of the nearest parent with corresponding `withVariantProvider()`.
+   * @throws {Error} if the variant props are not found.
    */
-  const useVariantProps = () => {
+  const useVariantProps = (keys: Array<keyof RecipeSelection<T>> | null = null) => {
     const variantProps = useContext(VariantPropsContext);
-    if (variantProps === null) {
+    if (!variantProps) {
       throw new Error(
-        `\`useVariantProps()\` for the slot recipe \`${recipeDisplayName || recipe.name}\` must be used within a \`<VariantPropsContext.Provider>\`. You must call it within a component that is generated with \`withVariantProvider()\` factory.`,
+        `useVariantProps: Could not find the variant props. Make sure to wrap the component with corresponding \`withVariantProvider()\`.`,
       );
     }
-    return variantProps;
+    const memoizedVariantProps = useMemo(() => {
+      if (keys === null) return variantProps;
+      return keys.reduce((acc, key) => ({ ...acc, [key]: variantProps[key] }), {} as RecipeSelection<T>);
+    }, [variantProps, keys]);
+    return memoizedVariantProps;
+  };
+
+  /**
+   * Retrieves the styles for a specific slot.
+   * @param slot - The slot for which to retrieve the styles.
+   * @returns The styles for the specified slot.
+   * @throws {Error} If the slot styles are not found. Make sure to wrap the component with the corresponding `withVariantProvider()`.
+   */
+  const useSlotRecipeResult = (slot: S) => {
+    const slotStyles = useContext(SlotRecipeResultContext);
+    if (!slotStyles) {
+      throw new Error(
+        `useSlotRecipeResult: Could not find the slot styles. Make sure to wrap the component with corresponding \`withVariantProvider()\`.`,
+      );
+    }
+    const memoizedSlotStyles = useMemo(() => slotStyles[slot], [slotStyles, slot]);
+    return memoizedSlotStyles;
   };
 
   /**
@@ -151,5 +173,5 @@ export const createSlotRecipeContext = <S extends string, T extends SlotRecipeVa
     return StyledComponent;
   };
 
-  return { withVariantProvider, withVariantConsumer, useVariantProps };
+  return { withVariantProvider, withVariantConsumer, useVariantProps, useSlotRecipeResult };
 };
