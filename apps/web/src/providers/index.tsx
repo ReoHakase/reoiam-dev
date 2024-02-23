@@ -1,15 +1,13 @@
-'use client';
-
-import { Provider as JotaiProvider } from 'jotai';
-import { ThemeProvider } from 'next-themes';
-import type { FC, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import { StateProvider } from './StateProvider';
+import { ThemeProvider } from './ThemeProvider';
 
 type AppProviderProps = {
   children: ReactNode;
 };
 
-export const AppProvider: FC<AppProviderProps> = ({ children }) => (
-  <JotaiProvider>
-    <ThemeProvider attribute="data-theme">{children}</ThemeProvider>
-  </JotaiProvider>
+export const AppProvider = ({ children }: AppProviderProps): ReactNode => (
+  <ThemeProvider>
+    <StateProvider>{children}</StateProvider>
+  </ThemeProvider>
 );
