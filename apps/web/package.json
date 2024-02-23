@@ -62,6 +62,7 @@
     "@storybook/blocks": "7.6.16",
     "@storybook/nextjs": "7.6.16",
     "@storybook/react": "7.6.16",
+    "@storybook/test": "7.6.17",
     "@storybook/testing-library": "0.2.2",
     "@types/mdast": "4.0.3",
     "@types/mdx": "2.0.11",
