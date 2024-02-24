@@ -12,7 +12,7 @@
     "format:fix": "prettier --write ."
   },
   "devDependencies": {
-    "eslint": "8.56.0",
+    "eslint": "8.57.0",
     "eslint-config-custom": "workspace:*",
     "eslint-config-prettier": "9.1.0",
     "husky": "9.0.11",
