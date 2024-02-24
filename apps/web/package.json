@@ -52,7 +52,7 @@
   "devDependencies": {
     "@babel/core": "7.23.9",
     "@funboxteam/optimizt": "5.0.2",
-    "@pandacss/dev": "0.32.0",
+    "@pandacss/dev": "0.32.1",
     "@radix-ui/colors": "3.0.0",
     "@storybook/test": "7.6.17",
     "@storybook/addon-a11y": "7.6.17",
