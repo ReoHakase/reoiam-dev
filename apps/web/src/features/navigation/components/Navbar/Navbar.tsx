@@ -139,7 +139,7 @@ export const Navbar = ({ children, ...props }: NavbarProps): ReactNode => {
             <DrawerClose>Close</DrawerClose>
             <DrawerScrollArea>
               <DrawerTitle>All Documents</DrawerTitle>
-              <Sidebar />
+              <Sidebar hasPadding={false} />
             </DrawerScrollArea>
           </DrawerContent>
         </DrawerPortal>
