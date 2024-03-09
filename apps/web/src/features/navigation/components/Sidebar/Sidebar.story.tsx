@@ -10,9 +10,22 @@ const meta: Meta<typeof Sidebar> = {
   args: {
     className: css({ w: '80' }),
   },
-  argTypes: {},
+  argTypes: {
+    hasPadding: {
+      control: {
+        type: 'boolean',
+      },
+      description: 'Whether to add padding to the container.',
+    },
+  },
 };
 
 export default meta;
 
 export const Default: Story = {};
+
+export const NoPadding: Story = {
+  args: {
+    hasPadding: false,
+  },
+};
