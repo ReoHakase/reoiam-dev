@@ -21,12 +21,29 @@ export const sidebarSlotRecipe = sva({
       w: 'full',
     },
   },
+  variants: {
+    hasPadding: {
+      true: {
+        container: {
+          p: '4',
+        },
+      },
+      false: {
+        container: {
+          p: '0',
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    hasPadding: true,
+  },
 });
 
 export type SidebarProps = RecipeVariantProps<typeof sidebarSlotRecipe> & ComponentPropsWithoutRef<'nav'>;
 
-export const Sidebar = ({ className, ...props }: SidebarProps): ReactNode => {
-  const { container, treelist } = sidebarSlotRecipe(props);
+export const Sidebar = ({ className, hasPadding, ...props }: SidebarProps): ReactNode => {
+  const { container, treelist } = sidebarSlotRecipe({ hasPadding });
   const rootTrees = getDocumentLinkTreeMetadata();
 
   return (

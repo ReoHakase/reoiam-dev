@@ -1,8 +1,7 @@
 'use client';
 
-import { FolderTree, ListOrdered } from 'lucide-react';
+import { FolderTree } from 'lucide-react';
 import type { ReactNode, ComponentPropsWithoutRef } from 'react';
-import { useCurrentContentNameValue } from '../../states/currentContentName';
 import { Sidebar } from '../Sidebar/Sidebar';
 import {
   Drawer,
@@ -13,15 +12,13 @@ import {
   DrawerScrollArea,
   DrawerKnob,
   DrawerTitle,
-  DrawerDescription,
   DrawerClose,
 } from '@/features/modal/components/Drawer/Drawer';
 import { createSlotRecipeContext } from '@/states/createSlotRecipeContext';
 import { sva } from 'styled-system/css';
-import { css } from 'styled-system/css';
 
 const navbarSlotRecipe = sva({
-  slots: ['root', 'sidebarButton', 'current', 'detailButton', 'buttonLabel'],
+  slots: ['root', 'sidebarButton', 'title', 'detailButton', 'buttonLabel', 'buttonContainer'],
   base: {
     root: {
       pos: 'fixed',
@@ -51,6 +48,13 @@ const navbarSlotRecipe = sva({
       bg: 'keyplate.1',
       rounded: 'md',
       shadow: 'floating',
+    },
+    buttonContainer: {
+      display: 'flex',
+      flexDir: 'row',
+      justifyContent: 'end',
+      alignItems: 'center',
+      gap: '1',
     },
     sidebarButton: {
       justifySelf: 'start',
@@ -84,7 +88,7 @@ const navbarSlotRecipe = sva({
         color: 'keyplate.11',
       },
     },
-    current: {
+    title: {
       display: {
         base: 'flex',
         lg: 'none',
@@ -109,16 +113,16 @@ const { withVariantProvider, withVariantConsumer } = createSlotRecipeContext(nav
 // Disabled `compilerOptions.decleration` in tsconfig.json to avoid the following error:
 // The inferred type of "X" cannot be named without a reference to "Y" ...
 // Refer: https://github.com/microsoft/TypeScript/issues/42873
-const NavbarRoot = withVariantProvider('nav', 'root');
-const NavbarSidebarButton = withVariantConsumer('button', 'sidebarButton');
-const NavbarCurrentRoute = withVariantConsumer('span', 'current');
-const NavbarButtonLabel = withVariantConsumer('span', 'buttonLabel');
-const NavbarDetailButton = withVariantConsumer('button', 'detailButton');
+export const NavbarRoot = withVariantProvider('nav', 'root');
+export const NavbarButtonContainer = withVariantConsumer('div', 'buttonContainer');
+export const NavbarSidebarButton = withVariantConsumer('button', 'sidebarButton');
+export const NavbarTitle = withVariantConsumer('span', 'title');
+export const NavbarButtonLabel = withVariantConsumer('span', 'buttonLabel');
+export const NavbarDetailButton = withVariantConsumer('button', 'detailButton');
 
 export type NavbarProps = ComponentPropsWithoutRef<typeof NavbarRoot>;
 
-export const Navbar = (props: NavbarProps): ReactNode => {
-  const currentContextName = useCurrentContentNameValue();
+export const Navbar = ({ children, ...props }: NavbarProps): ReactNode => {
   return (
     <NavbarRoot {...props}>
       <Drawer scrollable occupancy="twothird">
@@ -135,47 +139,12 @@ export const Navbar = (props: NavbarProps): ReactNode => {
             <DrawerClose>Close</DrawerClose>
             <DrawerScrollArea>
               <DrawerTitle>All Documents</DrawerTitle>
-              <Sidebar />
+              <Sidebar hasPadding={false} />
             </DrawerScrollArea>
           </DrawerContent>
         </DrawerPortal>
       </Drawer>
-      <NavbarCurrentRoute>
-        {currentContextName === null ? (
-          <span
-            className={css({
-              animation: 'pulse',
-              bg: 'keyplate.3',
-              rounded: 'md',
-              ring: 'none',
-              userSelect: 'none',
-              w: '50vw',
-              h: '1em',
-            })}
-          />
-        ) : (
-          currentContextName
-        )}
-      </NavbarCurrentRoute>
-      <Drawer occupancy="third" overlay="transparent">
-        <DrawerTrigger asChild>
-          <NavbarDetailButton aria-label="Open table of contents">
-            <NavbarButtonLabel>Table of Contents</NavbarButtonLabel>
-            <ListOrdered />
-          </NavbarDetailButton>
-        </DrawerTrigger>
-        <DrawerPortal>
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerKnob />
-            <DrawerClose>Close</DrawerClose>
-            <DrawerScrollArea>
-              <DrawerTitle>Table of Contents</DrawerTitle>
-              <DrawerDescription>🚧 Work in progress</DrawerDescription>
-            </DrawerScrollArea>
-          </DrawerContent>
-        </DrawerPortal>
-      </Drawer>
+      {children}
     </NavbarRoot>
   );
 };

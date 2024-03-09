@@ -1,14 +1,16 @@
 import type { ReactNode } from 'react';
-import { Navbar } from '@/features/navigation/components/Navbar/Navbar';
+import { Navbar, NavbarButtonContainer } from '@/features/navigation/components/Navbar/Navbar';
 import { Sidebar } from '@/features/navigation/components/Sidebar/Sidebar';
 import { css } from 'styled-system/css';
 import '@/styles/katex.css';
 
 type DocsLayoutProps = {
   children: ReactNode;
+  titleIndicator: ReactNode;
+  pageSpecificNavigations: ReactNode;
 };
 
-const DocsLayout = ({ children }: DocsLayoutProps): ReactNode => (
+const DocsLayout = ({ titleIndicator, pageSpecificNavigations, children }: DocsLayoutProps): ReactNode => (
   <div
     className={css({
       pos: 'relative',
@@ -34,7 +36,10 @@ const DocsLayout = ({ children }: DocsLayoutProps): ReactNode => (
       className={css({
         zIndex: '1',
       })}
-    />
+    >
+      {titleIndicator}
+      <NavbarButtonContainer>{pageSpecificNavigations}</NavbarButtonContainer>
+    </Navbar>
     <Sidebar
       className={css({
         w: 'full',
