@@ -44,5 +44,8 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
+      - name: Install Playwright with Dependencies
+        run: pnpm exec playwright install --with-deps
+
       - name: Test Storybook with Turbo
         run: pnpm turbo sb:test
