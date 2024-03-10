@@ -11,7 +11,8 @@
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
     "sb": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "sb:build": "storybook build",
+    "sb:test": "pnpm dlx concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \\ \"pnpm dlx http-server storybook-static --port 6007 --silent\" \\ \"pnpm dlx wait-on tcp:127.0.0.1:6007 && test-storybook --url http://127.0.0.1:6007\"",
     "optimize:images": "optimizt --webp --output ./public ./public"
   },
   "dependencies": {
@@ -54,7 +55,6 @@
     "@funboxteam/optimizt": "5.0.2",
     "@pandacss/dev": "0.34.2",
     "@radix-ui/colors": "3.0.0",
-    "@storybook/test": "7.6.17",
     "@storybook/addon-a11y": "7.6.17",
     "@storybook/addon-essentials": "7.6.17",
     "@storybook/addon-interactions": "7.6.17",
@@ -63,6 +63,8 @@
     "@storybook/blocks": "7.6.17",
     "@storybook/nextjs": "7.6.17",
     "@storybook/react": "7.6.17",
+    "@storybook/test": "7.6.17",
+    "@storybook/test-runner": "0.16.0",
     "@storybook/testing-library": "0.2.2",
     "@types/mdast": "4.0.3",
     "@types/mdx": "2.0.11",

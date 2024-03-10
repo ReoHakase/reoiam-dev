@@ -1,0 +1,49 @@
+name: Build (Turbo)
+
+on:
+  - pull_request
+
+env:
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+
+jobs:
+  build:
+    timeout-minutes: 40
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          # The action will look for `volta.node` first. If `volta.node` isn't defined, then it will look for `engines.node`
+          # Refer: https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#node-version-file
+          node-version-file: 'package.json'
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3.0.0
+        id: pnpm-install
+        with:
+          # Version of pnpm to install:
+          # Optional when there is a packageManager field in the package.json.
+          # Refer: https://github.com/pnpm/action-setup#inputs
+          run_install: false
+
+      - name: Get PNPM store
+        id: pnpm-cache
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v4
+        name: Setup PNPM cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-pnpm-store-
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build with Turbo
+        run: pnpm turbo build

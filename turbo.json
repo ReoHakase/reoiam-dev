@@ -9,6 +9,17 @@
       "dependsOn": ["^build-fast"],
       "outputs": ["dist/**", ".next/**"]
     },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "sb:build": {
+      "dependsOn": ["^build"],
+      "outputs": ["storybook-static/**"]
+    },
+    "sb:test": {
+      "dependsOn": ["sb:build"]
+    },
     "lint": {
       "outputs": []
     },
