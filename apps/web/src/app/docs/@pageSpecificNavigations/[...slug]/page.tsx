@@ -12,7 +12,7 @@ import {
   DrawerTitle,
   DrawerDescription,
   DrawerClose,
-} from '@/features/modal/components/Drawer/Drawer';
+} from '@/components/Drawer/Drawer';
 import { NavbarDetailButton, NavbarButtonLabel } from '@/features/navigation/components/Navbar/Navbar';
 import { allContentDocuments } from 'contentlayer/generated';
 

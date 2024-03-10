@@ -1,5 +1,5 @@
 import type { ReactNode, ComponentPropsWithoutRef } from 'react';
-import { PhotoCard } from '@/components/PhotoCard/PhotoCard';
+import { PhotoCard } from '@/features/landingPage/components/PhotoCard/PhotoCard';
 import HanbokImage from '@public/hanbok.webp';
 import OzImage from '@public/oz.webp';
 import SelfieImage from '@public/selfie.webp';

@@ -13,7 +13,7 @@ import {
   DrawerKnob,
   DrawerTitle,
   DrawerClose,
-} from '@/features/modal/components/Drawer/Drawer';
+} from '@/components/Drawer/Drawer';
 import { createSlotRecipeContext } from '@/states/createSlotRecipeContext';
 import { sva } from 'styled-system/css';
 
