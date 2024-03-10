@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, fn, userEvent, within } from '@storybook/test';
 import {
   Drawer,
   DrawerTrigger,
@@ -20,6 +21,8 @@ const meta: Meta<typeof Drawer> = {
   tags: ['autodocs'],
   args: {
     scrollable: false,
+    onOpenChange: fn(),
+    modal: true,
     children: (
       <>
         <DrawerTrigger asChild>
@@ -46,12 +49,46 @@ const meta: Meta<typeof Drawer> = {
       },
       description: 'If true, the drawer content will be scrollable',
     },
+    direction: {
+      control: {
+        type: 'radio',
+        options: ['right', 'left', 'top', 'bottom'],
+      },
+      description: 'The direction from which the drawer will open',
+    },
+    modal: {
+      control: {
+        type: 'boolean',
+      },
+      description:
+        'When `false` it allows to interact with elements outside of the drawer without closing it. Defaults to `true`.',
+    },
+    snapPoints: {
+      control: {
+        type: 'array',
+      },
+      description:
+        "Array of numbers from 0 to 100 that corresponds to % of the screen a given snap point should take up. Should go from least visible. Example [0.2, 0.5, 0.8]. You can also use px values, which doesn't take screen height into account.",
+    },
   },
 };
 
 export default meta;
 
-export const Default: Story = {};
+export const Default: Story = {
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const trigger = canvas.getByRole('button');
+    await userEvent.click(trigger);
+    expect(args.onOpenChange).toHaveBeenCalledWith(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await userEvent.keyboard('{Escape}', {
+      delay: 300,
+    });
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    expect(args.onOpenChange).toHaveBeenCalledWith(false);
+  },
+};
 
 export const Scrollable: Story = {
   args: {
@@ -118,7 +155,7 @@ export const Navigation: Story = {
             <DrawerKnob />
             <DrawerClose>Close</DrawerClose>
             <DrawerScrollArea>
-              <Sidebar />
+              <Sidebar hasPadding={false} />
             </DrawerScrollArea>
           </DrawerContent>
         </DrawerPortal>
@@ -150,4 +187,46 @@ export const Undissmissable: Story = {
       </>
     ),
   },
+};
+
+export const MultipleSnapPoints: Story = {
+  args: {
+    snapPoints: [0.4, 1],
+    scrollable: true,
+    children: (
+      <>
+        <DrawerTrigger asChild>
+          <button>Open Drawer</button>
+        </DrawerTrigger>
+        <DrawerPortal>
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerKnob />
+            <DrawerClose>Close</DrawerClose>
+            <DrawerScrollArea>
+              <Sidebar hasPadding={false} />
+            </DrawerScrollArea>
+          </DrawerContent>
+        </DrawerPortal>
+      </>
+    ),
+  },
+};
+
+export const FromTop: Story = {
+  // NOTE: You have to specify a variant via render function since this is the only way to let PandaCSS know about the usage.
+  render: (args) => <Drawer {...args} direction={'top'} />,
+  play: Default.play,
+};
+
+export const FromLeft: Story = {
+  // NOTE: You have to specify a variant via render function since this is the only way to let PandaCSS know about the usage.
+  render: (args) => <Drawer {...args} direction={'left'} />,
+  play: Default.play,
+};
+
+export const FromRight: Story = {
+  // NOTE: You have to specify a variant via render function since this is the only way to let PandaCSS know about the usage.
+  render: (args) => <Drawer {...args} direction={'right'} />,
+  play: Default.play,
 };
