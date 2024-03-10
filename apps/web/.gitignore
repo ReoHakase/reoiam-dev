@@ -3,3 +3,6 @@ styled-system
 
 # Build artifacts by Contentlayer
 .contentlayer
+
+# Storybook build
+storybook-static
