@@ -1,4 +1,4 @@
-name: Build entire project (root)
+name: Lint (Turbo)
 
 on:
   - pull_request
@@ -54,7 +54,7 @@ jobs:
   #         filters: .github/filter.yml
 
   # Main job
-  build:
+  lint:
     runs-on: ubuntu-latest
     # needs: filter
     # if: ${{ needs.filter.outputs.hasChanged == 'true' }}
@@ -92,8 +92,5 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
-      - name: Build with Turbo
-        run: pnpm turbo build
-
-      # - name: Format with Prettier
-      # run: pnpm turbo fmt
+      - name: Lint with Turbo
+        run: pnpm turbo lint -- --max-warnings=0
