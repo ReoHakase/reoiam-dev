@@ -12,7 +12,7 @@ import {
   DrawerTitle,
   DrawerDescription,
   DrawerClose,
-} from '@/features/modal/components/Drawer/Drawer';
+} from '@/components/Drawer/Drawer';
 import { css } from 'styled-system/css';
 
 type Story = StoryObj<typeof Navbar>;

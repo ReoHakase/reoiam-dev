@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import { type ReactNode } from 'react';
-import { Link } from '../Link/Link';
+import { Link } from '../../../../components/Link/Link';
 import { css } from 'styled-system/css';
 import { flex } from 'styled-system/patterns';
 import type { SystemStyleObject } from 'styled-system/types';
