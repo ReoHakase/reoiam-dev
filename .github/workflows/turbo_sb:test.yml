@@ -8,7 +8,7 @@ env:
   TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
 jobs:
-  lint:
+  sbtest:
     timeout-minutes: 40
     runs-on: ubuntu-latest
     steps:
