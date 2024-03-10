@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "prepare": "husky install && pnpm turbo build-fast",
+    "prepare": "husky install && pnpm exec playwright install && pnpm turbo build --filter=./packages/*",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write ."
   },
