@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { JsonLdScript } from '@/components/JsonLdScript/JsonLdScript';
-import { MyPhotoCardStack } from '@/components/MyPhotoCardStack/MyPhotoCardStack';
 import { Hero } from '@/features/landingPage/components/Hero/Hero';
+import { MyPhotoCardStack } from '@/features/landingPage/components/MyPhotoCardStack/MyPhotoCardStack';
 import { css } from 'styled-system/css';
 
 const Home = (): ReactNode => {
