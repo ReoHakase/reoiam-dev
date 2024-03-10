@@ -12,7 +12,7 @@
     "format:fix": "prettier --write .",
     "sb": "storybook dev -p 6006",
     "sb:build": "storybook build",
-    "sb:test": "pnpm dlx concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \\ \"pnpm dlx http-server storybook-static --port 6007 --silent\" \\ \"pnpm dlx wait-on tcp:6006 && test-storybook --url http://127.0.0.1:6007\"",
+    "sb:test": "pnpm dlx concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \\ \"pnpm dlx http-server storybook-static --port 6007 --silent\" \\ \"pnpm dlx wait-on tcp:6007 && test-storybook --url http://127.0.0.1:6007\"",
     "optimize:images": "optimizt --webp --output ./public ./public"
   },
   "dependencies": {
