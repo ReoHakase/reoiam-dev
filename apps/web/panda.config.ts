@@ -1,6 +1,7 @@
 import { defineConfig } from '@pandacss/dev';
 import { radixColorsPreset } from 'panda-preset-radix-colors';
 import { radixUIPreset } from 'panda-preset-radix-ui';
+import { drawerSlotRecipe } from '@/components/Drawer/Drawer.recipe';
 import { selectSlotRecipe } from '@/components/Select/Select.recipe';
 import {
   markupHeadingRecipe,
@@ -149,6 +150,7 @@ export default defineConfig({
         markupTable: markupTableSlotRecipe,
         markupShowcase: markupShowcaseRecipe,
         select: selectSlotRecipe,
+        drawer: drawerSlotRecipe,
       },
     },
   },
