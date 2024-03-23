@@ -31,21 +31,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Setup Node and pnpm
+        uses: moonrepo/setup-toolchain@v0
         with:
-          # The action will look for `volta.node` first. If `volta.node` isn't defined, then it will look for `engines.node`
-          # Refer: https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#node-version-file
-          node-version-file: 'package.json'
-
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v3.0.0
-        id: pnpm-install
-        with:
-          # Version of pnpm to install:
-          # Optional when there is a packageManager field in the package.json.
-          # Refer: https://github.com/pnpm/action-setup#inputs
-          run_install: false
+          # A GitHub action that sets up an environment for proto and moon.
+          # - Installs proto globally so that installed tools can also be executed globally.
+          # - Caches the toolchain (~/.proto) so subsequent runs are faster.
+          # - Hashes .prototools and .moon/toolchain.yml files to generate a unique cache key.
+          # - Cleans the toolchain before caching to remove unused or stale tools.
+          # See: https://github.com/moonrepo/setup-toolchain
+          auto-install: true
 
       - name: Get PNPM store
         id: pnpm-cache
@@ -62,7 +57,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build with Turbo (Only `apps/web`)
-        run: pnpm turbo build --filter web 
+        run: pnpm turbo build --filter web
 
       # Here's the first place where next-bundle-analysis' own script is used
       # This step pulls the raw bundle stats for the current bundle
