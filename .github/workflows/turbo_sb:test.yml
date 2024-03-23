@@ -27,7 +27,7 @@ jobs:
           auto-install: true
 
       - name: Install
-        run: bun install --frozen-lockfile
+        run: bun pm trust --all && bun install --frozen-lockfile --verbose
 
       - name: Install Playwright with Dependencies
         run: bun x playwright install --with-deps

@@ -27,7 +27,7 @@ jobs:
           auto-install: true
 
       - name: Install
-        run: bun install --frozen-lockfile
+        run: bun pm trust --all && bun install --frozen-lockfile --verbose
 
       - name: Lint with Turbo
         run: bun x turbo lint -- --max-warnings=0
