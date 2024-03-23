@@ -26,8 +26,8 @@
     "typescript": "5.4.3"
   },
   "engines": {
-    "node": "<21",
-    "pnpm": ">=7.0.0"
+    "node": "20.11.1",
+    "pnpm": "8.15.5"
   },
   "packageManager": "bun@1.0.35",
   "nextBundleAnalysis": {
