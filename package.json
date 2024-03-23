@@ -7,19 +7,20 @@
     "packages/*"
   ],
   "scripts": {
-    "prepare": "husky install && pnpm exec playwright install && pnpm turbo build --filter=./packages/*",
+    "prepare": "concurrently -n \"HUSKY,PLAYWRIGHT,TURBO\" -c \"magenta,blue,cyan\" \"husky install\" \"playwright install\" \"turbo build --filter=./packages/*\"",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write ."
   },
   "devDependencies": {
+    "concurrently": "8.2.2",
     "eslint": "8.57.0",
     "eslint-config-custom": "workspace:*",
     "eslint-config-prettier": "9.1.0",
     "husky": "9.0.11",
     "lint-staged": "15.2.2",
+    "playwright": "1.42.1",
     "prettier": "3.2.5",
     "scaffdog": "3.0.0",
-    "playwright": "1.42.1",
     "tsup": "8.0.2",
     "turbo": "1.12.5",
     "typescript": "5.4.2"
