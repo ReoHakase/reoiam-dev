@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prepare": "concurrently -n \"PANDA,CONTENTLAYER\" -c \"yellow,blue\" \"panda codegen\" \"contentlayer build\"",
+    "prepare": "turbo build --filter=./packages/* && concurrently -n \"PANDA,CONTENTLAYER\" -c \"yellow,blue\" \"panda codegen\" \"contentlayer build\"",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
