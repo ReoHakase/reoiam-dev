@@ -29,10 +29,17 @@
     "node": ">=18.0.0 <19",
     "pnpm": ">=7.0.0"
   },
+  "packageManager": "bun@1.0.35",
   "nextBundleAnalysis": {
     "budget": 358400,
     "budgetPercentIncreaseRed": 20,
     "minimumChangeThreshold": 0,
     "showDetails": true
-  }
+  },
+  "trustedDependencies": [
+    "core-js-pure",
+    "guetzli",
+    "protobufjs",
+    "web"
+  ]
 }
