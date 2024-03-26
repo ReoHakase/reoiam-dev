@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "_postprepare": "concurrently -n \"PANDA,CONTENTLAYER\" -c \"yellow,blue\" \"panda codegen\" \"contentlayer build\"",
+    "prepare": "concurrently -n \"PANDA,CONTENTLAYER\" -c \"yellow,blue\" \"panda codegen\" \"contentlayer build\"",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -18,7 +18,7 @@
   "dependencies": {
     "@radix-ui/react-select": "2.0.0",
     "@t3-oss/env-nextjs": "0.8.0",
-    "@types/node": "20.11.30",
+    "@types/node": "18.19.1",
     "@types/react": "18.2.52",
     "@types/react-dom": "18.2.18",
     "@vercel/analytics": "1.1.2",
