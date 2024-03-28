@@ -20,7 +20,7 @@
   "scripts": {
     "build": "tsup --dts",
     "build-fast": "tsup --no-dts",
-    "dev": "pnpm build-fast --watch",
+    "dev": "bun build-fast --watch",
     "lint": "eslint ."
   },
   "files": [
