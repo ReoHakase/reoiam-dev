@@ -50,6 +50,11 @@ export const Header = ({ ...props }: HeaderProps): ReactNode => {
                 rounded: 'full',
                 w: '12',
                 h: '12',
+                outlineColor: 'cyan.9',
+                outlineWidth: '2',
+                outlineStyle: 'solid',
+                outlineOffset: '2px',
+
                 flexShrink: '0',
               },
             ]}
