@@ -6,20 +6,20 @@
     "declarationMap": false,
     "plugins": [
       {
-        "name": "next",
-      },
+        "name": "next"
+      }
     ],
     "baseUrl": "./",
     "ignoreDeprecations": "5.0",
     "paths": {
       "@/*": ["./src/*"],
       "@public/*": ["./public/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     },
-    "rootDir": "./",
+    "rootDir": "./"
   },
   "mdx": {
-    "plugins": ["remark-gfm", "remark-math"],
+    "plugins": ["remark-gfm", "remark-math"]
   },
   "include": [
     "next-env.d.ts",
@@ -28,7 +28,7 @@
     "postcss.config.cjs",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
+    ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules"]
 }

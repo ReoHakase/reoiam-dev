@@ -9,6 +9,10 @@
       "path": "apps/web",
     },
     {
+      "name": "📮 api",
+      "path": "apps/api",
+    },
+    {
       "name": "📦 panda-preset-radix-colors",
       "path": "packages/panda-preset-radix-colors",
     },
