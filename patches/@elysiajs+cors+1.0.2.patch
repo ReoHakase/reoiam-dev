@@ -1,0 +1,33 @@
+diff --git a/node_modules/@elysiajs/cors/src/index.ts b/node_modules/@elysiajs/cors/src/index.ts
+index e3ef50e..8cbd008 100644
+--- a/node_modules/@elysiajs/cors/src/index.ts
++++ b/node_modules/@elysiajs/cors/src/index.ts
+@@ -257,18 +257,20 @@ export const cors = (
+     }
+ 
+     const handleMethod = (set: Context['set'], method: string) => {
+-        if (methods === true)
+-            return (set.headers['Access-Control-Allow-Methods'] = method ?? '*')
++      if (methods === true)
++        return (set.headers['Access-Control-Allow-Methods'] = method ?? '*')
+ 
+-        if (methods === false || !methods?.length) return
++      if (methods === false || !methods?.length) return
+ 
+-        if (methods === '*')
+-            return (set.headers['Access-Control-Allow-Methods'] = '*')
++      if (methods === '*')
++        return (set.headers['Access-Control-Allow-Methods'] = '*')
+ 
+-        if (!Array.isArray(methods))
+-            return (set.headers['Access-Control-Allow-Methods'] = methods)
++      if (!Array.isArray(methods))
++        return (set.headers['Access-Control-Allow-Methods'] = methods)
+ 
+-        set.headers['Access-Control-Allow-Methods'] = methods.join(', ')
++      set.headers['Access-Control-Allow-Methods'] = methods.join(', ')
++
++      return // Added to prevent "Type error: Not all code paths return a value."
+     }
+ 
+     if (preflight)
