@@ -16831,6 +16831,8 @@ tsconfck@3.0.2:
 "tsconfig@packages/tsconfig":
   version "workspace:packages/tsconfig"
   resolved "workspace:packages/tsconfig"
+  devDependencies:
+    bun-types "latest"
 
 tsconfig-paths@^3.15.0:
   version "3.15.0"
