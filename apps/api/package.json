@@ -14,7 +14,6 @@
     "@elysiajs/server-timing": "1.0.2",
     "@elysiajs/swagger": "1.0.3",
     "elysia": "latest",
-    "pino-pretty": "11.0.0",
     "superjson": "2.2.1"
   },
   "devDependencies": {
