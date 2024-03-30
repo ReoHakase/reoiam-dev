@@ -4,7 +4,7 @@ const { withContentlayer } = require('next-contentlayer');
 const nextConfig = {
   experimental: {
     optimizeCss: true,
-    serverComponentsExternalPackages: ['pino'],
+    serverComponentsExternalPackages: ['pino', 'pino-pretty'],
     swcMinify: true,
   },
   images: {
