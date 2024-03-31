@@ -1,7 +1,8 @@
 import { createPinoLogger } from '@bogeychan/elysia-logger';
+import { env } from './env';
 
 export const log = createPinoLogger(
-  process.env.NODE_ENV === 'development'
+  env.NODE_ENV === 'development'
     ? {
         transport: {
           target: 'pino-pretty',
@@ -13,3 +14,5 @@ export const log = createPinoLogger(
       }
     : {},
 );
+
+log.debug({ env }, 'Environment variables loaded');
