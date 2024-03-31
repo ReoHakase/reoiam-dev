@@ -1,0 +1,12 @@
+diff --git a/node_modules/@elysiajs/server-timing/src/index.ts b/node_modules/@elysiajs/server-timing/src/index.ts
+index 12bca07..fbf86c2 100644
+--- a/node_modules/@elysiajs/server-timing/src/index.ts
++++ b/node_modules/@elysiajs/server-timing/src/index.ts
+@@ -109,6 +109,7 @@ export const serverTiming = (options: ServerTimingOptions = {}) => {
+             parse: traceParse = true,
+             transform: traceTransform = true,
+             beforeHandle: traceBeforeHandle = true,
++            // @ts-expect-error Added to prevent `next build` to fail with "traceHandler is defined but never used."
+             handle: traceHandle = true,
+             afterHandle: traceAfterHandle = true,
+             total: traceTotal = true

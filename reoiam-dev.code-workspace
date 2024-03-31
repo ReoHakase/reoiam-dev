@@ -9,6 +9,10 @@
       "path": "apps/web",
     },
     {
+      "name": "📮 api",
+      "path": "apps/api",
+    },
+    {
       "name": "📦 panda-preset-radix-colors",
       "path": "packages/panda-preset-radix-colors",
     },
@@ -70,6 +74,11 @@
             "label": "fix: 🚑️",
             "value": "fix: 🚑️",
             "description": "重大なバグの修正。",
+          },
+          {
+            "label": "patch: 🩹",
+            "value": "patch: 🩹",
+            "description": "パッチの追加。",
           },
           {
             "label": "doc: 📝",

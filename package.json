@@ -7,7 +7,8 @@
     "packages/*"
   ],
   "scripts": {
-    "prepare": "concurrently -n \"HUSKY,PLAYWRIGHT,TURBO\" -c \"magenta,blue,cyan\" \"husky install\" \"playwright install\" \"turbo build --filter=./packages/*\"",
+    "postinstall": "patch-package",
+    "prepare": "concurrently -n \"HUSKY,PLAYWRIGHT,TURBO\" -c \"magenta,blue,cyan\" \"husky install\" \"playwright install\" \"turbo build --filter='./packages/*'\" && bun --cwd apps/web _postprepare",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write ."
   },
@@ -18,6 +19,7 @@
     "eslint-config-prettier": "9.1.0",
     "husky": "9.0.11",
     "lint-staged": "15.2.2",
+    "patch-package": "8.0.0",
     "playwright": "1.42.1",
     "prettier": "3.2.5",
     "scaffdog": "3.0.0",
@@ -29,11 +31,17 @@
     "node": "18.19.1",
     "pnpm": "8.15.5"
   },
-  "packageManager": "pnpm@8.15.5",
+  "packageManager": "bun@1.0.35",
   "nextBundleAnalysis": {
     "budget": 358400,
     "budgetPercentIncreaseRed": 20,
     "minimumChangeThreshold": 0,
     "showDetails": true
-  }
+  },
+  "trustedDependencies": [
+    "core-js-pure",
+    "guetzli",
+    "protobufjs",
+    "web"
+  ]
 }

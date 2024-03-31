@@ -3,14 +3,14 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
+      "outputs": ["dist/**", ".next/**"],
+      "env": ["NODE_ENV"]
     },
     "build-fast": {
       "dependsOn": ["^build-fast"],
       "outputs": ["dist/**", ".next/**"]
     },
     "test": {
-      "dependsOn": ["^build"],
       "outputs": []
     },
     "sb:build": {

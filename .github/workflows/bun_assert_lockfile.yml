@@ -1,14 +1,10 @@
-name: Test Storybook (turbo)
+name: Assert Lockfiles (`bun.lockb`, `yarn.lock`)
 
 on:
   - pull_request
 
-env:
-  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-
 jobs:
-  sbtest:
+  build:
     timeout-minutes: 40
     runs-on: ubuntu-latest
     steps:
@@ -26,11 +22,6 @@ jobs:
           # See: https://github.com/moonrepo/setup-toolchain
           auto-install: true
 
-      - name: Install
-        run: bun install --frozen-lockfile
-
-      - name: Install Playwright with Dependencies
-        run: bun x playwright install --with-deps
-
-      - name: Test Storybook with Turbo
-        run: bun x turbo sb:test
+      - name: Check Lockfiles Diff
+        # See https://zenn.dev/watany/articles/e21a54cf3d56d8
+        run: diff <(bun bun.lockb) yarn.lock

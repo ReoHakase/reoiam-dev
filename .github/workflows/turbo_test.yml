@@ -1,4 +1,4 @@
-name: Test Storybook (turbo)
+name: Test (Turbo)
 
 on:
   - pull_request
@@ -8,7 +8,7 @@ env:
   TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
 jobs:
-  sbtest:
+  build:
     timeout-minutes: 40
     runs-on: ubuntu-latest
     steps:
@@ -29,8 +29,5 @@ jobs:
       - name: Install
         run: bun install --frozen-lockfile
 
-      - name: Install Playwright with Dependencies
-        run: bun x playwright install --with-deps
-
-      - name: Test Storybook with Turbo
-        run: bun x turbo sb:test
+      - name: Test with Turbo
+        run: bun turbo test

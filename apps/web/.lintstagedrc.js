@@ -3,6 +3,6 @@
 const path = require('path');
 
 module.exports = {
-  '**/*.{js,jsx,cjs,mjs,ts,tsx}': 'pnpm --filter web exec eslint',
-  '**/*.{js,jsx,cjs,mjs,ts,tsx,md,html,css,json,yaml,yml}': 'pnpm --filter web exec prettier --check',
+  '**/*.{js,jsx,cjs,mjs,ts,tsx}': 'bun eslint',
+  '**/*.{js,jsx,cjs,mjs,ts,tsx,md,html,css,json,yaml,yml}': 'bun prettier --check',
 };
