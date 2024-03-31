@@ -28,7 +28,7 @@ export const app = new Elysia({
     if (!isJson) return;
     const { json, meta } = serialize(response);
     set.headers['Elysia-Superjson-Meta'] = JSON.stringify(meta);
-    log.info(json);
+    log.debug({ json, meta }, 'Mapped a response with superjson');
     return new Response(JSON.stringify(json));
   })
   .get(
