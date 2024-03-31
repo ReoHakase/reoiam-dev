@@ -7,7 +7,7 @@ export const env = createEnv({
    * Will throw if you access these variables on the client.
    */
   server: {
-    NODE_ENV: z.enum(['development', 'production']),
+    NODE_ENV: z.enum(['development', 'production', 'test']),
   },
   /*
    * Due to how Next.js bundles environment variables on Edge and Client,
