@@ -173,6 +173,17 @@ export const AlwaysOpen: Story = {
   args: {
     open: true,
   },
+  parameters: {
+    a11y: {
+      'test-runner': {
+        // Disable a11y tests for this story since axe-playwright indicates false positives.
+        // `@radix-ui/react-select` manually handles focus to trap it inside the select modal.
+        // Tried to patch `@radix-ui/react-select` to give `<SelectContent>` an `aria-modal` attribute, but it was hard due to obfuscation.
+        // See: https://stackoverflow.com/questions/62677291/aria-hidden-elements-do-not-contain-focusable-elements-issue-when-modal-is-sho
+        disable: true,
+      },
+    },
+  },
 };
 
 export const IconOnly: Story = {
@@ -186,9 +197,9 @@ export const IconOnly: Story = {
         >
           <SelectValue placeholder="" />
         </SelectTrigger>
-        <SelectPortal>
-          <SelectContent position="popper" side="bottom">
-            <SelectViewport>
+        <SelectPortal aria-modal>
+          <SelectContent position="popper" side="bottom" aria-modal>
+            <SelectViewport aria-modal>
               <SelectGroup>
                 <SelectLabel>
                   <SwatchBook className={css({ display: 'inline', w: '4', h: '4' })} /> Themes

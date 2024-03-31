@@ -1,4 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, fn, userEvent, within } from '@storybook/test';
+import { useTheme } from 'next-themes';
+import { useEffect } from 'react';
 import { ThemeSelect } from './ThemeSelect';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 
@@ -13,8 +16,18 @@ const meta: Meta<typeof ThemeSelect> = {
         <Story />
       </ThemeProvider>
     ),
+    (Story) => {
+      const { setTheme } = useTheme();
+      useEffect(() => {
+        setTheme('light');
+      }, [setTheme]);
+      return <Story />;
+    },
   ],
-  args: {},
+  args: {
+    onOpenChange: fn(),
+    onValueChange: fn(),
+  },
   argTypes: {
     open: {
       control: {
@@ -42,7 +55,18 @@ const meta: Meta<typeof ThemeSelect> = {
 export default meta;
 
 export const Default: Story = {
-  args: {
-    defaultOpen: true,
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const trigger = canvas.getByRole('combobox');
+    await userEvent.click(trigger);
+    expect(args.onOpenChange).toHaveBeenCalledWith(true);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    await userEvent.keyboard('{ArrowUp}{ArrowUp}{ArrowUp}{ArrowDown}{ArrowDown}{ArrowUp}{ArrowDown}{Enter}', {
+      delay: 300,
+    });
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(args.onOpenChange).toHaveBeenCalledWith(false);
+    expect(args.onValueChange).toHaveBeenCalled();
+    expect(args.onValueChange).toHaveBeenCalledWith('dark');
   },
 };
