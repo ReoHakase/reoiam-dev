@@ -105,6 +105,14 @@ export default defineConfig({
   theme: {
     extend: {
       keyframes: {
+        aurora: {
+          from: {
+            backgroundPosition: '50% 50%, 50% 50%',
+          },
+          to: {
+            backgroundPosition: '350% 50%, 350% 50%',
+          },
+        },
         enter: {
           from: {
             opacity: 'var(--keyframe-enter-opacity, 1)',
