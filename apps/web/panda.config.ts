@@ -168,6 +168,7 @@ export default defineConfig({
       // NOTE: Make sure these selectors match the configurations passed to `next-themes` ThemeProvider
       light: "[data-theme='light'] &",
       dark: "[data-theme='dark'] &",
+      descendantIcon: '& .lucide', // See https://lucide.dev/guide/advanced/global-styling
     },
   },
 
