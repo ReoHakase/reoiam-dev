@@ -1,11 +1,25 @@
 import { GithubIcon } from 'lucide-react';
+import { Briefcase, AtSign, Sparkle, Code, Menu, X } from 'lucide-react';
 import type { ReactNode, ComponentPropsWithoutRef } from 'react';
 import { ThemeSelect } from '../ThemeSelect/ThemeSelect';
+import { TopNavigationLink } from '../TopNavigation/TopNavigationLink';
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerPortal,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerScrollArea,
+  DrawerKnob,
+  DrawerTitle,
+  DrawerClose,
+} from '@/components/Drawer/Drawer';
 import { Image } from '@/components/Image/Image';
 import { Link } from '@/components/Link/Link';
 import HeaderIconImage from '@public/icon.webp';
 import { css } from 'styled-system/css';
 import { flex } from 'styled-system/patterns';
+
 export type HeaderProps = ComponentPropsWithoutRef<'header'>;
 
 /**
@@ -69,7 +83,6 @@ export const Header = ({ ...props }: HeaderProps): ReactNode => {
             fontFamily: 'heading',
             maxW: '12rem',
             lineHeight: '1.25',
-            // backdropFilter: 'blur(8px) saturate(130%) contrast(30%) brightness(150%)',
           })}
         >
           reoiam.dev
@@ -77,6 +90,36 @@ export const Header = ({ ...props }: HeaderProps): ReactNode => {
           Reo HAKUTA
         </p>
       </div>
+      <nav
+        className={css({
+          pos: 'absolute',
+          w: 'fit-content',
+          h: '12',
+          top: '4',
+          left: '0',
+          right: '0',
+          mx: 'auto',
+          display: 'flex',
+          rounded: 'xl',
+          flexDir: 'row',
+          bg: 'keyplate.a.3',
+          p: '1',
+          backdropFilter: 'blur(8px) saturate(130%)',
+          mdDown: {
+            display: 'none',
+          },
+        })}
+      >
+        <TopNavigationLink href="/docs/resume">
+          <Briefcase /> Resume
+        </TopNavigationLink>
+        <TopNavigationLink href="/docs/works">
+          <Sparkle /> Works
+        </TopNavigationLink>
+        <TopNavigationLink href="/docs/contacts">
+          <AtSign /> Contacts
+        </TopNavigationLink>
+      </nav>
       <div
         className={flex({
           direction: 'row',
@@ -95,7 +138,10 @@ export const Header = ({ ...props }: HeaderProps): ReactNode => {
             fontFamily: 'heading',
             px: '4',
             py: '2',
-            gap: '3',
+            smDown: {
+              p: '3',
+            },
+            gap: '1',
             direction: 'row',
             align: 'center',
             bg: 'keyplate.12',
@@ -103,11 +149,104 @@ export const Header = ({ ...props }: HeaderProps): ReactNode => {
             rounded: 'full',
           })}
         >
-          <GithubIcon />
-          <span>
-            <span className={css({ smDown: { display: 'none' } })}>Open </span>GitHub
-          </span>
+          <GithubIcon
+            className={css({
+              display: 'inline',
+              w: '4',
+              h: '4',
+            })}
+          />
+          <span className={css({ smDown: { srOnly: true } })}>Open GitHub</span>
         </Link>
+        <Drawer direction={'right'}>
+          <DrawerTrigger asChild>
+            <button
+              aria-label="Open menu"
+              type="button"
+              className={flex({
+                fontFamily: 'heading',
+                p: '3',
+                direction: 'row',
+                justifyContent: 'center',
+                align: 'center',
+                rounded: 'full',
+                bg: 'keyplate.a.3',
+                backdropFilter: 'blur(8px) saturate(130%)',
+                cursor: 'pointer',
+                border: '1px solid',
+                borderColor: 'keyplate.a.1',
+              })}
+            >
+              <Menu
+                className={css({
+                  display: 'inline',
+                  w: '4',
+                  h: '4',
+                })}
+              />
+            </button>
+          </DrawerTrigger>
+          <DrawerPortal>
+            <DrawerOverlay />
+            <DrawerContent
+              className={css({
+                pt: '8',
+                pl: '0',
+                _light: {
+                  bg: 'keyplate.1',
+                },
+                _dark: {
+                  bg: 'keyplate.a.3',
+                  backdropFilter: 'blur(12px) saturate(140%) brightness(50%)',
+                },
+              })}
+            >
+              <DrawerClose asChild>
+                <button
+                  aria-label="Close menu"
+                  type="button"
+                  className={flex({
+                    fontFamily: 'heading',
+                    w: '12',
+                    h: '12',
+                    direction: 'row',
+                    justifyContent: 'center',
+                    align: 'center',
+                    rounded: 'full',
+                    cursor: 'pointer',
+                  })}
+                >
+                  <X />
+                </button>
+              </DrawerClose>
+              <DrawerKnob />
+              <DrawerScrollArea>
+                <DrawerTitle>Menu</DrawerTitle>
+                <nav
+                  className={css({
+                    display: 'flex',
+                    flexDir: 'column',
+                    alignItems: 'stretch',
+                    textDecoration: 'underline',
+                  })}
+                >
+                  <TopNavigationLink href="/docs/resume">
+                    <Briefcase /> Resume
+                  </TopNavigationLink>
+                  <TopNavigationLink href="/docs/works">
+                    <Sparkle /> Works
+                  </TopNavigationLink>
+                  <TopNavigationLink href="/docs/contacts">
+                    <AtSign /> Contacts
+                  </TopNavigationLink>
+                  <TopNavigationLink href="/api/swagger" target="_blank">
+                    <Code /> API Reference
+                  </TopNavigationLink>
+                </nav>
+              </DrawerScrollArea>
+            </DrawerContent>
+          </DrawerPortal>
+        </Drawer>
       </div>
     </header>
   );
