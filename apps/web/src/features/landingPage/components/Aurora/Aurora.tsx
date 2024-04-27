@@ -18,6 +18,7 @@ export const Aurora = ({ className, ...props }: AuroraProps): ReactNode => (
         alignItems: 'center',
         justifyContent: 'center',
         transition: 'background-color 0.5s',
+        pointerEvents: 'none',
         overflow: 'hidden',
       }),
       className,
