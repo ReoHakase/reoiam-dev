@@ -21,7 +21,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
     <body
       className={css({
         display: 'flex',
-        minH: 'screen',
+        minH: '100svh',
         flexDir: 'column',
         bg: 'keyplate.1',
         color: 'keyplate.12',

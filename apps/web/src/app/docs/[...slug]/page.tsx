@@ -25,8 +25,7 @@ export const generateMetadata = async ({ params }: PageProps, parent: ResolvingM
   );
 
   // 404 if the post does not exist.
-  if (!post) throw new Error(`It failed to find the specified post "${params.slug}" during metadata generation.`);
-
+  if (!post) notFound();
   // Optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || [];
 
