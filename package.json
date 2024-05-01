@@ -43,5 +43,8 @@
     "guetzli",
     "protobufjs",
     "web"
-  ]
+  ],
+  "overrides": {
+    "sharp": "0.33.3"
+  }
 }
