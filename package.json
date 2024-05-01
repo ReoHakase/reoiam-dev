@@ -39,9 +39,15 @@
     "showDetails": true
   },
   "trustedDependencies": [
+    "@swc/core",
+    "contentlayer",
     "core-js-pure",
+    "esbuild",
+    "gif2webp-bin",
+    "gifsicle",
     "guetzli",
     "protobufjs",
+    "sharp",
     "web"
   ],
   "overrides": {
