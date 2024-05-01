@@ -1,18 +1,15 @@
 import { createPinoLogger } from '@bogeychan/elysia-logger';
+import type { StandaloneLoggerOptions } from '@bogeychan/elysia-logger/types';
 import { env } from './env';
 
-export const log = createPinoLogger(
-  env.NODE_ENV === 'development'
-    ? {
-        transport: {
-          target: 'pino-pretty',
-          options: {
-            colorize: true,
-          },
-        },
-        level: 'debug',
-      }
-    : {},
-);
+const devConfig: StandaloneLoggerOptions = {
+  transport: {
+    target: 'pino-pretty',
+    options: {
+      colorize: true,
+    },
+  },
+  level: 'debug',
+};
 
-log.debug({ env }, 'Environment variables loaded');
+export const log = createPinoLogger(env.NODE_ENV === 'development' ? devConfig : {});
