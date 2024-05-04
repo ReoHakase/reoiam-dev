@@ -1,5 +1,0 @@
-[install]
-exact = true # Whether to set an exact version in package.json. Default false.
-
-[install.lockfile]
-print = "yarn" # Whether to generate a non-Bun lockfile alongside bun.lockb

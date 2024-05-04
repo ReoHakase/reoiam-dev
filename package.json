@@ -2,13 +2,9 @@
   "name": "reoiam-dev",
   "version": "0.0.0",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
     "postinstall": "patch-package",
-    "prepare": "concurrently -n \"HUSKY,TURBO\" -c \"magenta,cyan\" \"husky\" \"turbo build --filter='./packages/*'\" && bun --cwd apps/web _postprepare",
+    "prepare": "concurrently -n \"HUSKY,TURBO\" -c \"magenta,cyan\" \"husky\" \"turbo build --filter='./packages/*'\"",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write ."
   },
@@ -28,29 +24,14 @@
     "typescript": "5.4.3"
   },
   "engines": {
-    "node": "18.19.1",
-    "pnpm": "8.15.5"
+    "node": "20",
+    "pnpm": "9"
   },
-  "packageManager": "bun@1.0.35",
+  "packageManager": "pnpm@9.0.6",
   "nextBundleAnalysis": {
     "budget": 358400,
     "budgetPercentIncreaseRed": 20,
     "minimumChangeThreshold": 0,
     "showDetails": true
-  },
-  "trustedDependencies": [
-    "@swc/core",
-    "contentlayer",
-    "core-js-pure",
-    "esbuild",
-    "gif2webp-bin",
-    "gifsicle",
-    "guetzli",
-    "protobufjs",
-    "sharp",
-    "web"
-  ],
-  "overrides": {
-    "sharp": "0.33.3"
   }
 }
