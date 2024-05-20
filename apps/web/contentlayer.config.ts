@@ -30,7 +30,6 @@ const source: ReturnType<typeof makeSource> = makeSource({
     remarkPlugins: [remarkGfm, remarkMath, remarkUnwrapImages],
     rehypePlugins: [
       [
-        // @ts-expect-error TODO: Fix the type error, which seems to be caused by incorrect type definition provided by contentlayer
         rehypePrettyCode,
         {
           theme: {
@@ -41,9 +40,7 @@ const source: ReturnType<typeof makeSource> = makeSource({
         },
       ],
       rehypeGithubAlerts,
-      // @ts-expect-error TODO: Fix the type error, which seems to be caused by incorrect type definition provided by contentlayer
       rehypeKatex,
-      // @ts-expect-error Ignore confusing `Pluggable` generics type error
       [rehypeImageOptimizer, { basePath: './public', placeholderOptions: { size: 32 } }],
     ],
   },
