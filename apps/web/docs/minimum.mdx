@@ -1,0 +1,48 @@
+---
+title: Minimum Document
+date: 2024-02-03
+description: This page demonstrates the usage of MDX briefly.
+emoji: 📦
+---
+
+✨ Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias asperiores atque autem.
+
+![New Jeans, my love](https://s3-ap-northeast-1.amazonaws.com/pf-web/fanclubs/148/assets/229/images/top/main.jpg?20230707125959)
+
+# Hello, New Jeans!
+
+- Create a list by starting a line with `+`, `-`, or `*`
+- Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    - Ac tristique libero volutpat at
+    * Facilisis in pretium nisl aliquet
+    - Nulla volutpat aliquam velit
+- Very easy!
+
+| Syntax                                          | Output                                    |
+| ----------------------------------------------- | ----------------------------------------- |
+| `` `console.log('Hi'){:js}` ``                  | `console.log('Hi'){:js}`                  |
+| `` `from matplotlib import plot as plt{:py}` `` | `from matplotlib import plot as plt{:py}` |
+| `$` `\sum_{n=1}^{10} n^2{:tex}` `$`             | $\sum_{n=1}^{10} n^2$                     |
+| `$` `\int_{0}^{\infty} e^{-x} dx{:tex}` `$`     | $\int_{0}^{\infty} e^{-x} dx$             |
+
+$$
+  \frac{\pi}{2} =
+  \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2 =
+  \sum_{k=0}^{\infty} \frac{(2k)!}{2^{2k}(k!)^2} \frac{1}{2k+1} =
+  \prod_{k=1}^{\infty} \frac{4k^2}{4k^2 - 1}
+$$
+
+> [!NOTE]  
+> Highlights information that users should take into account, even when skimming.
+> `console.log('Hi'){:js}` $\int_{0}^{\infty} e^{-x} dx$ **This is bold text** _This is italic text_ ~~Strikethrough~~
+
+```ts showLineNumbers
+export const generateStaticParams = async () => {
+  const params = allContentDocuments.map((post) => ({
+    slug: post._raw.flattenedPath.split('/'),
+  }));
+  console.log(params);
+  return params;
+};
+```
