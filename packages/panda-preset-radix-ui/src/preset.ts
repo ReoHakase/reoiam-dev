@@ -13,21 +13,15 @@ export const radixUIPreset = async (options: PandaPresetRadixCssSelectorOptions)
             //  <Select> https://www.radix-ui.com/primitives/docs/components/select
             [getName([prefix, 'Select', 'Content', 'availableWidth'])]: {
               value: 'var(--radix-select-content-available-width)',
-              description:
-                'The remaining width between the trigger and the boundary edge. Only present when position="popper".',
             },
             [getName([prefix, 'Select', 'Content', 'availableHeight'])]: {
               value: 'var(--radix-select-content-available-height)',
-              description:
-                'The remaining height between the trigger and the boundary edge. Only present when position="popper".',
             },
             [getName([prefix, 'Select', 'Trigger', 'width'])]: {
               value: 'var(--radix-select-trigger-width)',
-              description: 'The width of the trigger. Only present when position="popper".',
             },
             [getName([prefix, 'Select', 'Trigger', 'height'])]: {
               value: 'var(--radix-select-trigger-height)',
-              description: 'The height of the trigger. Only present when position="popper".',
             },
           },
         },

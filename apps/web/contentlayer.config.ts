@@ -1,4 +1,4 @@
-import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import { defineDocumentType, makeSource } from 'contentlayer2/source-files';
 import { rehypeGithubAlerts } from 'rehype-github-alerts';
 import { rehypeImageOptimizer } from 'rehype-image-optimizer';
 import rehypeKatex from 'rehype-katex';
@@ -26,10 +26,10 @@ const source: ReturnType<typeof makeSource> = makeSource({
   contentDirPath: 'docs',
   documentTypes: [ContentDocument],
   mdx: {
+    // @ts-expect-error TODO: Fix the type error, which seems to be caused by incorrect type definition provided by contentlayer
     remarkPlugins: [remarkGfm, remarkMath, remarkUnwrapImages],
     rehypePlugins: [
       [
-        // @ts-expect-error TODO: Fix the type error, which seems to be caused by incorrect type definition provided by contentlayer
         rehypePrettyCode,
         {
           theme: {
@@ -40,9 +40,7 @@ const source: ReturnType<typeof makeSource> = makeSource({
         },
       ],
       rehypeGithubAlerts,
-      // @ts-expect-error TODO: Fix the type error, which seems to be caused by incorrect type definition provided by contentlayer
       rehypeKatex,
-      // @ts-expect-error Ignore confusing `Pluggable` generics type error
       [rehypeImageOptimizer, { basePath: './public', placeholderOptions: { size: 32 } }],
     ],
   },

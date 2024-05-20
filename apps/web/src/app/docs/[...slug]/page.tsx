@@ -1,7 +1,7 @@
 import { Calendar } from 'lucide-react';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { useMDXComponent } from 'next-contentlayer2/hooks';
 import type { ReactNode } from 'react';
 import { mdxComponents } from '@/features/markup/components/mdxComponents';
 import { allContentDocuments } from 'contentlayer/generated';
