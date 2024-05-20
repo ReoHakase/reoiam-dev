@@ -5663,7 +5663,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-api@api, "api@apps/api":
+"api@apps/api":
   version "workspace:apps/api"
   resolved "workspace:apps/api"
   devDependencies:
@@ -17991,7 +17991,7 @@ wcwidth@^1.0.1:
     "@types/react" "18.2.52"
     "@types/react-dom" "18.2.18"
     "@vercel/analytics" "1.1.2"
-    api "api"
+    api "apps/api"
     cobe "0.6.3"
     contentlayer2 "0.4.6"
     date-fns "3.3.1"
