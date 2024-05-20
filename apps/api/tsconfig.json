@@ -1,6 +1,0 @@
-{
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "tsconfig/bun.json",
-  "include": [".eslintrc.js", "**/*.ts"],
-  "exclude": ["node_modules"]
-}

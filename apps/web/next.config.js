@@ -1,12 +1,7 @@
-const { withContentlayer } = require('next-contentlayer');
+const { withContentlayer } = require('next-contentlayer2');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    optimizeCss: true,
-    serverComponentsExternalPackages: ['pino'],
-    swcMinify: true,
-  },
   images: {
     remotePatterns: [
       {
