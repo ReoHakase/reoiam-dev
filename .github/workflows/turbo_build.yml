@@ -40,5 +40,8 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
-      - name: Build with Turbo
-        run: pnpm turbo build
+      - name: Build dependencies with Turbo
+        run: pnpm turbo build --filter='./packages/*'
+
+      - name: Build web
+        run: pnpm --filter web build
