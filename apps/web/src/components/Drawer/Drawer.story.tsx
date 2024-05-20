@@ -12,7 +12,6 @@ import {
   DrawerDescription,
   DrawerClose,
 } from './Drawer';
-import { Sidebar } from '@/features/navigation/components/Sidebar/Sidebar';
 
 type Story = StoryObj<typeof Drawer>;
 
@@ -141,29 +140,6 @@ export const Scrollable: Story = {
   },
 };
 
-export const Navigation: Story = {
-  args: {
-    scrollable: true,
-    children: (
-      <>
-        <DrawerTrigger asChild>
-          <button>Open Drawer</button>
-        </DrawerTrigger>
-        <DrawerPortal>
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerKnob />
-            <DrawerClose>Close</DrawerClose>
-            <DrawerScrollArea>
-              <Sidebar hasPadding={false} />
-            </DrawerScrollArea>
-          </DrawerContent>
-        </DrawerPortal>
-      </>
-    ),
-  },
-};
-
 export const Undissmissable: Story = {
   args: {
     scrollable: true,
@@ -181,30 +157,6 @@ export const Undissmissable: Story = {
             <DrawerScrollArea>
               <DrawerTitle>Drawer Title</DrawerTitle>
               <DrawerDescription>Drawer Description</DrawerDescription>
-            </DrawerScrollArea>
-          </DrawerContent>
-        </DrawerPortal>
-      </>
-    ),
-  },
-};
-
-export const MultipleSnapPoints: Story = {
-  args: {
-    snapPoints: [0.4, 1],
-    scrollable: true,
-    children: (
-      <>
-        <DrawerTrigger asChild>
-          <button>Open Drawer</button>
-        </DrawerTrigger>
-        <DrawerPortal>
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerKnob />
-            <DrawerClose>Close</DrawerClose>
-            <DrawerScrollArea>
-              <Sidebar hasPadding={false} />
             </DrawerScrollArea>
           </DrawerContent>
         </DrawerPortal>
