@@ -18,14 +18,14 @@
     "eslint-config-custom": "workspace:*",
     "eslint-config-prettier": "9.1.0",
     "husky": "9.0.11",
-    "lint-staged": "15.2.2",
+    "lint-staged": "15.2.7",
     "patch-package": "8.0.0",
-    "playwright": "1.42.1",
-    "prettier": "3.2.5",
+    "playwright": "1.45.1",
+    "prettier": "3.3.2",
     "scaffdog": "3.0.0",
-    "tsup": "8.0.2",
-    "turbo": "1.13.0",
-    "typescript": "5.4.3"
+    "tsup": "8.1.0",
+    "turbo": "1.13.4",
+    "typescript": "5.5.3"
   },
   "engines": {
     "node": "18.19.1",
