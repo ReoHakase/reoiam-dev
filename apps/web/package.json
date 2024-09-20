@@ -25,7 +25,7 @@
     "api": "workspace:*",
     "cobe": "0.6.3",
     "contentlayer": "0.3.4",
-    "date-fns": "3.3.1",
+    "date-fns": "4.1.0",
     "eslint-config-next": "14.1.0",
     "jotai": "2.6.4",
     "lucide-react": "0.321.0",
