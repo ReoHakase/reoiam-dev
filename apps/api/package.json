@@ -21,7 +21,7 @@
   "devDependencies": {
     "bun-types": "latest",
     "eslint-config-custom": "workspace:*",
-    "pino-pretty": "11.0.0",
+    "pino-pretty": "11.3.0",
     "tsconfig": "workspace:*"
   },
   "main": "src/index.ts",
