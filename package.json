@@ -13,19 +13,19 @@
     "format:fix": "prettier --write ."
   },
   "devDependencies": {
-    "concurrently": "8.2.2",
-    "eslint": "8.57.0",
+    "concurrently": "10.0.5",
+    "eslint": "10.8.1",
     "eslint-config-custom": "workspace:*",
-    "eslint-config-prettier": "9.1.0",
+    "eslint-config-prettier": "10.1.8",
     "husky": "9.0.11",
-    "lint-staged": "15.2.2",
+    "lint-staged": "17.3.0",
     "patch-package": "8.0.0",
     "playwright": "1.42.1",
     "prettier": "3.2.5",
-    "scaffdog": "3.0.0",
+    "scaffdog": "4.1.0",
     "tsup": "8.0.2",
-    "turbo": "1.13.0",
-    "typescript": "5.4.3"
+    "turbo": "2.10.11",
+    "typescript": "7.0.2"
   },
   "engines": {
     "node": "18.19.1",
