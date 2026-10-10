@@ -31,7 +31,7 @@
     "node": "18.19.1",
     "pnpm": "8.15.5"
   },
-  "packageManager": "bun@1.0.35",
+  "packageManager": "bun@1.4.3",
   "nextBundleAnalysis": {
     "budget": 358400,
     "budgetPercentIncreaseRed": 20,
